@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Using CSS to style HTML | DMD 116</title>
+    <meta
+      name="description"
+      content="To style a HTML web page, use Cascading Style Sheets (CSS) to style the look and feel of the page."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /* General styles */
+      * {
+        font-family: Arial, Helvetica, sans-serif;
+        box-sizing: border-box;
+      }
+      body {
+        width: 800px;
+        margin: 0 auto;
+        background-color: rgb(45, 35, 23);
+      }
+
+      /* Styles for each row ("info-container") of text and image, */
+      /* using flex formatting */
+      .info-container {
+        display: flex;
+        flex-direction: info-container;
+      }
+      .text-block,
+      .image-block {
+        background-color: tan;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 7%;
+      }
+      .text-block {
+        flex: 1;
+      }
+      .image-block {
+        flex: 1.1;
+        overflow: hidden;
+      }
+      .image-block img {
+        width: 100%;
+        height: 100%;
+        border-radius: 7%;
+        object-fit: cover;
+      }
+
+      /* Header styles */
+      h1 {
+        color: tan;
+        text-decoration: underline;
+        margin-left: 10px;
+      }
+      h2 {
+        color: darkred;
+        text-decoration: underline;
+        margin-left: 10px;
+      }
+
+      /* Paragraph, main text, and list item styles */
+      p {
+        color: rgb(45, 35, 23);
+        margin-left: 10px;
+      }
+      .main-text {
+        color: tan;
+        font-size: larger;
+      }
+      li {
+        margin-bottom: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <h1>Caring for Your Cat</h1>
+      <p class="main-text">
+        Owning a cat can sometimes be overwhelming - there are precautions to take, time to
+        prioritize and tons of questions to answer. But one thing to note is that no cat parent is
+        perfect! Most cat parents learn as we go, but for now, you can find several answers to your
+        pressing questions right here.
+      </p>
+      <div class="info-container">
+        <div class="text-block">
+          <h2>Proper Homecare</h2>
+          <p>
+            Your home might be the most comfortable place she's ever been, but it could be the most
+            dangerous if you don't take proper precautions. Cat-proof your home by taking a look at
+            every nook and cranny from a cat's perspective. You may notice open cabinets -lock them
+            to keep poisonous chemicals, like anti-freeze, away from her. Dangling strings or cords
+            of any kind may be one tug away from a big mess or injury. Also place houseplants out of
+            reach as they are poisonous to cats. These are just a few hazards to note. Search the
+            articles in this section for more.
+          </p>
+        </div>
+        <div class="image-block">
+          <img src="images/catHome.webp" alt="Cat in Cabinet" />
+        </div>
+      </div>
+      <div class="info-container">
+        <div class="image-block">
+          <img src="images/catTravel.webp" alt="Cat at Train Window" />
+        </div>
+        <div class="text-block">
+          <h2>Traveling with Cats</h2>
+          <p>
+            Most cats aren't big on traveling. In fact, they prefer to stick to their own territory
+            and feel very uncomfortable away from home. But if you decide to take a trip or are
+            moving with cats to a new home, you'll need to get an appropriate carrier and keep it
+            confined until she is bonded with her new territory. Flying with cats will require a
+            little more planning as some airlines require cats to travel in a separate part of the
+            plane that is heated and pressurized.
+          </p>
+        </div>
+      </div>
+      <div class="info-container">
+        <div class="text-block">
+          <h2>Grooming Your Cat</h2>
+          <p>
+            As you're probably already aware, most cats spend a large part of their day grooming
+            themselves - but sometimes they need a little extra help (like when her hair becomes
+            tangled). Every time you groom her, make sure she is tired and relaxed. If you need to
+            comb her, start by brushing her favorite spots and then progress to other areas. And if
+            she needs a bath, use pet shampoo and close all doors and windows. But remember, don't
+            bathe your cat regularly. This may dry out the naturals balance of oils in her skin and
+            fur.
+          </p>
+        </div>
+        <div class="image-block">
+          <img src="images/catGrooming.webp" alt="Grooming a Cat" />
+        </div>
+      </div>
+      <div class="info-container">
+        <div class="image-block">
+          <img src="images/catBed.webp" alt="Cat in a Cat Bed" />
+        </div>
+        <div class="text-block">
+          <h2>The right bedding<br />for beauty sleep</h2>
+          <p>
+            Cats can sleep up to 18 hours a day, so creating the right conditions for your new cat
+            is important.
+          </p>
+        </div>
+      </div>
+      <ul class="main-text">
+        <li>
+          Make sure bedding is soft and washable, and place it inside a basket, small box, cozy
+          corner or a particularly ideal sunny spot of the house
+        </li>
+        <li>
+          Beware of letting your cat sleep with you. Remember that cats tend to be nocturnal, which
+          may disrupt your sleep. If late night antics wake you up, gently put your cat on the
+          floor. Don't reward a disruption with attention or you're inviting your cat to wake you up
+          over and over
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>
