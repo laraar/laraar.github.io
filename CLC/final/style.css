@@ -1,0 +1,122 @@
+/** @format */
+
+/* General styles */
+@font-face {
+  font-family: "CRTfont";
+  src: url("fonts/CRTfont.ttf") format("truetype");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: CRTfont, sans-serif;
+  /* color: #edb748; */
+  color: #f4c244;
+}
+html {
+  font-size: 16px;
+}
+/* CRT text glow effect */
+.crt-glow {
+  text-shadow: 0 0 2px #f4c244;
+}
+
+/* Monitor border styles */
+.monitorborder {
+  fill: #ada088;
+}
+.monitorborder-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh; /* Clipping happens here */
+  overflow: hidden;
+}
+#monitorborder-top {
+  filter: drop-shadow(0 0 1vw rgba(255, 204, 0, 0.8));
+}
+
+/* Content styles */
+body {
+  background-color: #151515;
+  padding: 8vw;
+}
+h1 {
+  color: #f4c244;
+  font-size: 2.875rem;
+  font-weight: 800;
+  margin-bottom: 1vw;
+}
+p {
+  text-indent: 3.4rem;
+  color: #f4c244;
+  font-size: 1.625rem;
+  margin-bottom: 1vw;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  border-bottom: solid #f4c244;
+  padding-bottom: 2vw;
+  margin-top: -2vw;
+}
+#logo {
+  flex: 4;
+  width: 8.5vw;
+  margin-left: 2vw;
+  float: left;
+}
+#header-right {
+  flex: 34;
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+}
+#header-title {
+  flex: 1;
+  margin-top: 1vw;
+  margin-left: 2vw;
+  font-size: 6.5vw;
+  float: left;
+}
+nav {
+  flex: 1;
+  z-index: 100;
+}
+.space {
+  display: inline-block;
+  width: 0.2em;
+}
+nav ul {
+  padding: 0;
+  margin-top: -0.5vw;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  color: #f4c244;
+  margin-left: -5.7vw;
+  justify-content: center;
+  gap: 2vw;
+  align-items: center;
+}
+nav li {
+  margin: 0;
+}
+nav ul li a {
+  padding: 0.5vw 2.1vw;
+  text-decoration: none;
+  text-align: center;
+  background-color: #f4c244;
+  color: #000;
+  font-size: 2.05vw;
+  font-weight: bold;
+}
+nav ul li a:hover,
+nav ul li a:focus {
+  background-color: #1e9c1e;
+}
+hr {
+  color: #f4c244;
+}
