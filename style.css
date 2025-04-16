@@ -1,0 +1,256 @@
+/** @format */
+
+/* General styles */
+@font-face {
+  font-family: "CRTfont";
+  src: url("fonts/CRTfont.ttf") format("truetype");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: CRTfont, sans-serif;
+  color: #f4c244;
+}
+
+/* Including base font size here, since some text sizing is basd on a sum of rem and vw */
+html {
+  font-size: 16px;
+  height: 100%;
+}
+
+/* Monitor border */
+.viewport-outer-border {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: transparent;
+  box-shadow: inset 0 0 0 2.5vw #ada088;
+  pointer-events: none;
+  filter: drop-shadow(0 0 1vw rgba(255, 204, 0, 0.8));
+  z-index: 200;
+}
+.viewport-radius-border {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: transparent;
+  box-shadow: inset 0 0 0 2.5vw #ada088;
+  border-radius: 6vw;
+  pointer-events: none;
+  z-index: 200;
+}
+
+/* General content styles */
+body {
+  background-color: #151515;
+  padding: 6vw 8vw 4vw 8vw;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+h1 {
+  color: #f4c244;
+  font-family: "Arial Narrow ", sans-serif;
+  font-size: calc(0.55rem + 2.75vw);
+  font-weight: 500;
+  margin-bottom: 1vw;
+}
+h2 {
+  color: #f4c244;
+  font-family: "Arial Narrow ", sans-serif;
+  font-size: calc(0.525rem + 2.5vw);
+  font-weight: 500;
+  margin-bottom: 1vw;
+}
+h3 {
+  color: #f4c244;
+  font-family: "Arial Narrow ", sans-serif;
+  font-size: calc(0.5rem + 2.25vw);
+  font-weight: 500;
+  margin-bottom: 1vw;
+}
+h4 {
+  color: #f4c244;
+  font-family: "Arial Narrow ", sans-serif;
+  font-size: calc(0.5rem + 1.8vw);
+  font-weight: 500;
+  margin-bottom: 1vw;
+}
+p {
+  color: #f4c244;
+  font-family: "Arial Narrow ", sans-serif;
+  font-size: calc(0.5rem + 1.3vw);
+  margin-bottom: 1vw;
+}
+
+/* Header styles */
+header {
+  display: grid;
+  position: relative;
+  grid-template-columns: 1.5fr 8.2fr; /* Two columns, fist for the Larry logo, and second for text and nav */
+  grid-template-rows: 1.7fr 1fr; /* Two rows for the right column */
+  height: 13.5vw;
+  padding-bottom: 2vw;
+  border-bottom: solid #f4c244;
+}
+/* Scanlines through header */
+.scanlines {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(21, 21, 21, 0.4),
+    rgba(21, 21, 21, 0.4) 0.1vw,
+    transparent 0.1vw,
+    transparent 0.3vw
+  );
+  z-index: 102;
+  pointer-events: none;
+}
+/* Header grid components  */
+.logo-block {
+  grid-column: 1; /* Larry image is in the first column */
+  grid-row: span 2; /* and spans both rows */
+}
+#logo {
+  width: 85%;
+  margin: auto;
+  float: right;
+  padding-left: 2vw;
+  filter: drop-shadow(0 0 0.1vw #cfaca0) drop-shadow(0 0 0.3vw #b8816d);
+}
+.top-right {
+  grid-column: 2; /* Header text is in the second column */
+  grid-row: 1; /* and is in the first row of that column */
+  padding-top: 1.4vw;
+  padding-left: 3%;
+  font-size: 6vw;
+  position: relative;
+  z-index: 101;
+  overflow: hidden;
+}
+.bottom-right {
+  grid-column: 2; /* Nav block is in the second colummn */
+  grid-row: 2; /* and is in the second row of that column */
+  padding-top: 0.5vw;
+  padding-left: 3%;
+  height: 100%;
+  display: flex;
+  align-items: center; /* This should vertically center the nav */
+}
+.crt-text {
+  color: #f4c244;
+  text-shadow: 0 0 0.1vw #f4c244;
+}
+.crt-amber-glow {
+  box-shadow: 0 0 0.18vw #f4c244, 0 0 0.54vw #ff9900;
+}
+.crt-logo {
+  filter: drop-shadow(0 0 0.1vw #cfaca0) drop-shadow(0 0 0.3vw #b8816d);
+}
+
+/* Navigation styles */
+nav {
+  z-index: 100;
+}
+.space {
+  display: inline-block;
+  width: 0.2em;
+}
+nav ul {
+  list-style-type: none;
+  max-height: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  color: #f4c244;
+  gap: 2vw;
+  align-items: center;
+}
+nav li {
+  margin: 0;
+  height: 90%;
+}
+nav ul li a {
+  padding: 0.5vw 2.1vw;
+  text-decoration: none;
+  text-align: center;
+  background-color: #f4c244;
+  color: #000;
+  font-size: clamp(0.8rem, 2vw, 3rem);
+  font-weight: bold;
+}
+nav ul li a:hover,
+nav ul li a:focus {
+  background-color: #1e9c1e;
+}
+
+/* Main content style */
+main {
+  flex: 1;
+  height: 100%;
+  margin-top: 2vw;
+  text-align: center;
+}
+/* Styles for temporary page images/text */
+#demo-image {
+  display: block;
+  margin: 0 auto;
+  margin-top: 2vw;
+  height: 40vh;
+}
+
+/* Temporary content for home page */
+#style-examples {
+  margin: 3vw 0 0 4vw;
+  display: none;
+}
+
+/* Footer style */
+footer {
+  padding-top: 0.3vw;
+  font-size: 1.5vw;
+  font-size: calc(0.75rem + 1vw);
+  border-top: solid #f4c244;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#EmailMe {
+  text-decoration: none;
+  color: inherit;
+}
+#EmailMe:hover,
+#EmailMe:focus {
+  color: #1e9c1e;
+}
+
+/* Media queries */
+@media only screen and (max-width: 555px) {
+  nav ul li a {
+    padding: 0.5vw 1.4vw;
+  }
+}
+@media only screen and (max-width: 500px) {
+  nav ul li a {
+    padding: 0.5vw 1.2vw;
+  }
+}
+@media only screen and (max-width: 440px) {
+  nav ul li a {
+    padding: 0.5vw 0.5vw;
+  }
+  footer {
+    font-size: calc(0.75rem);
+  }
+}
