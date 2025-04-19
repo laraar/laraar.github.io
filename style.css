@@ -1,5 +1,9 @@
 /** @format */
 
+:root {
+  --amber: #f4c244;
+  --green: #1e9c1e;
+}
 /* General styles */
 @font-face {
   font-family: "CRTfont";
@@ -10,7 +14,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: CRTfont, sans-serif;
-  color: #f4c244;
+  color: var(--amber);
 }
 
 /* Including base font size here, since some text sizing is basd on a sum of rem and vw */
@@ -25,7 +29,7 @@ html {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100dvh;
+  height: 100vh;
   background-color: transparent;
   box-shadow: inset 0 0 0 2.5vw #ada088;
   pointer-events: none;
@@ -37,7 +41,7 @@ html {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100dvh;
+  height: 100vh;
   background-color: transparent;
   box-shadow: inset 0 0 0 2.5vw #ada088;
   border-radius: 6vw;
@@ -55,35 +59,35 @@ body {
   overflow-x: hidden;
 }
 h1 {
-  color: #f4c244;
+  color: var(--amber);
   font-family: "Arial Narrow ", sans-serif;
   font-size: calc(0.55rem + 2.75vw);
   font-weight: 500;
   margin-bottom: 1vw;
 }
 h2 {
-  color: #f4c244;
+  color: var(--amber);
   font-family: "Arial Narrow ", sans-serif;
   font-size: calc(0.525rem + 2.5vw);
   font-weight: 500;
   margin-bottom: 1vw;
 }
 h3 {
-  color: #f4c244;
+  color: var(--amber);
   font-family: "Arial Narrow ", sans-serif;
   font-size: calc(0.5rem + 2.25vw);
   font-weight: 500;
   margin-bottom: 1vw;
 }
 h4 {
-  color: #f4c244;
+  color: var(--amber);
   font-family: "Arial Narrow ", sans-serif;
   font-size: calc(0.5rem + 1.8vw);
   font-weight: 500;
   margin-bottom: 1vw;
 }
 p {
-  color: #f4c244;
+  color: var(--amber);
   font-family: "Arial Narrow ", sans-serif;
   font-size: calc(0.5rem + 1.3vw);
   margin-bottom: 1vw;
@@ -97,7 +101,7 @@ header {
   grid-template-rows: 1.7fr 1fr; /* Two rows for the right column */
   height: 13.5vw;
   padding-bottom: 2vw;
-  border-bottom: solid #f4c244;
+  border-bottom: solid var(--amber);
 }
 /* Scanlines through header */
 .scanlines {
@@ -139,7 +143,8 @@ header {
   z-index: 101;
   overflow: hidden;
 }
-.bottom-right {
+.bottom-right-wide {
+  display: block;
   grid-column: 2; /* Nav block is in the second colummn */
   grid-row: 2; /* and is in the second row of that column */
   padding-top: 0.5vw;
@@ -148,9 +153,45 @@ header {
   display: flex;
   align-items: center; /* This should vertically center the nav */
 }
+.bottom-right-narrow {
+  position: relative;
+  display: none;
+  grid-column: 2; /* Nav block is in the second colummn */
+  grid-row: 2; /* and is in the second row of that column */
+  padding-top: 0.5vw;
+  padding-left: 3%;
+  padding-right: 3%;
+  font-size: 4vw;
+  height: 100%;
+  text-align: right;
+  align-self: center;
+}
+#dashes {
+  display: inline-block;
+}
+#menu-button {
+  position: relative;
+  display: inline-block;
+  color: #000;
+  background-color: var(--amber);
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+#menu-button a {
+  margin: auto;
+  text-decoration: none;
+  color: #000;
+  padding-right: 0.1vw;
+  font-weight: bold;
+}
+#menu-button:hover,
+#menu-button:focus {
+  background-color: var(--green);
+}
+
 .crt-text {
-  color: #f4c244;
-  text-shadow: 0 0 0.1vw #f4c244;
+  color: var(--amber);
+  text-shadow: 0 0 0.1vw var(--amber);
 }
 .crt-amber-glow {
   box-shadow: 0 0 0.18vw #f4c244, 0 0 0.54vw #ff9900;
@@ -173,7 +214,7 @@ nav ul {
   height: 100%;
   display: flex;
   flex-direction: row;
-  color: #f4c244;
+  color: var(--amber);
   gap: 2vw;
   align-items: center;
 }
@@ -182,17 +223,17 @@ nav li {
   height: 90%;
 }
 nav ul li a {
-  padding: 0.5vw 2.1vw;
+  padding: 0.5vw 1.8vw;
   text-decoration: none;
   text-align: center;
-  background-color: #f4c244;
+  background-color: var(--amber);
   color: #000;
-  font-size: clamp(0.8rem, 2vw, 3rem);
+  font-size: clamp(1.2rem, 2vw, 4rem);
   font-weight: bold;
 }
 nav ul li a:hover,
 nav ul li a:focus {
-  background-color: #1e9c1e;
+  background-color: var(--green);
 }
 
 /* Main content style */
@@ -221,7 +262,7 @@ footer {
   padding-top: 0.3vw;
   font-size: 1.5vw;
   font-size: calc(0.75rem + 1vw);
-  border-top: solid #f4c244;
+  border-top: solid var(--amber);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -232,25 +273,45 @@ footer {
 }
 #EmailMe:hover,
 #EmailMe:focus {
-  color: #1e9c1e;
+  color: var(--green);
 }
 
 /* Media queries */
-@media only screen and (max-width: 555px) {
+@media only screen and (max-width: 990px) {
+  /* nav ul li a {
+    padding: 0.5vw 0.8vw;
+  } */
+}
+@media only screen and (max-width: 850px) {
   nav ul li a {
-    padding: 0.5vw 1.4vw;
+    padding: 0.5vw 1vw;
   }
 }
-@media only screen and (max-width: 500px) {
-  nav ul li a {
-    padding: 0.5vw 1.2vw;
-  }
-}
-@media only screen and (max-width: 440px) {
+@media only screen and (max-width: 702px) {
+  /* .scanlines {
+    display: none;
+  } */
   nav ul li a {
     padding: 0.5vw 0.5vw;
   }
   footer {
-    font-size: calc(0.75rem);
+    font-size: 0.75rem;
+  }
+  /* header {
+    grid-template-rows: 1fr;
+    grid-template-columns: 1.5fr 5fr 3.2fr;
+  } */
+  /* .top-right {
+    padding-left: 9%;
+  } */
+  .bottom-right-wide {
+    display: none;
+  }
+  .bottom-right-narrow {
+    display: block;
   }
 }
+@media only screen and (max-width: 500px) {
+  .scanlines {
+    display: none;
+  }
