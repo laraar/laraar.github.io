@@ -99,7 +99,7 @@ header {
   position: relative;
   grid-template-columns: 1.5fr 8.2fr; /* Two columns, fist for the Larry logo, and second for text and nav */
   grid-template-rows: 1.7fr 1fr; /* Two rows for the right column */
-  height: 13.5vw;
+  height: 13.5dvw;
   padding-bottom: 2dvw;
   border-bottom: solid var(--amber);
 }
