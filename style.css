@@ -259,12 +259,12 @@ nav li {
   height: 90%;
 }
 nav ul li a {
-  padding: 0.5vw 1.8vw;
+  padding: 0.5vw 1.2vw;
   text-decoration: none;
   text-align: center;
   background-color: var(--amber);
   color: #000;
-  font-size: clamp(1.2rem, 2vw, 4rem);
+  font-size: clamp(1.2rem, 2.5vw, 4rem);
   font-weight: bold;
 }
 nav ul li a:hover,
@@ -387,12 +387,12 @@ footer {
   }
 }
 
-@media only screen and (max-width: 850px) {
+/* @media only screen and (max-width: 850px) {
   nav ul li a {
     padding: 0.3vw 1vw;
   }
-}
-@media only screen and (max-width: 715px) {
+} */
+@media only screen and (max-width: 800px) {
   /* .scanlines {
     display: none;
   } */
@@ -406,7 +406,7 @@ footer {
     height: 14dvw;
     border-bottom: solid 0.4dvw var(--amber);
   }
-  #foote-text {
+  #footer-text {
     border-top: solid 0.4dvw var(--amber);
   }
   .top-right {
