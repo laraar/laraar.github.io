@@ -55,7 +55,7 @@ body {
   padding: 6vw 8vw 4vw 8vw;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100dvh;
   overflow-x: hidden;
 }
 h1 {
@@ -309,7 +309,7 @@ footer span {
   }
   .top-right {
     padding-left: 8%;
-    -webkit-text-stroke: 0.25dvw var(--amber);
+    -webkit-text-stroke: 0.15dvw var(--amber);
   }
   .bottom-right-wide {
     display: none;
