@@ -162,6 +162,7 @@ header {
   padding-left: 3%;
   padding-right: 3%;
   font-size: 3.8dvw;
+  font-weight: 600;
   height: 100%;
   text-align: right;
   align-self: center;
@@ -304,6 +305,7 @@ footer {
   header {
     grid-template-rows: 1fr;
     grid-template-columns: 1.5fr 5.8fr 2.4fr;
+    height: 14dvw;
   }
   .top-right {
     padding-left: 8%;
