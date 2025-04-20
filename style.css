@@ -186,6 +186,7 @@ a #menu-button {
   text-decoration: none;
   padding-right: 0.1dvw;
   font-weight: bold;
+  border: solid orange;
 }
 a #menu-button:hover,
 a #menu-button:focus {
@@ -306,7 +307,7 @@ footer {
     grid-template-columns: 1.5fr 6fr 2.2fr;
   }
   .top-right {
-    padding-left: 6%;
+    padding-left: 8%;
   }
   .bottom-right-wide {
     display: none;
