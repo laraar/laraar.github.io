@@ -185,7 +185,6 @@ header {
 a #menu-button {
   text-decoration: none;
   padding-right: 0.1dvw;
-  font-weight: bold;
 }
 a #menu-button:hover,
 a #menu-button:focus {
@@ -312,8 +311,10 @@ footer span {
   }
   .top-right {
     padding-left: 8%;
-    -webkit-text-stroke: 0.15dvw var(--amber);
+    /* -webkit-text-stroke: 0.15dvw var(--amber); */
+    font-weight: bold;
   }
+
   .bottom-right-wide {
     display: none;
   }
