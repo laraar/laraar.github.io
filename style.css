@@ -136,9 +136,9 @@ header {
 .top-right {
   grid-column: 2; /* Header text is in the second column */
   grid-row: 1; /* and is in the first row of that column */
-  padding-top: 1.4vw;
+  padding-top: 1.4dvw;
   padding-left: 3%;
-  font-size: 6vw;
+  font-size: 6dvw;
   position: relative;
   z-index: 101;
   overflow: hidden;
@@ -178,7 +178,6 @@ header {
   font-size: 5.7dvw;
   background-color: transparent;
   border: none;
-  display: none;
 }
 .line-break {
   display: none;
@@ -307,7 +306,7 @@ footer {
     grid-template-columns: 1.5fr 6fr 2.2fr;
   }
   .top-right {
-    padding-left: 9%;
+    padding-left: 6%;
   }
   .bottom-right-wide {
     display: none;
