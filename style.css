@@ -162,11 +162,10 @@ header {
   padding-left: 3%;
   padding-right: 3%;
   font-size: 3.8dvw;
-  font-weight: 600;
   height: 100%;
   text-align: right;
   align-self: center;
-  border-left: solid var(--amber);
+  border-left: solid 0.4dvw var(--amber);
 }
 #menu-button {
   margin-top: 2.5dvw;
@@ -264,13 +263,15 @@ main {
 
 /* Footer style */
 footer {
-  padding-top: 0.3vw;
-  font-size: 1.5vw;
-  font-size: calc(0.75rem + 1vw);
+  padding-top: 0.3dvw;
   border-top: solid var(--amber);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
+  font-size: clamp(1.5rem, 1.5dvw, 2rem);
+}
+footer span {
+  display: inline-block;
 }
 #EmailMe {
   text-decoration: none;
@@ -299,16 +300,16 @@ footer {
   nav ul li a {
     padding: 0.5vw 0.5vw;
   }
-  footer {
-    font-size: 0.75rem;
-  }
+
   header {
     grid-template-rows: 1fr;
     grid-template-columns: 1.5fr 5.8fr 2.4fr;
     height: 14dvw;
+    border-bottom: solid 0.4dvw var(--amber);
   }
   .top-right {
     padding-left: 8%;
+    -webkit-text-stroke: 0.25dvw var(--amber);
   }
   .bottom-right-wide {
     display: none;
