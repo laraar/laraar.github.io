@@ -268,7 +268,7 @@ footer {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  font-size: clamp(1.5rem, 1.5dvw, 2rem);
+  font-size: clamp(1.2rem, 1.5dvw, 2rem);
 }
 footer span {
   display: inline-block;
@@ -306,6 +306,9 @@ footer span {
     grid-template-columns: 1.5fr 5.8fr 2.4fr;
     height: 14dvw;
     border-bottom: solid 0.4dvw var(--amber);
+  }
+  footer {
+    border-top: solid 0.4dvw var(--amber);
   }
   .top-right {
     padding-left: 8%;
