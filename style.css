@@ -100,7 +100,7 @@ header {
   grid-template-columns: 1.5fr 8.2fr; /* Two columns, fist for the Larry logo, and second for text and nav */
   grid-template-rows: 1.7fr 1fr; /* Two rows for the right column */
   height: 13.5vw;
-  padding-bottom: 2vw;
+  padding-bottom: 2dvw;
   border-bottom: solid var(--amber);
 }
 /* Scanlines through header */
@@ -178,6 +178,7 @@ header {
   font-size: 5.7dvw;
   background-color: transparent;
   border: none;
+  display: none;
 }
 .line-break {
   display: none;
