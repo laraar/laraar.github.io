@@ -104,7 +104,8 @@ header {
   border-bottom: solid var(--amber);
 }
 /* Scanlines through header */
-.scanlines {
+.scanlines,
+.scanlines2 {
   content: "";
   position: absolute;
   top: 0;
@@ -189,6 +190,30 @@ a #menu-button {
 a #menu-button:hover,
 a #menu-button:focus {
   background-color: var(--green);
+}
+#dropdown-menu-container {
+  display: none;
+  position: absolute;
+  top: 18.2dvw;
+  right: 7.7dvw;
+}
+#dropdown-menu {
+  position: relative;
+  font-size: 5dvw;
+  display: block;
+  text-align: right;
+}
+#dropdown-menu ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+}
+#dropdown-menu ul a {
+  text-decoration: none;
+  padding: 0.5vw;
+  background-color: var(--amber);
+  color: #000;
 }
 
 .crt-text {
@@ -329,6 +354,9 @@ footer span {
   }
   .scanlines {
     display: none;
+  }
+  #dropdown-menu-container {
+    display: block;
   }
 }
 @media only screen and (max-width: 500px) {
