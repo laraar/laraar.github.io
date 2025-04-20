@@ -207,7 +207,7 @@ a #menu-button:focus {
   list-style-type: none;
   display: flex;
   flex-direction: column;
-  gap: 2vw;
+  gap: 2.5vw;
 }
 #dropdown-menu ul a {
   text-decoration: none;
