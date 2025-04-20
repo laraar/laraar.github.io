@@ -7,7 +7,7 @@
     <title>Larry Aaronson, the website</title>
     <meta name="description" content="A portfolio of Larry Aaronson's stuff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css?v=19" type="text/css" />
+    <link rel="stylesheet" href="style.css?v=20" type="text/css" />
   </head>
   <body>
     <!-- Monitor border (two borders, one with square corners and one with rounded corners)-->
@@ -81,10 +81,14 @@
         <input type="email" id="email" name="email" required />
         <label for="message">Message:</label>
         <textarea id="message" name="message" required></textarea>
-        <input id="submit" type="submit" value="Submit to Larry" />
+        <input class="form-button" id="submit" type="submit" value="Submit to Larry" />
       </form>
-      <span>&copy 2025 Larry Aaronson</span>
-      <span><button type="button" id="contact-button">Contact me...</button></span>
+      <div id="footer-bottom">
+        <div id="footer-text">
+          <span>&copy 2025 Larry Aaronson</span>
+          <span><button type="button" id="contact-button">Contact me...</button></span>
+        </div>
+      </div>
     </footer>
     <!-- Run script.js after page load -->
     <script src="scripts/script.js"></script>

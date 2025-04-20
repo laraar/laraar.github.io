@@ -292,17 +292,23 @@ main {
   margin: 3vw 0 0 4vw;
   display: none;
 }
-
-/* Footer style */
 footer {
+  display: relative;
+}
+/* Footer style */
+#footer-bottom {
   padding-top: 0.3dvw;
-  border-top: solid var(--amber);
+  display: block;
+}
+#footer-text {
+  clear: right;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  border-top: solid var(--amber);
   font-size: clamp(1.4rem, 1.5dvw, 2rem);
 }
-footer span {
+#footer-text span {
   display: inline-block;
 }
 #contact-button {
@@ -320,15 +326,15 @@ footer span {
   color: var(--green);
 }
 #contact-form {
-  position: absolute;
-  bottom: 10dvh;
-  right: 8dvw;
+  position: block;
+  margin-bottom: 1dvw;
+  float: right;
   font-size: clamp(2rem, 3dvw, 2rem);
   text-align: left;
   background-color: var(--amber);
   padding: 1dvw;
   color: #000;
-  width: 60%;
+  width: 60dvw;
   z-index: 250;
   border-radius: 1dvw;
 }
@@ -336,6 +342,7 @@ footer span {
   display: block;
   width: 50dvw;
   color: #000;
+  font-size: clamp(1.5rem, 3dvw, 2rem);
 }
 #contact-form input,
 #contact-form textarea {
@@ -351,11 +358,16 @@ footer span {
 #contact-form textarea {
   height: 10dvh;
 }
+#contact-form .form-button {
+  height: fit-content;
+  font-size: 3dvw;
+  font-size: clamp(1.5rem, 3dvw, 2rem);
+  margin-bottom: 0.2dvw;
+  padding: 1%;
+}
 #contact-form #submit {
-  width: 25dvw;
-  height: 6dvw;
+  width: fit-content;
   float: right;
-  font-size: 4dvw;
 }
 
 #EmailMe {
@@ -368,11 +380,13 @@ footer span {
 }
 
 /* Media queries */
-@media only screen and (max-width: 990px) {
-  /* nav ul li a {
-    padding: 0.5vw 0.8vw;
-  } */
+@media only screen and (min-width: 850px) {
+  #contact-form input,
+  #contact-form textarea {
+    border-radius: 0.5dvw;
+  }
 }
+
 @media only screen and (max-width: 850px) {
   nav ul li a {
     padding: 0.5vw 1vw;
@@ -392,7 +406,7 @@ footer span {
     height: 14dvw;
     border-bottom: solid 0.4dvw var(--amber);
   }
-  footer {
+  #foote-text {
     border-top: solid 0.4dvw var(--amber);
   }
   .top-right {
@@ -418,6 +432,15 @@ footer span {
   }
   #dropdown-menu-container {
     display: block;
+  }
+  #contact-form {
+    width: 100%;
+  }
+  #contact-form label {
+    font-size: 5dvw;
+  }
+  #contact-form .form-button {
+    font-size: 5dvw;
   }
 }
 @media only screen and (max-width: 500px) {
