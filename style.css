@@ -183,37 +183,45 @@ header {
 .line-break {
   display: none;
 }
-a #menu-button {
+#menu-button {
   text-decoration: none;
   padding-right: 0.1dvw;
 }
-a #menu-button:hover,
-a #menu-button:focus {
-  background-color: var(--green);
+#menu-button:active,
+#menu-button:hover {
+  color: var(--green);
 }
 #dropdown-menu-container {
   display: none;
-  position: absolute;
-  top: 18.2dvw;
-  right: 7.7dvw;
 }
 #dropdown-menu {
-  position: relative;
+  position: absolute;
+  top: 18.2dvw;
+  right: 8dvw;
   font-size: 5dvw;
-  display: block;
   text-align: right;
 }
 #dropdown-menu ul {
   list-style-type: none;
   display: flex;
   flex-direction: column;
-  gap: 2.5vw;
+  gap: 2.5dvw;
 }
 #dropdown-menu ul a {
   text-decoration: none;
-  padding: 0.5vw;
+  padding: 0.6dvw 1.8dvw;
   background-color: var(--amber);
   color: #000;
+}
+#dropdown-menu ul a:hover,
+#dropdown-menu ul a:focus {
+  background-color: var(--green);
+}
+.hidden {
+  display: none;
+}
+.visible {
+  display: block;
 }
 
 .crt-text {
@@ -292,11 +300,64 @@ footer {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  font-size: clamp(1.2rem, 1.5dvw, 2rem);
+  font-size: clamp(1.4rem, 1.5dvw, 2rem);
 }
 footer span {
   display: inline-block;
 }
+#contact-button {
+  position: relative;
+  font-size: clamp(1.4rem, 1.5dvw, 2rem);
+  background-color: transparent;
+  border: none;
+}
+#contact-button {
+  text-decoration: none;
+  padding-right: 0.1dvw;
+}
+#contact-button:active,
+#contact-button:hover {
+  color: var(--green);
+}
+#contact-form {
+  position: absolute;
+  bottom: 10dvh;
+  right: 8dvw;
+  font-size: clamp(2rem, 3dvw, 2rem);
+  text-align: left;
+  background-color: var(--amber);
+  padding: 1dvw;
+  color: #000;
+  width: 60%;
+  z-index: 250;
+  border-radius: 1dvw;
+}
+#contact-form label {
+  display: block;
+  width: 50dvw;
+  color: #000;
+}
+#contact-form input,
+#contact-form textarea {
+  margin-bottom: 2dvw;
+  padding: 1dvw;
+  display: block;
+  width: 100%;
+  height: 4dvh;
+  font-size: clamp(2rem, 3dvw, 2rem);
+  color: #000;
+  border-radius: 1dvw;
+}
+#contact-form textarea {
+  height: 10dvh;
+}
+#contact-form #submit {
+  width: 25dvw;
+  height: 6dvw;
+  float: right;
+  font-size: 4dvw;
+}
+
 #EmailMe {
   text-decoration: none;
   color: inherit;

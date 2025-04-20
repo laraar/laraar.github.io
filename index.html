@@ -7,7 +7,7 @@
     <title>Larry Aaronson, the website</title>
     <meta name="description" content="A portfolio of Larry Aaronson's stuff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css?v=18" type="text/css" />
+    <link rel="stylesheet" href="style.css?v=19" type="text/css" />
   </head>
   <body>
     <!-- Monitor border (two borders, one with square corners and one with rounded corners)-->
@@ -36,11 +36,12 @@
         </nav>
       </div>
       <div class="right-block bottom-right-narrow">
-        <a href="images/old-tv.webp"><button id="menu-button">menu &#9776;</button></a>
+        <button type="button" id="menu-button">menu &#9776;</button>
       </div>
     </header>
     <div id="dropdown-menu-container">
-      <div id="dropdown-menu">
+      <!--Including this to allow this dropdown menu container to be present on mobile -->
+      <div id="dropdown-menu" class="hidden">
         <ul>
           <li><a class="dropdown-item" href="index.html">Home</a></li>
           <li><a class="dropdown-item" href="graphicart.html">Graphic Art</a></li>
@@ -63,9 +64,27 @@
       </div>
     </main>
     <!-- Footer -->
+    <!-- <form id="contact-form" action="YOUR_SCRIPT_URL" method="post" class="hidden">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+      <input id="submit" type="submit" value="Submit to Larry" />
+    </form> -->
     <footer>
+      <form id="contact-form" action="YOUR_SCRIPT_URL" method="post" class="hidden">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+        <input id="submit" type="submit" value="Submit to Larry" />
+      </form>
       <span>&copy 2025 Larry Aaronson</span>
-      <span><a id="EmailMe" href="mailto:aaronson@mbhb.com">Email me...</a></span>
+      <span><button type="button" id="contact-button">Contact me...</button></span>
     </footer>
     <!-- Run script.js after page load -->
     <script src="scripts/script.js"></script>
