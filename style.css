@@ -389,7 +389,7 @@ footer {
 
 @media only screen and (max-width: 850px) {
   nav ul li a {
-    padding: 0.5vw 1vw;
+    padding: 0.3vw 1vw;
   }
 }
 @media only screen and (max-width: 715px) {
@@ -397,7 +397,7 @@ footer {
     display: none;
   } */
   nav ul li a {
-    padding: 0.5vw 0.5vw;
+    padding: 0.3 vw 0.5vw;
   }
 
   header {
