@@ -158,7 +158,7 @@ header {
   display: none;
   grid-column: 3; /* Nav block is in the second colummn */
   grid-row: 1; /* and is in the second row of that column */
-  padding-top: 0.5vw;
+  padding-top: 0.5dvw;
   padding-left: 3%;
   padding-right: 3%;
   font-size: 4vw;
@@ -168,14 +168,14 @@ header {
   border-left: solid var(--amber);
 }
 #menu-button {
-  margin-top: 2.5vw;
-  margin-left: 1vw;
+  margin-top: 2.5dvw;
+  margin-left: 1dvw;
   position: relative;
-  padding-left: 0.2vw;
-  padding-right: 0.2vw;
+  padding-left: 0.2dvw;
+  padding-right: 0.2dvw;
   height: 70%;
   width: 100%;
-  font-size: 5.7vw;
+  font-size: 5.7dvw;
   background-color: transparent;
   border: none;
 }
@@ -184,7 +184,7 @@ header {
 }
 a #menu-button {
   text-decoration: none;
-  padding-right: 0.1vw;
+  padding-right: 0.1dvw;
   font-weight: bold;
 }
 a #menu-button:hover,
