@@ -29,7 +29,7 @@ html {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   background-color: transparent;
   box-shadow: inset 0 0 0 2.5vw #ada088;
   pointer-events: none;
@@ -41,7 +41,7 @@ html {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   background-color: transparent;
   box-shadow: inset 0 0 0 2.5vw #ada088;
   border-radius: 6vw;
@@ -156,8 +156,8 @@ header {
 .bottom-right-narrow {
   position: relative;
   display: none;
-  grid-column: 2; /* Nav block is in the second colummn */
-  grid-row: 2; /* and is in the second row of that column */
+  grid-column: 3; /* Nav block is in the second colummn */
+  grid-row: 1; /* and is in the second row of that column */
   padding-top: 0.5vw;
   padding-left: 3%;
   padding-right: 3%;
@@ -165,27 +165,30 @@ header {
   height: 100%;
   text-align: right;
   align-self: center;
-}
-#dashes {
-  display: inline-block;
+  border-left: solid var(--amber);
 }
 #menu-button {
+  margin-top: 2.5vw;
+  margin-left: 1vw;
   position: relative;
-  display: inline-block;
-  color: #000;
-  background-color: var(--amber);
-  padding-left: 1vw;
-  padding-right: 1vw;
+  padding-left: 0.2vw;
+  padding-right: 0.2vw;
+  height: 70%;
+  width: 100%;
+  font-size: 5.7vw;
+  background-color: transparent;
+  border: none;
 }
-#menu-button a {
-  margin: auto;
+.line-break {
+  display: none;
+}
+a #menu-button {
   text-decoration: none;
-  color: #000;
   padding-right: 0.1vw;
   font-weight: bold;
 }
-#menu-button:hover,
-#menu-button:focus {
+a #menu-button:hover,
+a #menu-button:focus {
   background-color: var(--green);
 }
 
@@ -204,7 +207,8 @@ header {
 nav {
   z-index: 100;
 }
-.space {
+.space,
+.space1 {
   display: inline-block;
   width: 0.2em;
 }
@@ -297,21 +301,32 @@ footer {
   footer {
     font-size: 0.75rem;
   }
-  /* header {
+  header {
     grid-template-rows: 1fr;
-    grid-template-columns: 1.5fr 5fr 3.2fr;
-  } */
-  /* .top-right {
+    grid-template-columns: 1.5fr 6fr 2.2fr;
+  }
+  .top-right {
     padding-left: 9%;
-  } */
+  }
   .bottom-right-wide {
     display: none;
   }
+  .line-break {
+    display: inline-block;
+  }
+  .space1 {
+    display: inline-block;
+    width: 2.5em;
+  }
   .bottom-right-narrow {
     display: block;
+  }
+  .scanlines {
+    display: none;
   }
 }
 @media only screen and (max-width: 500px) {
   .scanlines {
     display: none;
   }
+}
