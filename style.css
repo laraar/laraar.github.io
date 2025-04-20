@@ -175,7 +175,7 @@ header {
   padding-right: 0.2dvw;
   height: 70%;
   width: 100%;
-  font-size: 5.5dvw;
+  font-size: 6dvw;
   background-color: transparent;
   border: none;
 }
@@ -311,8 +311,7 @@ footer span {
   }
   .top-right {
     padding-left: 8%;
-    /* -webkit-text-stroke: 0.15dvw var(--amber); */
-    font-weight: bold;
+    -webkit-text-stroke: 0.15dvw var(--amber);
   }
 
   .bottom-right-wide {
