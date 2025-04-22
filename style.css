@@ -426,7 +426,7 @@ footer {
     display: none;
   } */
   nav ul li a {
-    padding: 0.3 vw 0.5vw;
+    padding: 0.3dvw 0.5dvw;
   }
 
   header {
