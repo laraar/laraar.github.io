@@ -54,26 +54,27 @@
 
     <!-- Main content section -->
     <main>
-      <div id="style-examples">
-        <!-- Click the logo image of Larry to see this div -->
-        <h1>This is a test of h1</h1>
-        <h2>This is a test of h2</h2>
-        <h3>This is a test of h3</h3>
-        <h4>This is a test of h4</h4>
-        <p>This is a test of a p</p>
-      </div>
-    </main>
-
-    <footer>
-      <form id="contact-form" action="YOUR_SCRIPT_URL" method="post" class="hidden">
+      <!-- Contact form -->
+      <form
+        id="contact-form"
+        action="https://script.google.com/macros/s/AKfycbwuBYrt_R_9x4xXGdGhBL1oVHxKS3lFWPIRJP29fWokq80oKoEHd9kquWMe4uliv_bM/exec"
+        method="post"
+        class="hidden"
+      >
+        <div class="form-title">Contact Form</div>
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required />
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required />
         <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
-        <input class="form-button" id="submit" type="button" value="Submit to Larry" />
+        <textarea id="message" name="message" maxlength="300" required></textarea>
+        <input type="submit" class="form-button" id="submit" value="Submit to Larry" />
+        <input type="button" class="form-button" id="cancel" value="Cancel" />
+        <input type="reset" class="form-button" id="reset" value="Reset" />
       </form>
+    </main>
+
+    <footer>
       <div id="footer-bottom">
         <div id="footer-text">
           <span>&copy 2025 Larry Aaronson</span>

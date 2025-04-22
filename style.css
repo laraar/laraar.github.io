@@ -278,6 +278,7 @@ main {
   height: 100%;
   margin-top: 2vw;
   text-align: center;
+  position: relative;
 }
 /* Styles for temporary page images/text */
 #demo-image {
@@ -325,8 +326,8 @@ footer {
 #contact-button:hover {
   color: var(--green);
 }
-#contact-form {
-  position: block;
+/* #contact-form {
+  position: relative;
   margin-bottom: 1dvw;
   float: right;
   font-size: clamp(2rem, 3dvw, 2rem);
@@ -337,6 +338,28 @@ footer {
   width: 60dvw;
   z-index: 250;
   border-radius: 1dvw;
+} */
+#contact-form {
+  position: absolute;
+  float: right;
+  margin-bottom: 1dvw;
+  font-size: clamp(2rem, 3dvw, 2rem);
+  text-align: left;
+  background-color: var(--amber);
+  padding: 1dvw;
+  color: #000;
+  width: 60dvw;
+  z-index: 250;
+  border-radius: 1dvw;
+  top: 50%; /* Place the form halfway down */
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.form-title {
+  text-align: right;
+  display: block;
+  margin: auto;
+  color: #000;
 }
 #contact-form label {
   display: block;
@@ -364,12 +387,18 @@ footer {
   font-size: clamp(1.5rem, 3dvw, 2rem);
   margin-bottom: 0.2dvw;
   padding: 1%;
+  width: fit-content;
+}
+#contact-form #cancel {
+  float: left;
+  margin-right: 1dvw;
 }
 #contact-form #submit {
-  width: fit-content;
   float: right;
 }
-
+.form-message {
+  display: none;
+}
 #EmailMe {
   text-decoration: none;
   color: inherit;
@@ -404,11 +433,8 @@ footer {
     grid-template-rows: 1fr;
     grid-template-columns: 1.5fr 5.8fr 2.4fr;
     height: 14dvw;
-    border-bottom: solid 0.4dvw var(--amber);
   }
-  #footer-text {
-    border-top: solid 0.4dvw var(--amber);
-  }
+
   .top-right {
     padding-left: 8%;
     -webkit-text-stroke: 0.15dvw var(--amber);
