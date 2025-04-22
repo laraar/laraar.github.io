@@ -20,12 +20,11 @@
       </div>
       <div class="right-block top-right crt-text">
         <!-- Manually spacing the words here to fix kerning of this font -->
-        Larry<span class="space"></span>Aaronson,<span class="space"></span>the<span
-          class="space"
-        ></span
-        >website...
+        Larry<span class="space"></span>Aaronson,<br class="line-break" /><span class="space1"
+          >&nbsp;&nbsp;&nbsp;</span
+        >the<span class="space"></span>website...
       </div>
-      <div class="right-block bottom-right">
+      <div class="right-block bottom-right-wide">
         <nav>
           <ul>
             <li><a class="nav crt-amber-glow" href="index.html">Home</a></li>
@@ -36,15 +35,51 @@
           </ul>
         </nav>
       </div>
+      <div class="right-block bottom-right-narrow">
+        <button type="button" id="menu-button">menu &#9776;</button>
+      </div>
     </header>
+    <div id="dropdown-menu-container">
+      <!--Including this to allow this dropdown menu container to be present on mobile -->
+      <div id="dropdown-menu" class="hidden">
+        <ul>
+          <li><a class="dropdown-item" href="index.html">Home</a></li>
+          <li><a class="dropdown-item" href="graphicart.html">Graphic Art</a></li>
+          <li><a class="dropdown-item" href="video.html">Video Prod</a></li>
+          <li><a class="dropdown-item" href="voice.html">Voice Work</a></li>
+          <li><a class="dropdown-item" href="patentlaw.html">Patent Law</a></li>
+        </ul>
+      </div>
+    </div>
     <!-- Main content section -->
     <main>
-      <img id="demo-image" src="images/retro-mic.webp" alt="Retro Mic" />
+      <!-- Contact form -->
+      <form
+        id="contact-form"
+        action="https://script.google.com/macros/s/AKfycbwuBYrt_R_9x4xXGdGhBL1oVHxKS3lFWPIRJP29fWokq80oKoEHd9kquWMe4uliv_bM/exec"
+        method="post"
+        class="hidden"
+      >
+        <div class="form-title">Contact Form</div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" maxlength="300" required></textarea>
+        <input type="submit" class="form-button" id="submit" value="Submit to Larry" />
+        <input type="button" class="form-button" id="cancel" value="Cancel" />
+        <input type="reset" class="form-button" id="reset" value="Reset" />
+      </form>
     </main>
-    <!-- Footer -->
+
     <footer>
-      <span>&copy 2025 Larry Aaronson, all rights reserved</span
-      ><span><a id="EmailMe" href="mailto:aaronson@mbhb.com">Email me...</a></span>
+      <div id="footer-bottom">
+        <div id="footer-text">
+          <span>&copy 2025 Larry Aaronson</span>
+          <span><button type="button" id="contact-button">Contact me...</button></span>
+        </div>
+      </div>
     </footer>
     <!-- Run script.js after page load -->
     <script src="scripts/script.js"></script>
