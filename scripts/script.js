@@ -16,6 +16,36 @@ toggleMenuBtn.addEventListener("click", () => {
 const toggleContactForm = document.getElementById("contact-button");
 const form = document.getElementById("contact-form");
 toggleContactForm.addEventListener("click", () => {
-  form.classList.toggle("visible");
   form.classList.toggle("hidden");
 });
+
+//Cancel button for form
+document.getElementById("cancel").addEventListener("click", function () {
+  form.classList.toggle("hidden");
+});
+
+// Hide form upon submit, and then execute the submission function. ()
+form.addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent the default form submission (which triggers the redirect)
+
+  // Hide the form immediately upon submission
+  form.classList.toggle("hidden"); // This keeps it invisible but still in the document flow
+
+  // Create a FormData object to collect the form data
+  const formData = new FormData(form);
+
+  // Use Fetch API to submit the form data to the Google Apps Script Web App
+  fetch(form.action, {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => response.text()) // Parse the response as text
+    .then((data) => {
+      // Optionally, you can handle the response here if you need
+      console.log("Form submission successful:", data);
+    })
+    .catch((error) => {
+      console.error("Error submitting form:", error);
+    });
+});
+//Should really add some sort of notice to the user to indicate that the submission worked. Later
