@@ -251,7 +251,7 @@ nav ul {
   display: flex;
   flex-direction: row;
   color: var(--amber);
-  gap: 1vw;
+  gap: 2vw;
   align-items: center;
 }
 nav li {
@@ -416,18 +416,18 @@ footer {
   }
 }
 
- /*@media only screen and (max-width: 830px) {
-  nav ul {
-    gap: 1vw;
+/* @media only screen and (max-width: 850px) {
+  nav ul li a {
+    padding: 0.3vw 1vw;
   }
-}*/
+} */
 @media only screen and (max-width: 800px) {
   /* .scanlines {
     display: none;
-  } 
+  } */
   nav ul li a {
-    padding: 0.3dvw 0.5dvw;
-  }*/
+    padding: 0.3 vw 0.5vw;
+  }
 
   header {
     grid-template-rows: 1fr;
