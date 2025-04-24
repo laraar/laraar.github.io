@@ -24,6 +24,20 @@ document.getElementById("cancel").addEventListener("click", function () {
   form.classList.toggle("hidden");
 });
 
+window.addEventListener("resize", function () {
+  if (menu.classList.contains("visible")) {
+    menu.classList.remove("visible");
+    menu.classList.add("hidden");
+  }
+});
+
+document.addEventListener("click", function (event) {
+  if (!menu.contains(event.target) && !toggleMenuBtn.contains(event.target)) {
+    menu.classList.remove("visible");
+    menu.classList.add("hidden");
+  }
+});
+
 // Hide form upon submit, and then execute the submission function. ()
 form.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent the default form submission (which triggers the redirect)
