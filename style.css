@@ -138,7 +138,7 @@ header {
 .top-right {
   grid-column: 2; /* Header text is in the second column */
   grid-row: 1; /* and is in the first row of that column */
-  padding-top: 1.4dvw;
+  padding-top: 1dvw;
   padding-left: 2.7%;
   font-size: 6dvw;
   position: relative;
@@ -266,8 +266,9 @@ nav ul li a {
   display: block;
   width: 100%;
   padding: 0.5dvw 1.2dvw;
-  font-size: clamp(1.2rem, 2.5dvw, 4rem);
+  font-size: 2.8dvw;
   text-decoration: none;
+  text-align: center;
   align-items: center;
   background-color: var(--amber);
   color: #000;
@@ -285,9 +286,11 @@ nav ul li a:hover,
 nav ul li a:focus {
   background-color: var(--green);
 }
-
 nav ul li a:hover + .pointer {
   border-top-color: var(--green);
+}
+.nav-line-break {
+  display: none;
 }
 
 /* Main content style */
@@ -452,9 +455,10 @@ footer {
 }
 
 @media only screen and (max-width: 800px) {
-  /* .scanlines {
-    display: none;
-  } */
+}
+
+/* @media only screen and (max-width: 800px) {
+  
   nav ul li a {
     padding: 0.3vw 0.5vw;
   }
@@ -498,7 +502,7 @@ footer {
   #contact-form .form-button {
     font-size: 5dvw;
   }
-}
+} */
 @media only screen and (max-width: 500px) {
   .scanlines {
     display: none;
