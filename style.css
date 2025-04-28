@@ -319,11 +319,12 @@ main {
 #main-content {
   display: flex;
   flex-direction: row;
+  align-items: stretch;
   gap: 3dvw;
   max-width: 51dvw;
   width: 100%;
   margin: auto;
-  margin-top: 2dvw;
+  margin-top: 1.5dvw;
   margin-bottom: 2.5dvw;
 }
 #main-text {
