@@ -64,7 +64,7 @@ h1 {
   font-family: "Arial Narrow ", sans-serif;
   font-size: calc(0.55rem + 2.75dvw);
   font-weight: 500;
-  margin-bottom: 1dvw;
+  margin-bottom: 2dvw;
 }
 h2 {
   color: var(--amber);
@@ -355,6 +355,56 @@ main {
   display: block;
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15dvw, 1fr));
+  gap: 2dvw;
+  width: 97%;
+  margin: 0 auto;
+  margin-bottom: 3dvw;
+}
+.toggleImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0.5dvw;
+}
+.toggleImage {
+  transition: transform 0.2s ease-in-out;
+}
+.toggleImage.maximized {
+  height: 100dvh;
+  object-fit: contain;
+}
+.toggleImage:hover,
+.toggleImage:focus {
+  animation: shake 0.7s ease-in-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(1deg);
+  }
+  50% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 500px) {
+  .-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+}
+
 footer {
   display: relative;
 }
@@ -473,6 +523,7 @@ footer {
     display: block;
     height: 1.51dvw;
   }
+
   .scanlines {
     display: none;
   }
