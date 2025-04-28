@@ -337,6 +337,7 @@ main {
   flex: 1;
   display: flex;
   align-items: flex-start;
+  align-items: stretch;
 }
 #main-image img {
   display: block;
@@ -345,7 +346,8 @@ main {
   object-fit: contain;
 }
 #Larry-image {
-  height: 60%; /* Try to match container's height */
+  /* height: 60%; Try to match container's height */
+  height: 100%;
   width: auto; /* Keep aspect ratio */
   max-height: 100%; /* Don't overflow */
   object-fit: contain;
