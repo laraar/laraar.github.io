@@ -259,14 +259,14 @@ nav ul {
 }
 
 nav ul li {
-  margin: 0 1.6dvw 0 0; /* Even spacing */
+  margin: 0 1.5dvw 0 0; /* Even spacing */
 }
 
 nav ul li a {
   display: block;
   width: 100%;
-  padding: 0.5dvw 1.2dvw;
-  font-size: 2.8dvw;
+  padding: 0.5dvw 1.1dvw;
+  font-size: 2.7dvw;
   text-decoration: none;
   text-align: center;
   align-items: center;
@@ -289,7 +289,14 @@ nav ul li a:focus {
 nav ul li a:hover + .pointer {
   border-top-color: var(--green);
 }
-.nav-line-break {
+.nav-word {
+  display: inline-block;
+  color: #000;
+}
+.half-line {
+  display: none;
+}
+.narrow-nav {
   display: none;
 }
 
@@ -313,10 +320,10 @@ main {
   display: flex;
   flex-direction: row;
   gap: 3dvw;
-  max-width: 55dvw;
+  max-width: 51dvw;
   width: 100%;
   margin: auto;
-  margin-top: 2.5dvw;
+  margin-top: 2dvw;
   margin-bottom: 2.5dvw;
 }
 #main-text {
@@ -454,7 +461,79 @@ footer {
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 500px) {
+  .nav-word {
+    display: block;
+    color: #000;
+  }
+  .half-line {
+    display: block;
+    height: 1.51dvw;
+  }
+  .scanlines {
+    display: none;
+  }
+  header {
+    height: 18dvw;
+    padding-bottom: 1.2dvw;
+  }
+  nav ul li {
+    margin: 0 2dvw 0 0;
+  }
+  nav ul li a {
+    font-size: 3.5dvw;
+    font-weight: bold;
+    padding: 0.45dvw 1.9dvw;
+  }
+  nav ul li .pointer {
+    width: 2dvw;
+    height: 2dvw;
+    border: solid 1dvw;
+    border-color: transparent;
+    border-top-color: var(--amber);
+    margin: auto;
+  }
+  #logo {
+    padding-top: 1dvw;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 1250px) {
+  #main-content {
+    /* display: flex;
+    flex-direction: row;
+    gap: 3dvw; */
+    max-width: 70dvw;
+    /* width: 100%;
+    margin: auto;
+    margin-top: 2dvw;
+    margin-bottom: 2.5dvw; */
+  }
+  #main-text {
+    flex: 1.8;
+    text-align: right;
+  }
+  #main-text p {
+    font-size: 2.45dvw;
+  }
+  #main-image {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+  }
+  #main-image img {
+    display: block;
+    max-width: 89%;
+    height: auto;
+    object-fit: contain;
+  }
+  #Larry-image {
+    height: 60%; /* Try to match container's height */
+    width: auto; /* Keep aspect ratio */
+    max-height: 100%; /* Don't overflow */
+    object-fit: contain;
+    display: block;
+  }
 }
 
 /* @media only screen and (max-width: 800px) {
