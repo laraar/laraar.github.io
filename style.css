@@ -513,8 +513,8 @@ footer {
     border-radius: 0.5dvw;
   }
 }
-
-@media only screen and (max-width: 500px) {
+/* Temporarily not using the following - so keeping nav layout even for narrow for now */
+/* @media only screen and (max-width: 500px) {
   .nav-word {
     display: block;
     color: #000;
@@ -551,17 +551,10 @@ footer {
     padding-top: 1dvw;
     width: 100%;
   }
-}
+} */
 @media only screen and (max-width: 1250px) {
   #main-content {
-    /* display: flex;
-    flex-direction: row;
-    gap: 3dvw; */
     max-width: 70dvw;
-    /* width: 100%;
-    margin: auto;
-    margin-top: 2dvw;
-    margin-bottom: 2.5dvw; */
   }
   #main-text {
     flex: 1.8;
