@@ -1,9 +1,51 @@
 /** @format */
 
-//Possible script for an image ("tv") to show on the home page upon clicking on the Larry logo
-document.getElementById("logo").addEventListener("click", function () {
-  const tv = document.getElementById("style-examples");
-  tv.style.display = tv.style.display === "block" ? "none" : "block";
+// Code to handle graphic art image gallery``
+
+const overlay = document.getElementById("overlay");
+const overlayImg = document.getElementById("overlay-img");
+const gridImages = document.querySelectorAll(".grid-img");
+
+let currentIndex = -1; // index of the currently viewed image
+
+// Show overlay with a specific image
+function showImage(index) {
+  if (index < 0) index = gridImages.length - 1;
+  if (index >= gridImages.length) index = 0;
+  currentIndex = index;
+  overlayImg.src = gridImages[currentIndex].src;
+  overlay.classList.add("visible");
+}
+
+// Hide overlay
+function hideOverlay() {
+  overlay.classList.remove("visible");
+  currentIndex = -1;
+}
+
+// When any image is clicked
+gridImages.forEach((img, index) => {
+  img.addEventListener("click", () => {
+    showImage(index);
+  });
+});
+
+// Clicking the overlay hides it
+overlay.addEventListener("click", () => {
+  hideOverlay();
+});
+
+// Keyboard controls
+document.addEventListener("keydown", (e) => {
+  if (!overlay.classList.contains("visible")) return;
+
+  if (e.key === "Escape") {
+    hideOverlay();
+  } else if (e.key === "ArrowLeft") {
+    showImage(currentIndex - 1);
+  } else if (e.key === "ArrowRight") {
+    showImage(currentIndex + 1);
+  }
 });
 
 const toggleMenuBtn = document.getElementById("menu-button");
@@ -44,6 +86,9 @@ form.addEventListener("submit", function (event) {
 
   // Hide the form immediately upon submission
   form.classList.toggle("hidden"); // This keeps it invisible but still in the document flow
+
+  alert("Form submission is under construction...");
+  return;
 
   // Create a FormData object to collect the form data
   const formData = new FormData(form);
