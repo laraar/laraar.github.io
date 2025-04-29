@@ -48,6 +48,36 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+// Deal with touch swiping left and right toolbar
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener("touchstart", (e) => {
+  if (!overlay.classList.contains("visible")) return;
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener("touchend", (e) => {
+  if (!overlay.classList.contains("visible")) return;
+  touchEndX = e.changedTouches[0].screenX;
+  handleGesture();
+});
+
+function handleGesture() {
+  const swipeThreshold = 50; // Minimum distance for a swipe
+  const swipeDistance = touchEndX - touchStartX;
+
+  if (Math.abs(swipeDistance) > swipeThreshold) {
+    if (swipeDistance > 0) {
+      // Swiped right
+      showImage(currentIndex - 1);
+    } else {
+      // Swiped left
+      showImage(currentIndex + 1);
+    }
+  }
+}
+
 const toggleMenuBtn = document.getElementById("menu-button");
 const menu = document.getElementById("dropdown-menu");
 toggleMenuBtn.addEventListener("click", () => {
