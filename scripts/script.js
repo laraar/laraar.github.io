@@ -1,79 +1,82 @@
 /** @format */
 
 // Code to handle graphic art image gallery``
+if (window.location.pathname === "/graphicart.html") {
+  // Code that runs only on /about.html
 
-const overlay = document.getElementById("overlay");
-const overlayImg = document.getElementById("overlay-img");
-const gridImages = document.querySelectorAll(".grid-img");
+  const overlay = document.getElementById("overlay");
+  const overlayImg = document.getElementById("overlay-img");
+  const gridImages = document.querySelectorAll(".grid-img");
 
-let currentIndex = -1; // index of the currently viewed image
+  let currentIndex = -1; // index of the currently viewed image
 
-// Show overlay with a specific image
-function showImage(index) {
-  if (index < 0) index = gridImages.length - 1;
-  if (index >= gridImages.length) index = 0;
-  currentIndex = index;
-  overlayImg.src = gridImages[currentIndex].src;
-  overlay.classList.add("visible");
-}
-
-// Hide overlay
-function hideOverlay() {
-  overlay.classList.remove("visible");
-  currentIndex = -1;
-}
-
-// When any image is clicked
-gridImages.forEach((img, index) => {
-  img.addEventListener("click", () => {
-    showImage(index);
-  });
-});
-
-// Clicking the overlay hides it
-overlay.addEventListener("click", () => {
-  hideOverlay();
-});
-
-// Keyboard controls
-document.addEventListener("keydown", (e) => {
-  if (!overlay.classList.contains("visible")) return;
-
-  if (e.key === "Escape") {
-    hideOverlay();
-  } else if (e.key === "ArrowLeft") {
-    showImage(currentIndex - 1);
-  } else if (e.key === "ArrowRight") {
-    showImage(currentIndex + 1);
+  // Show overlay with a specific image
+  function showImage(index) {
+    if (index < 0) index = gridImages.length - 2; // Change this to 1 at the end if there is no "more to come" image in the cycle
+    if (index >= gridImages.length - 1) index = 0; // Change this to remove the -1 if there is no "more to come" image in the cycle
+    currentIndex = index;
+    overlayImg.src = gridImages[currentIndex].src;
+    overlay.classList.add("visible");
   }
-});
 
-// Deal with touch swiping left and right toolbar
-let touchStartX = 0;
-let touchEndX = 0;
+  // Hide overlay
+  function hideOverlay() {
+    overlay.classList.remove("visible");
+    currentIndex = -1;
+  }
 
-document.addEventListener("touchstart", (e) => {
-  if (!overlay.classList.contains("visible")) return;
-  touchStartX = e.changedTouches[0].screenX;
-});
+  // When any image is clicked
+  gridImages.forEach((img, index) => {
+    img.addEventListener("click", () => {
+      showImage(index);
+    });
+  });
 
-document.addEventListener("touchend", (e) => {
-  if (!overlay.classList.contains("visible")) return;
-  touchEndX = e.changedTouches[0].screenX;
-  handleGesture();
-});
+  // Clicking the overlay hides it
+  overlay.addEventListener("click", () => {
+    hideOverlay();
+  });
 
-function handleGesture() {
-  const swipeThreshold = 50; // Minimum distance for a swipe
-  const swipeDistance = touchEndX - touchStartX;
+  // Keyboard controls
+  document.addEventListener("keydown", (e) => {
+    if (!overlay.classList.contains("visible")) return;
 
-  if (Math.abs(swipeDistance) > swipeThreshold) {
-    if (swipeDistance > 0) {
-      // Swiped right
+    if (e.key === "Escape") {
+      hideOverlay();
+    } else if (e.key === "ArrowLeft") {
       showImage(currentIndex - 1);
-    } else {
-      // Swiped left
+    } else if (e.key === "ArrowRight") {
       showImage(currentIndex + 1);
+    }
+  });
+
+  // Deal with touch swiping left and right toolbar
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  document.addEventListener("touchstart", (e) => {
+    if (!overlay.classList.contains("visible")) return;
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  document.addEventListener("touchend", (e) => {
+    if (!overlay.classList.contains("visible")) return;
+    touchEndX = e.changedTouches[0].screenX;
+    handleGesture();
+  });
+
+  function handleGesture() {
+    const swipeThreshold = 50; // Minimum distance for a swipe
+    const swipeDistance = touchEndX - touchStartX;
+
+    if (Math.abs(swipeDistance) > swipeThreshold) {
+      if (swipeDistance > 0) {
+        // Swiped right
+        showImage(currentIndex - 1);
+      } else {
+        // Swiped left
+        showImage(currentIndex + 1);
+      }
     }
   }
 }
