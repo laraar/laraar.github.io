@@ -19,7 +19,7 @@
         <img id="logo" src="images/larrypixel.webp" alt="Larry in pixels" />
       </div>
       <div class="right-block top-right crt-text">
-        <!-- Manually spacing the words here to fix kerning of this font -->
+        <!-- Manually spacing the words here to fix kerning of this font; will later edit the font to avoid this issue-->
         Larry<span class="space"></span>Aaronson,<br class="line-break" /><span class="space1"
           >&nbsp;&nbsp;&nbsp;</span
         >the<span class="space"></span>website...
@@ -28,50 +28,25 @@
         <nav>
           <ul>
             <li>
-              <a class="nav crt-amber-glow" href="index.html"
-                ><div class="nav-word">
-                  <div class="half-line"></div>
-                  Home
-                  <div class="half-line"></div>
-                </div>
-                <div class="nav-word narrow-nav"></div
-              ></a>
+              <a class="nav crt-amber-glow" href="index.html">Home</a>
               <div class="pointer"></div>
             </li>
-            <li>
-              <a class="nav crt-amber-glow" href="graphicart.html"
-                ><div class="nav-word">Graphic</div>
-                <div class="nav-word">Art</div></a
-              >
-            </li>
-            <li>
-              <a class="nav crt-amber-glow" href="video.html"
-                ><div class="nav-word">Video</div>
-                <div class="nav-word">Prod</div></a
-              >
-            </li>
-            <li>
-              <a class="nav crt-amber-glow" href="voice.html"
-                ><div class="nav-word">Voice</div>
-                <div class="nav-word">Work</div></a
-              >
-            </li>
-            <li>
-              <a class="nav crt-amber-glow" href="patentlaw.html"
-                ><div class="nav-word">Patent</div>
-                <div class="nav-word">Law</div></a
-              >
-            </li>
+            <li><a class="nav crt-amber-glow" href="graphicart.html">Graphic Art</a></li>
+            <li><a class="nav crt-amber-glow" href="video.html">Video Prod</a></li>
+            <li><a class="nav crt-amber-glow" href="voice.html">Voice Work</a></li>
+            <li><a class="nav crt-amber-glow" href="patentlaw.html">Patent Law</a></li>
           </ul>
         </nav>
       </div>
-      <div class="right-block bottom-right-narrow">
+
+      <!-- Consider this stuff - mobile menu -->
+      <!-- <div class="right-block bottom-right-narrow">
         <button type="button" id="menu-button">menu &#9776;</button>
-      </div>
+      </div>-->
     </header>
-    <div id="dropdown-menu-container">
-      <!--Including this to allow this dropdown menu container to be present on mobile -->
-      <div id="dropdown-menu" class="hidden">
+    <!-- <div id="dropdown-menu-container">  -->
+    <!--Including this to allow this dropdown menu container to be present on mobile -->
+    <!-- <div id="dropdown-menu" class="hidden">
         <ul>
           <li><a class="dropdown-item" href="index.html">Home</a></li>
           <li><a class="dropdown-item" href="graphicart.html">Graphic Art</a></li>
@@ -80,7 +55,7 @@
           <li><a class="dropdown-item" href="patentlaw.html">Patent Law</a></li>
         </ul>
       </div>
-    </div>
+    </div> -->
 
     <!-- Main content section -->
     <main>
@@ -91,9 +66,6 @@
             including my Bar Show cover art and my video production projects. Listen to my voice
             work, from radio spots to pre&#8209;show announcements. And discover my decades of
             experience as a patent attorney, crafting equally creative patent applications.
-            <!--             
-            where I protect my clients' inventions by crafting patent
-            applications that are as creative as the inventions they seek to protect. -->
           </p>
           <p>Enjoy your stay!</p>
         </div>
@@ -126,6 +98,6 @@
       </div>
     </footer>
     <!-- Run script.js after page load -->
-    <script src="scripts/script.js"></script>
+    <script src="scripts/script.js"></script> 
   </body>
 </html>
