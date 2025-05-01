@@ -141,3 +141,28 @@ form.addEventListener("submit", function (event) {
     });
 });
 //Should really add some sort of notice to the user to indicate that the submission worked. Later
+
+//Preload images for graphic art page
+const barShowImages = [
+  "BarShow2009.webp",
+  "BarShow2010.webp",
+  "BarShow2011.webp",
+  "BarShow2012.webp",
+  "BarShow2013.webp",
+  "BarShow2014.webp",
+  "BarShow2014b.webp",
+  "BarShow2015.webp",
+  "BarShow2016.webp",
+  "BarShow2017.webp",
+  "BarShow2018.webp",
+  "BarShow2019.webp",
+  "BarShow2020.webp",
+  "BarShow2024.webp",
+  "BarShow2025.webp",
+];
+window.addEventListener("load", () => {
+  barShowImages.forEach((filename) => {
+    const img = new Image();
+    img.src = `/images/BarShow/${filename}`;
+  });
+});
