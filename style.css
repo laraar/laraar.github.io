@@ -101,7 +101,7 @@ header {
   grid-template-rows: 1.7fr 1fr; /* Two rows for the right column */
   height: 13.5dvw;
   padding-bottom: 2dvw;
-  border-bottom: solid var(--amber);
+  border-bottom: solid 2px var(--amber);
 }
 /* Scanlines through header */
 .scanlines,
@@ -159,7 +159,7 @@ header {
   display: none;
   grid-column: 3; /* Nav block is in the second colummn */
   grid-row: 1; /* and is in the second row of that column */
-  padding-top: 0.5dvw;
+  padding-top: 1.4dvw;
   padding-left: 3%;
   padding-right: 3%;
   font-size: 3.8dvw;
@@ -316,18 +316,18 @@ main {
 }
 
 #main-content {
-  width: 50dvw;
+  width: 675px;
   display: flex;
-  gap: 3dvw;
+  gap: 30px;
   margin: auto;
-  padding-top: 0.7dvw;
+  padding-top: 25px;
 }
 #main-text {
-  flex: 2.5;
+  flex: 2;
   text-align: right;
 }
 #main-text p {
-  font-size: 1.7dvw;
+  font-size: 1.5rem;
 }
 #main-image {
   flex: 1;
@@ -335,11 +335,72 @@ main {
   align-items: flex-start;
   justify-content: flex-start;
 }
-
+#main-image figcaption {
+  display: none;
+}
 #Larry-image {
   width: 100%;
   height: auto;
   display: block;
+}
+
+@media (min-width: 1600px) {
+  #main-content {
+    width: 50dvw;
+    gap: 3dvw;
+    padding-top: 0.7dvw;
+  }
+  #main-text p {
+    font-size: 1.7dvw;
+  }
+}
+@media (max-width: 900px) {
+  #main-content {
+    width: 500px;
+    gap: 25px;
+  }
+  #main-text p {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 650px) {
+  #main-content {
+    width: 380px;
+    gap: 15px;
+  }
+  #main-text p {
+    flex: 2.3;
+    font-size: 0.85rem;
+  }
+}
+@media (max-width: 500px) {
+  #main-content {
+    width: 80dvw;
+    gap: 15px;
+    flex-direction: column;
+    padding-top: 10px;
+  }
+  #main-text p {
+    flex: 2.3;
+    width: 98%;
+    font-size: 1rem;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+  #Larry-image {
+    margin: auto;
+    width: 60%;
+  }
+  #main-image {
+    flex-direction: column;
+  }
+  #main-image figcaption {
+    display: block;
+    margin: auto;
+    margin-top: 5px;
+    font-size: 1rem;
+  }
 }
 
 .grid {
@@ -580,6 +641,13 @@ footer {
     width: 100%;
   }
 } */
+
+@media only screen and (max-width: 700px) {
+  header {
+    grid-template-rows: 1.7fr 1.7fr;
+    height: 14.9dvw;
+  }
+}
 
 /* @media only screen and (max-width: 700px) {
   nav ul li a {
