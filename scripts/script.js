@@ -81,20 +81,27 @@ if (window.location.pathname === "/graphicart.html") {
   }
 }
 
-const toggleMenuBtn = document.getElementById("menu-button");
-const triangle = document.getElementById("triangle");
-const bodyOverlay = document.getElementById("body-overlay");
-toggleMenuBtn.addEventListener("click", () => {
+const menuButton = document.getElementById("menu-button");
+const menuTriangle = document.getElementById("menu-triangle-wrapper");
+const darkeningOverlay = document.querySelector(".darkening-overlay");
+menuButton.addEventListener("click", () => {
   // triangle.classList.toggle("visible");
   // triangle.classList.toggle("hidden");
-  triangle.classList.toggle("active");
-  bodyOverlay.classList.toggle("active");
+  menuTriangle.classList.toggle("active");
+  darkeningOverlay.classList.toggle("active");
 });
-
-function toggleTriangle() {
-  alert("pressed");
-  const triangle = document.getElementById("triangle");
-}
+window.addEventListener("resize", function () {
+  if (menuTriangle.classList.contains("active")) {
+    menuTriangle.classList.toggle("active");
+    darkeningOverlay.classList.toggle("active");
+  }
+});
+document.addEventListener("click", function (event) {
+  if (!menuButton.contains(event.target)) {
+    menuTriangle.classList.remove("active");
+    darkeningOverlay.classList.remove("active");
+  }
+});
 
 const toggleContactForm = document.getElementById("contact-button");
 const form = document.getElementById("contact-form");
@@ -106,20 +113,6 @@ toggleContactForm.addEventListener("click", () => {
 document.getElementById("cancel").addEventListener("click", function () {
   form.classList.toggle("hidden");
 });
-
-// window.addEventListener("resize", function () {
-//   if (menu.classList.contains("visible")) {
-//     menu.classList.remove("visible");
-//     menu.classList.add("hidden");
-//   }
-// });
-
-// document.addEventListener("click", function (event) {
-//   if (!menu.contains(event.target) && !toggleMenuBtn.contains(event.target)) {
-//     menu.classList.remove("visible");
-//     menu.classList.add("hidden");
-//   }
-// });
 
 // Hide form upon submit, and then execute the submission function. ()
 form.addEventListener("submit", function (event) {
