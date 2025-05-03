@@ -22,6 +22,12 @@ html {
   font-size: 16px;
   height: 100%;
 }
+strong,
+b {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: bold; /* optional — reinforces intent */
+}
 
 /* Monitor border */
 .viewport-outer-border {
@@ -97,7 +103,7 @@ p {
 header {
   display: grid;
   position: relative;
-  grid-template-columns: 1.5fr 8.2fr; /* Two columns, fist for the Larry logo, and second for text and nav */
+  grid-template-columns: 0fr 1.5fr 8.2fr; /* Three columns, fist a spacer, second for the Larry logo, and third for text and nav */
   grid-template-rows: 1.7fr 1fr; /* Two rows for the right column */
   height: 13.5dvw;
   padding-bottom: 2dvw;
@@ -124,7 +130,7 @@ header {
 }
 /* Header grid components  */
 .logo-block {
-  grid-column: 1; /* Larry image is in the first column */
+  grid-column: 2; /* Larry image is in the first column */
   grid-row: span 2; /* and spans both rows */
 }
 #logo {
@@ -135,7 +141,7 @@ header {
   filter: drop-shadow(0 0 0.1dvw #cfaca0) drop-shadow(0 0 0.3dvw #b8816d);
 }
 .top-right {
-  grid-column: 2; /* Header text is in the second column */
+  grid-column: 3; /* Header text is in the second column */
   grid-row: 1; /* and is in the first row of that column */
   padding-top: 1dvw;
   padding-left: 2.7%;
@@ -146,7 +152,7 @@ header {
 }
 .bottom-right-wide {
   display: block;
-  grid-column: 2; /* Nav block is in the second colummn */
+  grid-column: 3; /* Nav block is in the second colummn */
   grid-row: 2; /* and is in the second row of that column */
   padding-top: 0.5dvw;
   padding-left: 3%;
@@ -157,9 +163,9 @@ header {
 .bottom-right-narrow {
   position: relative;
   display: none;
-  grid-column: 3; /* Nav block is in the second colummn */
+  grid-column: 4; /* Nav block is in the second colummn */
   grid-row: 1; /* and is in the second row of that column */
-  padding-top: 1.4dvw;
+  padding-top: 0dvw;
   padding-left: 3%;
   padding-right: 3%;
   font-size: 3.8dvw;
@@ -303,16 +309,39 @@ nav ul li a:hover + .pointer {
 main {
   flex: 1;
   height: 100%;
-  margin-top: 2vw;
   text-align: center;
   position: relative;
+  overflow: hidden;
 }
-/* Styles for temporary page images/text */
-#demo-image {
-  display: block;
-  margin: 0 auto;
-  margin-top: 2vw;
-  height: 40vh;
+/* Mobile menu */
+.triangle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 97.5dvw;
+  height: 97.5dvw;
+  background: var(--amber);
+  clip-path: polygon(100% 0, 100% 0, 100% 0); /* Initial state: single point */
+  transition: clip-path 0.5s ease-out;
+  z-index: 1001;
+}
+.triangle.active {
+  clip-path: polygon(100% 0, 0 0, 100% 100%); /* Final triangle */
+}
+#body-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none; /* Allows clicks through */
+  transition: opacity 0.3s ease;
+}
+#body-overlay.active {
+  opacity: 1;
 }
 
 #main-content {
@@ -320,8 +349,11 @@ main {
   display: flex;
   gap: 30px;
   margin: auto;
+  margin-top: 2vw;
   padding-top: 25px;
+  padding-bottom: 50px;
 }
+
 #main-text {
   flex: 2;
   text-align: right;
@@ -383,11 +415,15 @@ main {
   #main-text p {
     flex: 2.3;
     width: 98%;
-    font-size: 1rem;
-    text-align: center;
+    font-size: 0.9rem;
+    text-align: left;
     margin: auto;
     margin-bottom: 10px;
   }
+  #main-text p.center-align {
+    text-align: center;
+  }
+
   #Larry-image {
     margin: auto;
     width: 60%;
@@ -399,7 +435,6 @@ main {
     display: block;
     margin: auto;
     margin-top: 5px;
-    font-size: 1rem;
   }
 }
 
@@ -489,7 +524,7 @@ main {
 }
 
 @media (max-width: 500px) {
-  .-grid {
+  .grid {
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
 }
@@ -507,8 +542,8 @@ footer {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  border-top: solid var(--amber);
-  font-size: clamp(1.4rem, 1.5dvw, 2rem);
+  border-top: solid 2px var(--amber);
+  font-size: clamp(1.3rem, 1.5dvw, 2rem);
 }
 #footer-text span {
   display: inline-block;
@@ -649,22 +684,28 @@ footer {
   }
 }
 
-/* @media only screen and (max-width: 700px) {
+@media only screen and (max-width: 500px) {
   nav ul li a {
     padding: 0.3vw 0.5vw;
   }
 
+  body {
+    padding: 6dvw 0 4dvw 0;
+  }
   header {
     grid-template-rows: 1fr;
-    grid-template-columns: 1.5fr 5.8fr 2.4fr;
+    grid-template-columns: 0.4fr 1.5fr 5.4fr 2.4fr;
     height: 14dvw;
+    padding-left: 8dvw;
+    padding-right: 8dvw;
   }
-
   .top-right {
-    padding-left: 8%;
-    -webkit-text-stroke: 0.15dvw var(--amber);
+    padding-left: 9%;
+    padding-top: 0.6dvw;
+    -webkit-text-stroke: 0.2dvw var(--amber);
+    /* text-align: center; */
+    font-size: 6.5dvw;
   }
-
   .bottom-right-wide {
     display: none;
   }
@@ -672,14 +713,17 @@ footer {
     display: inline-block;
   }
   .space1 {
-    display: inline-block;
-    width: 5.5ch;
+    display: none;
   }
   .bottom-right-narrow {
     display: block;
   }
   .scanlines {
     display: none;
+  }
+  footer span {
+    padding-left: 8dvw;
+    padding-right: 8dvw;
   }
   #dropdown-menu-container {
     display: block;
@@ -693,7 +737,7 @@ footer {
   #contact-form .form-button {
     font-size: 5dvw;
   }
-} */
+}
 @media only screen and (max-width: 500px) {
   .scanlines {
     display: none;
