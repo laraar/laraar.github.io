@@ -7,9 +7,11 @@
     <title>Larry Aaronson, the website</title>
     <meta name="description" content="A portfolio of Larry Aaronson's stuff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css?v=32" type="text/css" />
+    <link rel="stylesheet" href="style.css?v=33" type="text/css" />
   </head>
   <body>
+    <div id="body-overlay"></div>
+    <!-- This is to darken the whole body when mobile menu appears -->
     <!-- Monitor border (two borders, one with square corners and one with rounded corners)-->
     <div class="viewport-outer-border"><div class="viewport-radius-border"></div></div>
     <!-- Header, including nav -->
@@ -40,9 +42,9 @@
       </div>
 
       <!-- Consider this stuff - mobile menu -->
-      <!-- <div class="right-block bottom-right-narrow">
+      <div class="right-block bottom-right-narrow">
         <button type="button" id="menu-button">menu &#9776;</button>
-      </div>-->
+      </div>
     </header>
     <!-- <div id="dropdown-menu-container">  -->
     <!--Including this to allow this dropdown menu container to be present on mobile -->
@@ -59,15 +61,17 @@
 
     <!-- Main content section -->
     <main>
+      <div class="triangle" id="triangle"></div>
       <div id="main-content">
         <div id="main-text">
           <p>
-            Welcome to my website... a showcase of my creative work! Explore my artistic creations,
-            including my Bar Show cover art and my video production projects. Listen to my voice
-            work, from radio spots to pre&#8209;show announcements. And discover my decades of
-            experience as a patent attorney, crafting equally creative patent applications.
+            <strong>Welcome to my website...</strong> a showcase of my creative work! Explore my
+            artistic creations, including my Bar Show cover art and my video production projects.
+            Listen to my voice work, from radio spots to pre&#8209;show announcements. And discover
+            my decades of experience as a patent attorney, crafting equally creative patent
+            applications.
           </p>
-          <p>Enjoy your stay!</p>
+          <p class="center-align">- Enjoy your stay!</p>
         </div>
         <div id="main-image">
           <img id="Larry-image" src="images/headshot.webp" alt="Larry Aaronson" />
