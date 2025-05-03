@@ -82,11 +82,19 @@ if (window.location.pathname === "/graphicart.html") {
 }
 
 const toggleMenuBtn = document.getElementById("menu-button");
-const menu = document.getElementById("dropdown-menu");
+const triangle = document.getElementById("triangle");
+const bodyOverlay = document.getElementById("body-overlay");
 toggleMenuBtn.addEventListener("click", () => {
-  menu.classList.toggle("visible");
-  menu.classList.toggle("hidden");
+  // triangle.classList.toggle("visible");
+  // triangle.classList.toggle("hidden");
+  triangle.classList.toggle("active");
+  bodyOverlay.classList.toggle("active");
 });
+
+function toggleTriangle() {
+  alert("pressed");
+  const triangle = document.getElementById("triangle");
+}
 
 const toggleContactForm = document.getElementById("contact-button");
 const form = document.getElementById("contact-form");
@@ -99,19 +107,19 @@ document.getElementById("cancel").addEventListener("click", function () {
   form.classList.toggle("hidden");
 });
 
-window.addEventListener("resize", function () {
-  if (menu.classList.contains("visible")) {
-    menu.classList.remove("visible");
-    menu.classList.add("hidden");
-  }
-});
+// window.addEventListener("resize", function () {
+//   if (menu.classList.contains("visible")) {
+//     menu.classList.remove("visible");
+//     menu.classList.add("hidden");
+//   }
+// });
 
-document.addEventListener("click", function (event) {
-  if (!menu.contains(event.target) && !toggleMenuBtn.contains(event.target)) {
-    menu.classList.remove("visible");
-    menu.classList.add("hidden");
-  }
-});
+// document.addEventListener("click", function (event) {
+//   if (!menu.contains(event.target) && !toggleMenuBtn.contains(event.target)) {
+//     menu.classList.remove("visible");
+//     menu.classList.add("hidden");
+//   }
+// });
 
 // Hide form upon submit, and then execute the submission function. ()
 form.addEventListener("submit", function (event) {
