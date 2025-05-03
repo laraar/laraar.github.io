@@ -7,11 +7,9 @@
     <title>Larry Aaronson, the website</title>
     <meta name="description" content="A portfolio of Larry Aaronson's stuff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css?v=34" type="text/css" />
+    <link rel="stylesheet" href="style.css?v=35" type="text/css" />
   </head>
   <body>
-    <div id="body-overlay"></div>
-    <!-- This is to darken the whole body when mobile menu appears -->
     <!-- Monitor border (two borders, one with square corners and one with rounded corners)-->
     <div class="viewport-outer-border"><div class="viewport-radius-border"></div></div>
     <!-- Header, including nav -->
@@ -41,29 +39,39 @@
         </nav>
       </div>
 
-      <!-- Consider this stuff - mobile menu -->
+      <!-- Mobile menu button -->
       <div class="right-block bottom-right-narrow">
         <button type="button" id="menu-button">menu &#9776;</button>
       </div>
     </header>
-    <!-- <div id="dropdown-menu-container">  -->
-    <!--Including this to allow this dropdown menu container to be present on mobile -->
-    <!-- <div id="dropdown-menu" class="hidden">
-        <ul>
-          <li><a class="dropdown-item" href="index.html">Home</a></li>
-          <li><a class="dropdown-item" href="graphicart.html">Graphic Art</a></li>
-          <li><a class="dropdown-item" href="video.html">Video Prod</a></li>
-          <li><a class="dropdown-item" href="voice.html">Voice Work</a></li>
-          <li><a class="dropdown-item" href="patentlaw.html">Patent Law</a></li>
-        </ul>
-      </div>
-    </div> -->
 
     <!-- Main content section -->
     <main>
-      <div class="triangle" id="triangle"></div>
-      <div id="main-content">
-        <div id="main-text">
+      <!-- Mobile menu -->
+      <div id="menu-triangle-wrapper">
+        <div class="menu-triangle" id="menu-triangle">
+          <ul>
+            <li>
+              <div class="mobile-text"><a href="index.html">Home</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="graphicart.html">Graphic Art</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="video.html">Video Production</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="voice.html">Voice Work</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="patentlaw.html">Patent Law</a></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="darkening-overlay"></div>
+      <div id="home-content">
+        <div id="home-text">
           <p>
             <strong>Welcome to my website...</strong> a showcase of my creative work! Explore my
             artistic creations, including my Bar Show cover art and my video production projects.
@@ -73,7 +81,7 @@
           </p>
           <p class="center-align">- Enjoy your stay!</p>
         </div>
-        <div id="main-image">
+        <div id="home-image">
           <img id="Larry-image" src="images/headshot.webp" alt="Larry Aaronson" />
           <figcaption>Me, circa 2024</figcaption>
         </div>

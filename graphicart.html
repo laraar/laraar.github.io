@@ -7,7 +7,7 @@
     <title>Larry Aaronson - Graphic Art</title>
     <meta name="description" content="Larry Aaronson - graphic art" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css?v=6" type="text/css" />
+    <link rel="stylesheet" href="style.css?v=7" type="text/css" />
   </head>
   <body>
     <!-- Monitor border (two borders, one with square corners and one with rounded corners)-->
@@ -38,67 +38,82 @@
           </ul>
         </nav>
       </div>
+      
+      <!-- Mobile menu button -->
       <div class="right-block bottom-right-narrow">
         <button type="button" id="menu-button">menu &#9776;</button>
       </div>
     </header>
-    <div id="dropdown-menu-container">
-      <!--Including this to allow this dropdown menu container to be present on mobile -->
-      <div id="dropdown-menu" class="hidden">
-        <ul>
-          <li><a class="dropdown-item" href="index.html">Home</a></li>
-          <li><a class="dropdown-item" href="graphicart.html">Graphic Art</a></li>
-          <li><a class="dropdown-item" href="video.html">Video Prod</a></li>
-          <li><a class="dropdown-item" href="voice.html">Voice Work</a></li>
-          <li><a class="dropdown-item" href="patentlaw.html">Patent Law</a></li>
-        </ul>
-      </div>
-    </div>
+     
     <!-- Main content section -->
     <main>
-      <h1>Bar Show Program Covers</h1>
-      <div class="grid">
-        <img class="grid-img" src="images/BarShow/BarShow2009.webp" alt="2009 Bar Show" />
-        <img class="grid-img" src="images/BarShow/BarShow2010.webp" alt="2010 Bar Show" />
-        <img class="grid-img" src="images/BarShow/BarShow2011.webp" alt="2011 Bar Show" />
-        <img class="grid-img" src="images/BarShow/BarShow2012.webp" alt="2012 Bar Show" />
-        <img class="grid-img" src="images/BarShow/BarShow2013.webp" alt="2013 Bar Show" />
-        <img class="grid-img" src="images/BarShow/BarShow2014.webp" alt="2014 Bar Show" />
-        <img class="grid-img" src="images/BarShow/BarShow2014b.webp" alt="2014 Bar Show II" />
-        <img class="grid-img" src="images/BarShow/BarShow2015.webp" alt="2015 Bar Show" />
-        <img class="grid-img" src="images/BarShow/BarShow2016.webp" alt="2016 Bar Show" />
-        <img class="grid-img" src="images/BarShow/BarShow2017.webp" alt="2017 Bar Show" />
-        <img class="grid-img" src="images/BarShow/BarShow2018.webp" alt="2018 Bar Show" />
-        <img class="grid-img" src="images/BarShow/BarShow2019.webp" alt="2019 Bar Show" />
-        <img class="grid-img" src="images/BarShow/BarShow2020.webp" alt="2020 Bar Show" />
-        <img class="grid-img" src="images/BarShow/BarShow2024.webp" alt="2024 Bar Show" />
-        <img class="grid-img" src="images/BarShow/BarShow2025.webp" alt="2025 Bar Show" />
-        <img
-          class="grid-img placeholder"
-          src="images/BarShow/MoreToCome.webp"
-          alt="More to Come..."
-        />
+      <!-- Mobile menu -->
+      <div id="menu-triangle-wrapper">
+        <div class="menu-triangle" id="menu-triangle">
+          <ul>
+            <li>
+              <div class="mobile-text"><a href="index.html">Home</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="graphicart.html">Graphic Art</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="video.html">Video Production</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="voice.html">Voice Work</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="patentlaw.html">Patent Law</a></div>
+            </li>
+          </ul>
+        </div>
       </div>
+      <div class="darkening-overlay"></div><div id="graphic-art-content">
+        <h1>Bar Show Program Covers</h1>
+        <div class="grid">
+          <img class="grid-img" src="images/BarShow/BarShow2009.webp" alt="2009 Bar Show" />
+          <img class="grid-img" src="images/BarShow/BarShow2010.webp" alt="2010 Bar Show" />
+          <img class="grid-img" src="images/BarShow/BarShow2011.webp" alt="2011 Bar Show" />
+          <img class="grid-img" src="images/BarShow/BarShow2012.webp" alt="2012 Bar Show" />
+          <img class="grid-img" src="images/BarShow/BarShow2013.webp" alt="2013 Bar Show" />
+          <img class="grid-img" src="images/BarShow/BarShow2014.webp" alt="2014 Bar Show" />
+          <img class="grid-img" src="images/BarShow/BarShow2014b.webp" alt="2014 Bar Show II" />
+          <img class="grid-img" src="images/BarShow/BarShow2015.webp" alt="2015 Bar Show" />
+          <img class="grid-img" src="images/BarShow/BarShow2016.webp" alt="2016 Bar Show" />
+          <img class="grid-img" src="images/BarShow/BarShow2017.webp" alt="2017 Bar Show" />
+          <img class="grid-img" src="images/BarShow/BarShow2018.webp" alt="2018 Bar Show" />
+          <img class="grid-img" src="images/BarShow/BarShow2019.webp" alt="2019 Bar Show" />
+          <img class="grid-img" src="images/BarShow/BarShow2020.webp" alt="2020 Bar Show" />
+          <img class="grid-img" src="images/BarShow/BarShow2024.webp" alt="2024 Bar Show" />
+          <img class="grid-img" src="images/BarShow/BarShow2025.webp" alt="2025 Bar Show" />
+          <img
+            class="grid-img placeholder"
+            src="images/BarShow/MoreToCome.webp"
+            alt="More to Come..."
+          />
+        </div>
 
-      <!-- The overlay (hidden by default) -->
-      <div id="overlay">
-        <img id="overlay-img" src="images/BarShow/BarShow2009.webp" alt="2009 Bar Show" />
-        <!-- Starter image -->
-      </div>
+        <!-- The overlay (hidden by default) -->
+        <div id="overlay">
+          <img id="overlay-img" src="images/BarShow/BarShow2009.webp" alt="2009 Bar Show" />
+          <!-- Starter image -->
+        </div>
 
-      <!-- Contact form -->
-      <form id="contact-form" action=" " method="post" class="hidden">
-        <div class="form-title">Contact Form</div>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required />
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" maxlength="300" required></textarea>
-        <input type="submit" class="form-button" id="submit" value="Submit to Larry" />
-        <input type="button" class="form-button" id="cancel" value="Cancel" />
-        <input type="reset" class="form-button" id="reset" value="Reset" />
-      </form>
+        <!-- Contact form -->
+        <form id="contact-form" action=" " method="post" class="hidden">
+          <div class="form-title">Contact Form</div>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" maxlength="300" required></textarea>
+          <input type="submit" class="form-button" id="submit" value="Submit to Larry" />
+          <input type="button" class="form-button" id="cancel" value="Cancel" />
+          <input type="reset" class="form-button" id="reset" value="Reset" />
+        </form>
+      <!-- </div> -->
     </main>
 
     <footer>

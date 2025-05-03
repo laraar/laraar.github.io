@@ -21,6 +21,7 @@
 html {
   font-size: 16px;
   height: 100%;
+  overflow-y: scroll;
 }
 strong,
 b {
@@ -40,7 +41,7 @@ b {
   box-shadow: inset 0 0 0 2.5dvw #ada088;
   pointer-events: none;
   filter: drop-shadow(0 0 1dvw rgba(255, 204, 0, 0.8));
-  z-index: 200;
+  z-index: 1000;
 }
 .viewport-radius-border {
   position: fixed;
@@ -52,7 +53,7 @@ b {
   box-shadow: inset 0 0 0 2.5dvw #ada088;
   border-radius: 6dvw;
   pointer-events: none;
-  z-index: 200;
+  z-index: 1000;
 }
 
 /* General content styles */
@@ -191,44 +192,13 @@ header {
 }
 #menu-button {
   text-decoration: none;
-  padding-right: 0.1dvw;
+  padding-left: 2dvw;
 }
 #menu-button:active,
 #menu-button:hover {
   color: var(--green);
 }
-#dropdown-menu-container {
-  display: none;
-  z-index: 202;
-}
-#dropdown-menu {
-  position: absolute;
-  top: 18.2dvw;
-  right: 8dvw;
-  font-size: 5dvw;
-  text-align: right;
-  padding: 2dvw;
-  background-color: rgba(255, 255, 255, 0.8);
-  background-color: var(--amber);
-  border-radius: 2dvw;
-  max-height: 50dvw;
-}
-#dropdown-menu ul {
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  gap: 2dvw;
-}
-#dropdown-menu ul a {
-  text-decoration: none;
-  padding: 0.6dvw 1.8dvw;
-  background-color: var(--amber);
-  color: #000;
-}
-#dropdown-menu ul a:hover,
-#dropdown-menu ul a:focus {
-  background-color: var(--green);
-}
+
 .hidden {
   display: none;
 }
@@ -314,37 +284,94 @@ main {
   overflow: hidden;
 }
 /* Mobile menu */
-.triangle {
+
+#menu-triangle-wrapper {
   position: absolute;
   top: 0;
   right: 0;
   width: 97.5dvw;
   height: 97.5dvw;
+  transform: translate(50%, -50%); /* Start offscreen top right */
+  opacity: 0.9;
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+  z-index: 901;
+}
+#menu-triangle-wrapper.active {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+.menu-triangle {
+  width: 100%;
+  height: 100%;
   background: var(--amber);
-  clip-path: polygon(100% 0, 100% 0, 100% 0); /* Initial state: single point */
-  transition: clip-path 0.5s ease-out;
-  z-index: 1001;
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  position: relative;
+  overflow: hidden;
+  color: black; /* or white depending on your background */
 }
-.triangle.active {
-  clip-path: polygon(100% 0, 0 0, 100% 100%); /* Final triangle */
+
+.menu-triangle ul {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
-#body-overlay {
-  position: fixed;
+.menu-triangle ul {
+  position: absolute;
+  top: 4dvw;
+  right: 8dvw;
+  text-align: right;
+  font-size: 8dvw;
+}
+.menu-triangle ul li {
+  color: black;
+  margin-bottom: 1.5dvw;
+  text-align: right;
+}
+.menu-triangle ul li a {
+  text-decoration: none;
+  color: #000;
+}
+.mobile-text {
+  flex: 3;
+}
+.mobile-pointer-container {
+  flex: 0.2;
+  display: flex;
+  flex-direction: column; /* vertical stacking inside */
+  justify-content: center; /* center vertically */
+}
+.mobile-pointer {
+  display: none;
+  height: 3dvw;
+  width: 3dvw;
+  border: solid 1.5dvw transparent;
+  border-right-color: #000;
+}
+.menu-triangle ul li:hover .mobile-pointer,
+.menu-triangle ul li:focus .mobile-pointer {
+  display: block;
+}
+
+.darkening-overlay {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
-  z-index: 1000;
+  z-index: 900;
   opacity: 0;
   pointer-events: none; /* Allows clicks through */
   transition: opacity 0.3s ease;
 }
-#body-overlay.active {
+.darkening-overlay.active {
   opacity: 1;
 }
 
-#main-content {
+#home-content {
   width: 675px;
   display: flex;
   gap: 30px;
@@ -354,20 +381,20 @@ main {
   padding-bottom: 50px;
 }
 
-#main-text {
+#home-text {
   flex: 2;
   text-align: right;
 }
-#main-text p {
+#home-text p {
   font-size: 1.5rem;
 }
-#main-image {
+#home-image {
   flex: 1;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
 }
-#main-image figcaption {
+#home-image figcaption {
   display: none;
 }
 #Larry-image {
@@ -377,50 +404,50 @@ main {
 }
 
 @media (min-width: 1600px) {
-  #main-content {
+  #home-content {
     width: 50dvw;
     gap: 3dvw;
     padding-top: 0.7dvw;
   }
-  #main-text p {
+  #home-text p {
     font-size: 1.7dvw;
   }
 }
 @media (max-width: 900px) {
-  #main-content {
+  #home-content {
     width: 500px;
     gap: 25px;
   }
-  #main-text p {
+  #home-text p {
     font-size: 1.1rem;
   }
 }
 @media (max-width: 650px) {
-  #main-content {
+  #home-content {
     width: 380px;
     gap: 15px;
   }
-  #main-text p {
+  #home-text p {
     flex: 2.3;
     font-size: 0.85rem;
   }
 }
 @media (max-width: 500px) {
-  #main-content {
+  #home-content {
     width: 80dvw;
     gap: 15px;
     flex-direction: column;
     padding-top: 10px;
   }
-  #main-text p {
+  #home-text p {
     flex: 2.3;
     width: 98%;
-    font-size: 0.9rem;
+    font-size: 1rem;
     text-align: left;
     margin: auto;
     margin-bottom: 10px;
   }
-  #main-text p.center-align {
+  #home-text p.center-align {
     text-align: center;
   }
 
@@ -428,14 +455,18 @@ main {
     margin: auto;
     width: 60%;
   }
-  #main-image {
+  #home-image {
     flex-direction: column;
   }
-  #main-image figcaption {
+  #home-image figcaption {
     display: block;
     margin: auto;
     margin-top: 5px;
   }
+}
+
+#graphic-art-content {
+  padding-top: 2dvw;
 }
 
 .grid {
@@ -637,45 +668,6 @@ footer {
     border-radius: 0.5dvw;
   }
 }
-/* Temporarily not using the following - so keeping nav layout even for narrow for now */
-/* @media only screen and (max-width: 500px) {
-  .nav-word {
-    display: block;
-    color: #000;
-  }
-  .half-line {
-    display: block;
-    height: 1.51dvw;
-  }
-
-  .scanlines {
-    display: none;
-  }
-  header {
-    height: 18dvw;
-    padding-bottom: 1.2dvw;
-  }
-  nav ul li {
-    margin: 0 2dvw 0 0;
-  }
-  nav ul li a {
-    font-size: 3.5dvw;
-    font-weight: bold;
-    padding: 0.45dvw 1.9dvw;
-  }
-  nav ul li .pointer {
-    width: 2dvw;
-    height: 2dvw;
-    border: solid 1dvw;
-    border-color: transparent;
-    border-top-color: var(--amber);
-    margin: auto;
-  }
-  #logo {
-    padding-top: 1dvw;
-    width: 100%;
-  }
-} */
 
 @media only screen and (max-width: 700px) {
   header {
@@ -688,13 +680,15 @@ footer {
   nav ul li a {
     padding: 0.3vw 0.5vw;
   }
-
+  html {
+    overflow-y: hidden;
+  }
   body {
     padding: 6dvw 0 4dvw 0;
   }
   header {
     grid-template-rows: 1fr;
-    grid-template-columns: 0.4fr 1.5fr 5.4fr 2.4fr;
+    grid-template-columns: 0fr 1.5fr 5.4fr 2.4fr;
     height: 14dvw;
     padding-left: 8dvw;
     padding-right: 8dvw;
