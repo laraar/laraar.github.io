@@ -327,8 +327,8 @@ main {
     to bottom,
     rgba(21, 21, 21, 0.4),
     rgba(21, 21, 21, 0.4) 0.4dvw,
-    transparent 0.6dvw,
-    transparent 0.8dvw
+    transparent 0.7dvw,
+    transparent 1dvw
   );
   z-index: 102;
   pointer-events: none;
@@ -358,21 +358,12 @@ main {
 .mobile-text {
   flex: 3;
 }
-/* .menu-triangle ul li.menu-copyright {
-  color: #000;
-  font-size: 26px;
-  margin-top: 30vw;
-  margin-right: 0vw;
-  float: right;
-  transform: rotate(45deg);
-} */
-
 .menu-triangle .menu-copyright {
   position: absolute;
-  bottom: 11dvw;
-  right: 4dvw;
+  bottom: 12dvw;
+  right: 3.2dvw;
   color: #000;
-  font-size: 4vw; /* Scales with viewport */
+  font-size: 5vw; /* Scales with viewport */
   transform: rotate(45deg);
 }
 .mobile-pointer-container {
