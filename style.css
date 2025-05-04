@@ -334,8 +334,8 @@ main {
     to bottom,
     rgba(21, 21, 21, 0.4),
     rgba(21, 21, 21, 0.4) 1px,
-    transparent 3px,
-    transparent 5px
+    transparent 2.5px,
+    transparent 4px
   );
   z-index: 102;
   pointer-events: none;
