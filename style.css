@@ -323,12 +323,19 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: repeating-linear-gradient(
+  /* background-image: repeating-linear-gradient(
     to bottom,
     rgba(21, 21, 21, 0.4),
     rgba(21, 21, 21, 0.4) 0.4dvw,
     transparent 0.7dvw,
     transparent 1dvw
+  ); */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(21, 21, 21, 0.4),
+    rgba(21, 21, 21, 0.4) 1px,
+    transparent 3px,
+    transparent 5px
   );
   z-index: 102;
   pointer-events: none;
