@@ -23,6 +23,7 @@ html {
   height: 100%;
   overflow-y: scroll;
 }
+
 strong,
 b {
   font-family: inherit;
@@ -63,6 +64,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
+  min-width: 350px;
   overflow-x: hidden;
 }
 h1 {
@@ -176,26 +178,27 @@ header {
   border-left: solid 0.4dvw var(--amber);
 }
 #menu-button {
-  margin-top: 2.5dvw;
-  margin-left: 1dvw;
+  margin-top: 4.5dvw;
+  margin-left: 2dvw;
+  margin-right: 0dvw;
+  padding-top: 1dvw;
+  padding-bottom: 1dvw;
   position: relative;
-  padding-left: 0.2dvw;
-  padding-right: 0.2dvw;
-  height: 70%;
+  height: fit-content;
   width: 100%;
   font-size: 6dvw;
   background-color: transparent;
+  appearance: none;
+  box-shadow: none;
   border: none;
+  /* border: solid 0.1dvw var(--amber);
+  border-radius: 1dvw; */
 }
 .line-break {
   display: none;
 }
-#menu-button {
-  text-decoration: none;
-  padding-left: 2dvw;
-}
-#menu-button:active,
-#menu-button:hover {
+
+#menu-button.touched {
   color: var(--green);
 }
 
@@ -295,7 +298,9 @@ main {
   opacity: 0.9;
   transition: transform 0.6s ease-out, opacity 0.6s ease-out;
   z-index: 901;
+  pointer-events: none; /* Disable pointer events on the menu wrapper to have it not block clicks when menu isn't shown */
 }
+
 #menu-triangle-wrapper.active {
   transform: translate(0, 0);
   opacity: 1;
@@ -308,26 +313,42 @@ main {
   position: relative;
   overflow: hidden;
   color: black; /* or white depending on your background */
+  pointer-events: auto; /* re-enable pointer events here to apply to just the triangle menu shape */
+}
+/* Scanlines through mobile menu */
+#menu-triangle::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(21, 21, 21, 0.4),
+    rgba(21, 21, 21, 0.4) 0.4dvw,
+    transparent 0.3dvw,
+    transparent 0.9dvw
+  );
+  z-index: 102;
+  pointer-events: none;
 }
 
 .menu-triangle ul {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 4dvw;
+  right: 4dvw;
+  text-align: right;
+  font-size: 7.7dvw;
   list-style: none;
   padding: 0;
   margin: 0;
-}
-.menu-triangle ul {
-  position: absolute;
-  top: 4dvw;
-  right: 8dvw;
-  text-align: right;
-  font-size: 8dvw;
+  font-weight: 599;
 }
 .menu-triangle ul li {
   color: black;
-  margin-bottom: 1.5dvw;
+  margin-bottom: 2dvw;
+  margin-right: 4dvw;
   text-align: right;
 }
 .menu-triangle ul li a {
@@ -336,6 +357,14 @@ main {
 }
 .mobile-text {
   flex: 3;
+}
+.menu-triangle ul li.menu-copyright {
+  color: #000;
+  font-size: 26px;
+  margin-top: 30dvw;
+  margin-right: 0dvw;
+  float: right;
+  transform: rotate(45deg);
 }
 .mobile-pointer-container {
   flex: 0.2;
@@ -356,6 +385,7 @@ main {
 }
 
 .darkening-overlay {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -364,10 +394,11 @@ main {
   background: rgba(0, 0, 0, 0.4);
   z-index: 900;
   opacity: 0;
-  pointer-events: none; /* Allows clicks through */
+  pointer-events: auto;
   transition: opacity 0.3s ease;
 }
 .darkening-overlay.active {
+  display: block;
   opacity: 1;
 }
 
@@ -376,7 +407,7 @@ main {
   display: flex;
   gap: 30px;
   margin: auto;
-  margin-top: 2vw;
+  margin-top: 3vw;
   padding-top: 25px;
   padding-bottom: 50px;
 }
@@ -466,7 +497,7 @@ main {
 }
 
 #graphic-art-content {
-  padding-top: 2dvw;
+  padding-top: 3dvw;
 }
 
 .grid {
@@ -476,6 +507,7 @@ main {
   width: 85%;
   margin: 0 auto;
   margin-bottom: 3dvw;
+  margin-top: 1dvw;
 }
 
 .grid-img {
@@ -579,6 +611,12 @@ footer {
 #footer-text span {
   display: inline-block;
 }
+#footer-text span.normal-copyright {
+  display: inline-block;
+}
+#footer-text span.abridged-copyright {
+  display: none;
+}
 
 /* Styles for the Contact me button in footer */
 #contact-button {
@@ -620,7 +658,7 @@ footer {
 }
 #contact-form label {
   display: block;
-  width: 50dvw;
+  width: 90%;
   color: #000;
   font-size: clamp(1.5rem, 3dvw, 2rem);
 }
@@ -668,6 +706,11 @@ footer {
     border-radius: 0.5dvw;
   }
 }
+@media only screen and (max-width: 1000px) {
+  #contact-form {
+    width: 80dvw;
+  }
+}
 
 @media only screen and (max-width: 700px) {
   header {
@@ -681,24 +724,33 @@ footer {
     padding: 0.3vw 0.5vw;
   }
   html {
-    overflow-y: hidden;
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  /* Hide scrollbar on others */
+  html::-webkit-scrollbar {
+    display: none;
   }
   body {
     padding: 6dvw 0 4dvw 0;
   }
+
   header {
     grid-template-rows: 1fr;
-    grid-template-columns: 0fr 1.5fr 5.4fr 2.4fr;
-    height: 14dvw;
-    padding-left: 8dvw;
+    grid-template-columns: 0fr 1.8fr 5.9fr 2.4fr;
+    height: 20dvw;
+    padding-left: 5dvw;
     padding-right: 8dvw;
+    padding-top: 1dvw;
+    border-bottom-style: double;
   }
   .top-right {
     padding-left: 9%;
     padding-top: 0.6dvw;
     -webkit-text-stroke: 0.2dvw var(--amber);
     /* text-align: center; */
-    font-size: 6.5dvw;
+    font-size: 8dvw;
   }
   .bottom-right-wide {
     display: none;
@@ -712,10 +764,10 @@ footer {
   .bottom-right-narrow {
     display: block;
   }
-  .scanlines {
+  /* .scanlines {
     display: none;
-  }
-  footer span {
+  } */
+  #footer-text {
     padding-left: 8dvw;
     padding-right: 8dvw;
   }
@@ -723,7 +775,10 @@ footer {
     display: block;
   }
   #contact-form {
-    width: 100%;
+    margin-right: 8dvw;
+    margin-left: 8dvw;
+    width: 84dvw;
+    float: left;
   }
   #contact-form label {
     font-size: 5dvw;
@@ -731,9 +786,18 @@ footer {
   #contact-form .form-button {
     font-size: 5dvw;
   }
+  #graphic-art-content {
+    padding-top: 5dvw;
+  }
+  .grid {
+    margin-top: 3dvw;
+  }
 }
-@media only screen and (max-width: 500px) {
-  .scanlines {
+@media only screen and (max-width: 385px) {
+  #footer-text span.normal-copyright {
     display: none;
+  }
+  #footer-text span.abridged-copyright {
+    display: block;
   }
 }

@@ -7,9 +7,10 @@
     <title>Larry Aaronson, the website</title>
     <meta name="description" content="A portfolio of Larry Aaronson's stuff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css?v=35" type="text/css" />
+    <link rel="stylesheet" href="style.css?v=36" type="text/css" />
   </head>
   <body>
+    <!-- To deal with disabling vertical scrollbar on mobile -->
     <!-- Monitor border (two borders, one with square corners and one with rounded corners)-->
     <div class="viewport-outer-border"><div class="viewport-radius-border"></div></div>
     <!-- Header, including nav -->
@@ -52,20 +53,21 @@
         <div class="menu-triangle" id="menu-triangle">
           <ul>
             <li>
-              <div class="mobile-text"><a href="index.html">Home</a></div>
+              <div class="mobile-text"><a href="index.html">Home •</a></div>
             </li>
             <li>
-              <div class="mobile-text"><a href="graphicart.html">Graphic Art</a></div>
+              <div class="mobile-text"><a href="graphicart.html">Graphic Art •</a></div>
             </li>
             <li>
-              <div class="mobile-text"><a href="video.html">Video Production</a></div>
+              <div class="mobile-text"><a href="video.html">Video Production •</a></div>
             </li>
             <li>
-              <div class="mobile-text"><a href="voice.html">Voice Work</a></div>
+              <div class="mobile-text"><a href="voice.html">Voice Work •</a></div>
             </li>
             <li>
-              <div class="mobile-text"><a href="patentlaw.html">Patent Law</a></div>
+              <div class="mobile-text"><a href="patentlaw.html">Patent Law •</a></div>
             </li>
+            <li class="menu-copyright">&copy; LHA</li>
           </ul>
         </div>
       </div>
@@ -73,11 +75,11 @@
       <div id="home-content">
         <div id="home-text">
           <p>
-            <strong>Welcome to my website...</strong> a showcase of my creative work! Explore my
-            artistic creations, including my Bar Show cover art and my video production projects.
-            Listen to my voice work, from radio spots to pre&#8209;show announcements. And discover
-            my decades of experience as a patent attorney, crafting equally creative patent
-            applications.
+            <strong>Welcome to my website...</strong> where you can explore my creative work! Check
+            out my artistic creations, including my Bar Show cover art and my video production
+            projects. Listen to my voice work, from radio spots to pre&#8209;show announcements. And
+            discover my decades of experience as a patent attorney, crafting equally creative
+            patent&nbsp;applications.
           </p>
           <p class="center-align">- Enjoy your stay!</p>
         </div>
@@ -105,7 +107,8 @@
     <footer>
       <div id="footer-bottom">
         <div id="footer-text">
-          <span>&copy 2025 Larry Aaronson</span>
+          <span class="normal-copyright">&copy 2025 Larry Aaronson</span>
+          <span class="abridged-copyright">&copy 2025 LHA</span>
           <span><button type="button" id="contact-button">Contact me...</button></span>
         </div>
       </div>
