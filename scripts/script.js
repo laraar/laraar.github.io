@@ -103,6 +103,14 @@ document.addEventListener("click", function (event) {
   }
 });
 
+// Undo the click color on the menu button after 200ms
+menuButton.addEventListener("pointerdown", () => {
+  menuButton.classList.add("touched");
+  setTimeout(() => {
+    menuButton.classList.remove("touched");
+  }, 200);
+});
+
 const toggleContactForm = document.getElementById("contact-button");
 const form = document.getElementById("contact-form");
 toggleContactForm.addEventListener("click", () => {
