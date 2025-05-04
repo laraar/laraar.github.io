@@ -111,25 +111,38 @@ menuButton.addEventListener("pointerdown", () => {
   }, 200);
 });
 
-const toggleContactForm = document.getElementById("contact-button");
+const contactButton = document.getElementById("contact-button");
 const form = document.getElementById("contact-form");
-toggleContactForm.addEventListener("click", () => {
+const firstField = document.getElementById("name");
+const fullDarkeningOverlay = document.querySelector(".full-darkening-overlay");
+contactButton.addEventListener("click", () => {
   form.classList.toggle("hidden");
+  firstField.focus();
+  fullDarkeningOverlay.classList.toggle("active");
+});
+
+// Undo the click color on the menu button after 200ms
+contactButton.addEventListener("pointerdown", () => {
+  contactButton.classList.add("touched");
+  setTimeout(() => {
+    contactButton.classList.remove("touched");
+  }, 200);
 });
 
 //Cancel button for form
 document.getElementById("cancel").addEventListener("click", function () {
   form.classList.toggle("hidden");
+  fullDarkeningOverlay.classList.toggle("active");
 });
 
 // Hide form upon submit, and then execute the submission function. ()
 form.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent the default form submission (which triggers the redirect)
-
+  alert("Form submission is under construction...");
   // Hide the form immediately upon submission
   form.classList.toggle("hidden"); // This keeps it invisible but still in the document flow
+  fullDarkeningOverlay.classList.toggle("active");
 
-  alert("Form submission is under construction...");
   return;
 
   // Create a FormData object to collect the form data
@@ -174,4 +187,9 @@ window.addEventListener("load", () => {
     const img = new Image();
     img.src = `/images/BarShow/${filename}`;
   });
+});
+
+// Go to top of page on page load
+window.addEventListener("load", function () {
+  window.scrollTo(0, 0);
 });
