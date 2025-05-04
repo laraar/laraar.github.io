@@ -328,7 +328,7 @@ main {
     rgba(21, 21, 21, 0.4),
     rgba(21, 21, 21, 0.4) 0.4dvw,
     transparent 0.6dvw,
-    transparent 0.9dvw
+    transparent 0.8dvw
   );
   z-index: 102;
   pointer-events: none;
@@ -343,7 +343,7 @@ main {
   list-style: none;
   padding: 0;
   margin: 0;
-  font-weight: 600;
+  font-weight: 599;
 }
 .menu-triangle ul li {
   color: black;
@@ -358,12 +358,21 @@ main {
 .mobile-text {
   flex: 3;
 }
-.menu-triangle ul li.menu-copyright {
+/* .menu-triangle ul li.menu-copyright {
   color: #000;
   font-size: 26px;
   margin-top: 30vw;
   margin-right: 0vw;
   float: right;
+  transform: rotate(45deg);
+} */
+
+.menu-triangle .menu-copyright {
+  position: absolute;
+  bottom: 11dvw;
+  right: 4dvw;
+  color: #000;
+  font-size: 4vw; /* Scales with viewport */
   transform: rotate(45deg);
 }
 .mobile-pointer-container {
