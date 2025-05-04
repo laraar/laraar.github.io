@@ -7,7 +7,7 @@
     <title>Larry Aaronson, the website</title>
     <meta name="description" content="A portfolio of Larry Aaronson's stuff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css?v=44" type="text/css" />
+    <link rel="stylesheet" href="style.css?v=45" type="text/css" />
   </head>
   <body>
     <!-- To deal with disabling vertical scrollbar on mobile -->
@@ -90,7 +90,7 @@
       </div>
 
       <!-- Contact form -->
-      <form id="contact-form" action=" " method="post" class="hidden">
+      <form id="contact-form" action="alert('Hi')" method="post" class="hidden">
         <div class="form-title">Contact Form</div>
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required />
@@ -99,8 +99,8 @@
         <label for="message">Message:</label>
         <textarea id="message" name="message" maxlength="300" required></textarea>
         <input type="submit" class="form-button" id="submit" value="Submit to Larry" />
-        <input type="button" class="form-button" id="cancel" value="Cancel" />
-        <input type="reset" class="form-button" id="reset" value="Reset" />
+        <input type="button" class="form-button" id="cancel" tabindex="-1" value="Cancel" />
+        <input type="reset" class="form-button" id="reset" tabindex="-1" value="Reset" />
       </form>
     </main>
 
