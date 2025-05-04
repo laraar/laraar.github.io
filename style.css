@@ -199,10 +199,6 @@ header {
   display: none;
 }
 
-#menu-button.touched {
-  color: var(--green);
-}
-
 .hidden {
   display: none;
 }
@@ -653,8 +649,12 @@ footer {
   text-decoration: none;
   padding-right: 0.1dvw;
 }
-#contact-button:active,
+
 #contact-button:hover {
+  color: var(--green);
+}
+#menu-button.touched,
+#contact-button.touched {
   color: var(--green);
 }
 
