@@ -66,6 +66,7 @@ body {
   min-height: 100dvh;
   min-width: 350px;
   overflow-x: hidden;
+  position: relative;
 }
 h1 {
   color: var(--amber);
@@ -323,13 +324,6 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  /* background-image: repeating-linear-gradient(
-    to bottom,
-    rgba(21, 21, 21, 0.4),
-    rgba(21, 21, 21, 0.4) 0.4dvw,
-    transparent 0.7dvw,
-    transparent 1dvw
-  ); */
   background-image: repeating-linear-gradient(
     to bottom,
     rgba(21, 21, 21, 0.4),
@@ -391,6 +385,7 @@ main {
   display: block;
 }
 
+/* darkening overlay for main section */
 .darkening-overlay {
   display: none;
   position: absolute;
@@ -405,6 +400,24 @@ main {
   transition: opacity 0.3s ease;
 }
 .darkening-overlay.active {
+  display: block;
+  opacity: 1;
+}
+/* darkening overlay for full page */
+.full-darkening-overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 900;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.full-darkening-overlay.active {
   display: block;
   opacity: 1;
 }
@@ -429,11 +442,15 @@ main {
 #home-image {
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
 }
 #home-image figcaption {
-  display: none;
+  display: block;
+  margin: auto;
+  margin-top: 5px;
+  font-size: clamp(1rem, 2dvw, 1.8rem);
 }
 #Larry-image {
   width: 100%;
@@ -652,7 +669,7 @@ footer {
   padding: 1dvw;
   color: #000;
   width: 60dvw;
-  z-index: 250;
+  z-index: 902;
   border-radius: 1dvw;
   bottom: 2%;
   right: 0;
