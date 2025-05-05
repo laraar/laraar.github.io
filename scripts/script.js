@@ -6,41 +6,41 @@ if (window.location.pathname === "/graphicart.html") {
 
   const overlay = document.getElementById("overlay");
   const overlayImg = document.getElementById("overlay-img");
-  const gridImages = document.querySelectorAll(".grid-img");
 
-  let currentIndex = -1; // index of the currently viewed image
+  let currentImages = [];
+  let currentIndex = -1;
 
-  // Show overlay with a specific image
+  const grids = document.querySelectorAll(".grid");
+
+  grids.forEach((grid) => {
+    const images = grid.querySelectorAll(".grid-img");
+    images.forEach((img, idx) => {
+      img.addEventListener("click", () => {
+        currentImages = Array.from(images); // Only images in this grid
+        showImage(idx);
+      });
+    });
+  });
+
   function showImage(index) {
-    if (index < 0) index = gridImages.length - 2; // Change this to 1 at the end if there is no "more to come" image in the cycle
-    if (index >= gridImages.length - 1) index = 0; // Change this to remove the -1 if there is no "more to come" image in the cycle
+    if (index < 0) index = currentImages.length - 1;
+    if (index >= currentImages.length) index = 0;
     currentIndex = index;
-    overlayImg.src = gridImages[currentIndex].src;
+    overlayImg.src = currentImages[currentIndex].src;
     overlay.classList.add("visible");
   }
 
-  // Hide overlay
   function hideOverlay() {
     overlay.classList.remove("visible");
     currentIndex = -1;
   }
 
-  // When any image is clicked
-  gridImages.forEach((img, index) => {
-    img.addEventListener("click", () => {
-      showImage(index);
-    });
-  });
+  // Overlay click to close
+  overlay.addEventListener("click", hideOverlay);
 
-  // Clicking the overlay hides it
-  overlay.addEventListener("click", () => {
-    hideOverlay();
-  });
-
-  // Keyboard controls
+  // Keyboard navigation
   document.addEventListener("keydown", (e) => {
     if (!overlay.classList.contains("visible")) return;
-
     if (e.key === "Escape") {
       hideOverlay();
     } else if (e.key === "ArrowLeft") {
@@ -49,36 +49,6 @@ if (window.location.pathname === "/graphicart.html") {
       showImage(currentIndex + 1);
     }
   });
-
-  // Deal with touch swiping left and right toolbar
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  document.addEventListener("touchstart", (e) => {
-    if (!overlay.classList.contains("visible")) return;
-    touchStartX = e.changedTouches[0].screenX;
-  });
-
-  document.addEventListener("touchend", (e) => {
-    if (!overlay.classList.contains("visible")) return;
-    touchEndX = e.changedTouches[0].screenX;
-    handleGesture();
-  });
-
-  function handleGesture() {
-    const swipeThreshold = 50; // Minimum distance for a swipe
-    const swipeDistance = touchEndX - touchStartX;
-
-    if (Math.abs(swipeDistance) > swipeThreshold) {
-      if (swipeDistance > 0) {
-        // Swiped right
-        showImage(currentIndex - 1);
-      } else {
-        // Swiped left
-        showImage(currentIndex + 1);
-      }
-    }
-  }
 }
 
 const menuButton = document.getElementById("menu-button");
