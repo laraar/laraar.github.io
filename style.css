@@ -73,7 +73,7 @@ h1 {
   font-family: "Arial Narrow ", sans-serif;
   font-size: calc(0.55rem + 2.75dvw);
   font-weight: 500;
-  margin-bottom: 2dvw;
+  margin-bottom: 1dvw;
 }
 h2 {
   color: var(--amber);
@@ -279,7 +279,7 @@ nav ul li a:hover + .pointer {
 main {
   flex: 1;
   height: 100%;
-  text-align: center;
+  /* text-align: center; */
   position: relative;
   overflow: hidden;
 }
@@ -517,7 +517,16 @@ main {
 }
 
 #graphic-art-content {
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   padding-top: 3dvw;
+}
+
+#graphic-art-content p.subtitle-text {
+  text-align: center;
+  width: 63%;
 }
 
 .grid {
@@ -528,6 +537,7 @@ main {
   margin: 0 auto;
   margin-bottom: 3dvw;
   margin-top: 1dvw;
+  padding-bottom: 2dvw;
 }
 
 .grid-img {
@@ -736,14 +746,18 @@ footer {
   }
 }
 
-@media only screen and (max-width: 700px) {
+/* @media only screen and (max-width: 700px) {
   header {
     grid-template-rows: 1.7fr 1.7fr;
     height: 14.9dvw;
   }
-}
+  #graphic-art-content p.subtitle-text {
+    width: 86%;
+  }
+ 
+} */
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 700px) {
   nav ul li a {
     padding: 0.3vw 0.5vw;
   }
@@ -815,6 +829,9 @@ footer {
   }
   .grid {
     margin-top: 3dvw;
+  }
+  #graphic-art-content p.subtitle-text {
+    width: 75%;
   }
 }
 @media only screen and (max-width: 385px) {

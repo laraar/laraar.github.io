@@ -7,7 +7,7 @@
     <title>Larry Aaronson - Graphic Art</title>
     <meta name="description" content="Larry Aaronson - graphic art" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css?v=19" type="text/css" />
+    <link rel="stylesheet" href="style.css?v=20" type="text/css" />
   </head>
   <body>
     <!-- Monitor border (two borders, one with square corners and one with rounded corners)-->
@@ -71,9 +71,14 @@
         </div>
       </div>
       <div class="darkening-overlay"></div>
+
       <div id="graphic-art-content">
-        <h1>Bar Show Program Covers</h1>
-        <div class="grid">
+        <h1>Bar Show Poster Art</h1>
+        <p class="subtitle-text">
+          I created these posters for the Chicago Bar Association's irreverent musical comedy revue,
+          The Bar Show, from 2009 through 2025.
+        </p>
+        <div class="grid" id="barshow-grid">
           <img class="grid-img" src="images/BarShow/BarShow2009.webp" alt="2009 Bar Show" />
           <img class="grid-img" src="images/BarShow/BarShow2010.webp" alt="2010 Bar Show" />
           <img class="grid-img" src="images/BarShow/BarShow2011.webp" alt="2011 Bar Show" />
@@ -89,19 +94,36 @@
           <img class="grid-img" src="images/BarShow/BarShow2020.webp" alt="2020 Bar Show" />
           <img class="grid-img" src="images/BarShow/BarShow2024.webp" alt="2024 Bar Show" />
           <img class="grid-img" src="images/BarShow/BarShow2025.webp" alt="2025 Bar Show" />
-          <img
+          <!-- <img
             class="grid-img placeholder"
             src="images/BarShow/MoreToCome.webp"
             alt="More to Come..."
-          />
+          /> -->
         </div>
-
         <!-- The overlay (hidden by default) -->
         <div id="overlay">
           <img id="overlay-img" src="images/BarShow/BarShow2009.webp" alt="2009 Bar Show" />
           <!-- Starter image -->
         </div>
 
+        <h1>Other Graphic Art Projects</h1>
+        <p class="subtitle-text">This is a random sampling of my other graphic art projects</p>
+        <div class="grid" id="otherart-grid">
+          <img class="grid-img" src="images/OtherArt/HexIn3D.webp" alt="Hex in 3D" />
+          <img class="grid-img" src="images/OtherArt/LarryInPixels.webp" alt="Larry in Pixels" />
+          <img
+            class="grid-img"
+            src="images/OtherArt/GlassBowlingBall.webp"
+            alt="Glass Bowling Ball"
+          />
+
+          <img
+            class="grid-img"
+            src="images/OtherArt/TriColoredGlobe.webp"
+            alt="Tri-colored Globe"
+          />
+          <img class="grid-img" src="images/OtherArt/TrickOrTree.webp" alt="Trick or Tree" />
+        </div>
         <!-- Contact form -->
         <form id="contact-form" action="alert('Hi')" method="post" class="hidden">
           <div class="form-title">Contact Form</div>
