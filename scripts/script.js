@@ -151,6 +151,11 @@ const barShowImages = [
   "BarShow2020.webp",
   "BarShow2024.webp",
   "BarShow2025.webp",
+  "GlassBowlingBall.webp",
+  "HexIn3D.webp",
+  "LarryInPixels.webp",
+  "TrickOrTree.webp",
+  "TriColoredGlobe.webp",
 ];
 window.addEventListener("load", () => {
   barShowImages.forEach((filename) => {
