@@ -233,75 +233,73 @@ window.addEventListener("load", () => {
 });
 
 function addVideoScrolling() {
-  if (window.location.pathname === "/video.html") {
-    const left = document.querySelector(".left-column");
-    const right = document.querySelector(".right-column");
-    const spacer = document.getElementById("scroll-spacer");
-    const maxHeight = Math.max(
-      left.offsetTop + left.offsetHeight,
-      right.offsetTop + right.offsetHeight
-    );
-    spacer.style.height = maxHeight + "px";
-  }
+  const left = document.querySelector(".left-column");
+  const right = document.querySelector(".right-column");
+  const spacer = document.getElementById("scroll-spacer");
+  const maxHeight = Math.max(
+    left.offsetTop + left.offsetHeight,
+    right.offsetTop + right.offsetHeight
+  );
+  spacer.style.height = maxHeight + "px";
 }
 
-function positionMedia(videoContainer) {
-  return;
-  const media = videoContainer.querySelectorAll(".media");
-  const tvShell = videoContainer.querySelector(".tv-shell");
-  if (!media[0] || !tvShell) return;
+// function positionMedia(videoContainer) {
+//   return;
+//   const media = videoContainer.querySelectorAll(".media");
+//   const tvShell = videoContainer.querySelector(".tv-shell");
+//   if (!media[0] || !tvShell) return;
 
-  // Read the anchor points from image2's data attributes
-  const topPct = parseFloat(tvShell.dataset.top);
-  const leftPct = parseFloat(tvShell.dataset.left);
-  const bottomPct = parseFloat(tvShell.dataset.bottom);
-  const rightPct = parseFloat(tvShell.dataset.right);
+//   // Read the anchor points from image2's data attributes
+//   const topPct = parseFloat(tvShell.dataset.top);
+//   const leftPct = parseFloat(tvShell.dataset.left);
+//   const bottomPct = parseFloat(tvShell.dataset.bottom);
+//   const rightPct = parseFloat(tvShell.dataset.right);
 
-  // These calculate how far the top-left corner of tvShell is from the top-left of the container.
-  const containerRect = videoContainer.getBoundingClientRect();
-  const tvShellRect = tvShell.getBoundingClientRect();
+//   // These calculate how far the top-left corner of tvShell is from the top-left of the container.
+//   const containerRect = videoContainer.getBoundingClientRect();
+//   const tvShellRect = tvShell.getBoundingClientRect();
 
-  // These calculate how far the top-left corner of tvShell is from the top-left of the container.
-  const offsetX = tvShellRect.left - containerRect.left;
-  const offsetY = tvShellRect.top - containerRect.top;
+//   // These calculate how far the top-left corner of tvShell is from the top-left of the container.
+//   const offsetX = tvShellRect.left - containerRect.left;
+//   const offsetY = tvShellRect.top - containerRect.top;
 
-  // Get the dimensions of the tvShell
-  const tvShellWidth = tvShellRect.width;
-  const tvShellHeight = tvShellRect.height;
+//   // Get the dimensions of the tvShell
+//   const tvShellWidth = tvShellRect.width;
+//   const tvShellHeight = tvShellRect.height;
 
-  // These lines turn the percent values from the data-* attributes into actual pixel coordinates inside the container.
-  const left = offsetX + (leftPct / 100) * tvShellWidth;
-  const top = offsetY + (topPct / 100) * tvShellHeight;
-  const right = offsetX + tvShellWidth - (rightPct / 100) * tvShellWidth;
-  const bottom = offsetY + tvShellHeight - (bottomPct / 100) * tvShellHeight;
+//   // These lines turn the percent values from the data-* attributes into actual pixel coordinates inside the container.
+//   const left = offsetX + (leftPct / 100) * tvShellWidth;
+//   const top = offsetY + (topPct / 100) * tvShellHeight;
+//   const right = offsetX + tvShellWidth - (rightPct / 100) * tvShellWidth;
+//   const bottom = offsetY + tvShellHeight - (bottomPct / 100) * tvShellHeight;
 
-  // These calculate the final size. Namely, derive the pixel dimensions of the .media element based on the bounding box formed by top/left and bottom/right.
-  const width = right - left;
-  const height = bottom - top;
+//   // These calculate the final size. Namely, derive the pixel dimensions of the .media element based on the bounding box formed by top/left and bottom/right.
+//   const width = right - left;
+//   const height = bottom - top;
 
-  // Then assign the absolute pixel positions for the image in the container,
-  // to be positioned as designatged in the tv-shell.
-  media.forEach((mediaInstance, index) => {
-    mediaInstance.style.position = "absolute";
-    mediaInstance.style.left = `${left}px`;
-    mediaInstance.style.top = `${top}px`;
-    mediaInstance.style.width = `${width}px`;
-    mediaInstance.style.height = `${height}px`;
-    mediaInstance.style.objectFit = "fill";
-  });
-}
+//   // Then assign the absolute pixel positions for the image in the container,
+//   // to be positioned as designatged in the tv-shell.
+//   media.forEach((mediaInstance, index) => {
+//     mediaInstance.style.position = "absolute";
+//     mediaInstance.style.left = `${left}px`;
+//     mediaInstance.style.top = `${top}px`;
+//     mediaInstance.style.width = `${width}px`;
+//     mediaInstance.style.height = `${height}px`;
+//     mediaInstance.style.objectFit = "fill";
+//   });
+// }
 
 // Run the positionMedia function for each element of class .video-container if any
-function positionAllMedia() {
-  const allVideoContainers = document.querySelectorAll(".video-container");
-  if (allVideoContainers.length > 0) {
-    allVideoContainers.forEach(positionMedia);
-  }
-}
+// function positionAllMedia() {
+//   const allVideoContainers = document.querySelectorAll(".video-container");
+//   if (allVideoContainers.length > 0) {
+//     allVideoContainers.forEach(positionMedia);
+//   }
+// }
 
 window.addEventListener("load", () => {
   // position media in tv-shells if there are any .video-container elements on the page.
-  positionAllMedia();
+  // positionAllMedia();
 
   // Set scanlines in header dynamically based on logo height
   const logo = document.getElementById("logo");
@@ -339,12 +337,13 @@ window.addEventListener("load", () => {
 });
 
 window.addEventListener("load", () => {
-  // position media in tv-shells if there are any .video-container elements on the page.
-  positionAllMedia();
-  addVideoScrolling();
+  if (window.location.pathname === "/video.html") {
+    addVideoScrolling();
+  }
 });
 
 window.addEventListener("resize", () => {
-  positionAllMedia();
-  addVideoScrolling();
+  if (window.location.pathname === "/video.html") {
+    addVideoScrolling();
+  }
 });
