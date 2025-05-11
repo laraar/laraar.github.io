@@ -1,0 +1,420 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Larry Aaronson - Video Production</title>
+    <meta name="description" content="Larry Aaronson - video production" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css?v=1" type="text/css" />
+  </head>
+  <body>
+    <!-- This is to allow scroll freezing when showing overlay image -->
+    <!-- Monitor border (two borders, one with square corners and one with rounded corners)-->
+    <div class="viewport-outer-border"><div class="viewport-radius-border"></div></div>
+    <!-- Header, including nav -->
+    <header>
+      <div class="scanlines"></div>
+      <div class="logo-block">
+        <img id="logo" src="images/larrypixel.webp" alt="Larry in pixels" />
+      </div>
+      <div class="right-block top-right crt-text">
+        <!-- Manually spacing the words here to fix kerning of this font -->
+        Larry<span class="space"></span>Aaronson,<br class="line-break" /><span class="space1"
+          >&nbsp;&nbsp;&nbsp;</span
+        >the<span class="space"></span>website...
+      </div>
+      <div class="right-block bottom-right-wide">
+        <nav>
+          <ul>
+            <li><a class="nav crt-amber-glow" href="index.html">Home</a></li>
+            <li><a class="nav crt-amber-glow" href="graphicart.html">Graphic Art</a></li>
+            <li>
+              <a class="nav crt-amber-glow" href="video.html">Video Prod</a>
+              <div class="pointer"></div>
+            </li>
+            <li><a class="nav crt-amber-glow" href="voice.html">Voice Work</a></li>
+            <li><a class="nav crt-amber-glow" href="patentlaw.html">Patent Law</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="right-block bottom-right-narrow">
+        <button type="button" id="menu-button">menu &#9776;</button>
+      </div>
+    </header>
+
+    <!-- Main content section -->
+    <main>
+      <!-- Mobile menu -->
+      <div id="menu-triangle-wrapper">
+        <div class="menu-triangle" id="menu-triangle">
+          <ul>
+            <li>
+              <div class="mobile-text"><a href="index.html">Home •</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="graphicart.html">Graphic Art •</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="video.html">Video Production •</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="voice.html">Voice Work •</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="patentlaw.html">Patent Law •</a></div>
+            </li>
+          </ul>
+          <div class="menu-copyright">&copy; LHA</div>
+        </div>
+      </div>
+      <div class="darkening-overlay"></div>
+
+      <div id="page-content">
+        <h1>My Video Production Work</h1>
+        <p class="subtitle-text">
+          This is a sampling of my video production work, including several videos that I produced
+          for Chicago's annual irreverent musical comedy revue, The&nbsp;Bar&nbsp;Show, and others
+          that I produced for Highland Park Players' Disney Cabaret. I used Adobe After&nbsp;Effects
+          and Adobe Premiere&nbsp;Pro for most of this work.
+        </p>
+        <div id="video-grid-spacer"></div>
+        <div class="wrapper">
+          <div class="left-column">
+            <!-- <div class="video-element"> -->
+            <div class="video-container">
+              <iframe
+                loading="lazy"
+                class="media mediaVideo"
+                id="video1"
+                src="https://www.youtube.com/embed/VswzCIRre4o?si=TdMZHv_VSuo8XEk9"
+                title="Don't Rain on My Parade"
+                allowfullscreen
+              ></iframe>
+              <img
+                class="tv-shell"
+                src="images/TV1.webp"
+                alt="frame"
+                data-top="7"
+                data-left="5.7"
+                data-bottom="16.38"
+                data-right="10.99"
+              />
+              <div class="video-caption">Don't Rain on My Parade</div>
+              <div class="video-subcaption">(Bar Show - 2020)</div>
+            </div>
+            <div class="video-container">
+              <iframe
+                loading="lazy"
+                class="media"
+                id="video3"
+                src="https://www.youtube.com/embed/8ghaNOX8xGo?si=xqzl0wopOea94dTx"
+                title="So Long, Farewell"
+                allowfullscreen
+              ></iframe>
+              <img
+                class="tv-shell"
+                src="images/TV1.webp"
+                alt="frame"
+                data-top="7"
+                data-left="5.7"
+                data-bottom="16.38"
+                data-right="10.99"
+              />
+              <div class="video-caption">So Long, Farewell</div>
+              <div class="video-subcaption">(Bar Show - 2020)</div>
+            </div>
+            <div class="video-container">
+              <iframe
+                loading="lazy"
+                class="media"
+                id="video5"
+                src="https://www.youtube.com/embed/-SSXlNZDARc?si=d6I2ht6jQo1225_j"
+                title="Gee, Chief Justice Roberts"
+                allowfullscreen
+              ></iframe>
+              <img
+                class="tv-shell"
+                src="images/TV1.webp"
+                alt="frame"
+                data-top="7"
+                data-left="5.7"
+                data-bottom="16.38"
+                data-right="10.99"
+              />
+              <div class="video-caption">Gee, Chief Justice Roberts</div>
+              <div class="video-subcaption">(Bar Show - 2020)</div>
+            </div>
+            <div class="video-container">
+              <iframe
+                loading="lazy"
+                class="media"
+                id="video7"
+                src="https://www.youtube.com/embed/XdvPtwtRtMA?si=D1CFsffYBERwmrRt"
+                title="Friend Like Me"
+                allowfullscreen
+              ></iframe>
+              <img
+                class="tv-shell"
+                src="images/TV1.webp"
+                alt="frame"
+                data-top="7"
+                data-left="5.7"
+                data-bottom="16.38"
+                data-right="10.99"
+              />
+              <div class="video-caption">Friend Like Me</div>
+              <div class="video-subcaption">(HP Players - 2021)</div>
+            </div>
+          </div>
+
+          <div class="right-column">
+            <div class="video-container">
+              <iframe
+                loading="lazy"
+                class="media"
+                id="video2"
+                src="https://www.youtube.com/embed/qBAFttUkG6c?si=Vsb5PgX9cdoR72K1"
+                title="Pharma Frenzy"
+                allowfullscreen
+              ></iframe>
+              <img
+                class="tv-shell"
+                src="images/TV1.webp"
+                alt="frame"
+                data-top="7"
+                data-left="5.7"
+                data-bottom="16.38"
+                data-right="10.99"
+              />
+              <div class="video-caption">TV Drug Commercials</div>
+              <div class="video-subcaption">(Bar Show - 2024)</div>
+            </div>
+            <div class="video-container">
+              <iframe
+                loading="lazy"
+                class="media"
+                id="video4"
+                src="https://www.youtube.com/embed/IrlBtbiTEXs?si=syscW3EmYUXlYJ_m"
+                title="Shark'ish Tank"
+                allowfullscreen
+              ></iframe>
+              <img
+                class="tv-shell"
+                src="images/TV1.webp"
+                alt="frame"
+                data-top="7"
+                data-left="5.7"
+                data-bottom="16.38"
+                data-right="10.99"
+              />
+              <div class="video-caption">Shark'ish Tank</div>
+              <div class="video-subcaption">(Bar Show - 2024)</div>
+            </div>
+            <div class="video-container">
+              <iframe
+                loading="lazy"
+                class="media"
+                id="video6"
+                src="https://www.youtube.com/embed/098BJ2mvUR0?si=NOusKDDRqDCU53-h"
+                title="12 Days of Quarantine"
+                allowfullscreen
+              ></iframe>
+              <img
+                class="tv-shell"
+                src="images/TV1.webp"
+                alt="frame"
+                data-top="7"
+                data-left="5.7"
+                data-bottom="16.38"
+                data-right="10.99"
+              />
+              <div class="video-caption">12 Days of Quarantine</div>
+              <div class="video-subcaption">(Bar Show - 2020)</div>
+            </div>
+            <div class="video-container">
+              <iframe
+                loading="lazy"
+                class="media"
+                id="video8"
+                src="https://www.youtube.com/embed/Zzy2NrPvbM4?si=j63SA6t0EaWZPaAl"
+                title="Love is an Open Door"
+                allowfullscreen
+              ></iframe>
+              <img
+                class="tv-shell"
+                src="images/TV1.webp"
+                alt="frame"
+                data-top="7"
+                data-left="5.7"
+                data-bottom="16.38"
+                data-right="10.99"
+              />
+              <div class="video-caption">Love is an Open Door</div>
+              <div class="video-subcaption">(HP Players - 2021)</div>
+            </div>
+            <!-- <div class="video-element">
+              <div class="video-container" id="video-container3">
+                <img class="media" src="images/image1.webp" alt="picture" />
+                <img
+                  class="tv-shell"
+                  src="images/TV1.webp"
+                  alt="frame"
+                  data-top="7"
+                  data-left="5.7"
+                  data-bottom="16.38"
+                  data-right="10.99"
+                />
+              </div>
+              <div class="video-caption">Pharma Frenzy</div>
+            </div>
+            <div class="video-element">
+              <div class="video-container" id="video-container4">
+                <img class="media" src="images/image1.webp" alt="picture" />
+                <img
+                  class="tv-shell"
+                  src="images/TV1.webp"
+                  alt="frame"
+                  data-top="7"
+                  data-left="5.7"
+                  data-bottom="16.38"
+                  data-right="10.99"
+                />
+              </div>
+              <div class="video-caption">Gee, Chief Justice Roberts</div>
+            </div>  -->
+          </div>
+          <!-- </div> -->
+        </div>
+        <div id="scroll-spacer"></div>
+
+        <!--This is here to facilitate scrolling since the columns are absolute positioned -->
+
+        <!-- <div class="video-grid">
+          <div class="video-container" id="video-container1">
+            <img class="media" src="images/image1.webp" alt="picture" />
+            <img
+              class="tv-shell"
+              src="images/TV1.webp"
+              alt="frame"
+              data-top="7"
+              data-left="5.7"
+              data-bottom="16.38"
+              data-right="10.99"
+            />
+          </div>
+          <div class="video-container" id="video-container2">
+            <img class="media" src="images/image1.webp" alt="picture" />
+            <img
+              class="tv-shell"
+              src="images/TV1.webp"
+              alt="frame"
+              data-top="7"
+              data-left="5.7"
+              data-bottom="16.38"
+              data-right="10.99"
+            />
+          </div>
+          <div class="video-container" id="video-container3">
+            <img class="media" src="images/image1.webp" alt="picture" />
+            <img
+              class="tv-shell"
+              src="images/TV1.webp"
+              alt="frame"
+              data-top="7"
+              data-left="5.7"
+              data-bottom="16.38"
+              data-right="10.99"
+            />
+          </div> 
+        </div>-->
+        <!-- <div class="video-container1">
+            <img class="tv-shell" src="images/TV3.webp" alt="TV frame" />
+          </div>
+          <div class="video-container1">
+            <iframe
+              class="video"
+              id="video1"
+              src="https://www.youtube.com/embed/qBAFttUkG6c?si=8o5Bh6YT6mUVy8WV"
+              title="Pharma Frenzy"
+              allowfullscreen
+            ></iframe>
+          </div> -->
+        <!-- <div class="video-container2">
+            <img class="tv-shell" src="images/TV3.webp" alt="TV frame" />
+          </div>
+          <div class="video-container2">
+            <iframe
+              class="video"
+              id="video2"
+              src="https://www.youtube.com/embed/qBAFttUkG6c?si=8o5Bh6YT6mUVy8WV"
+              title="Pharma Frenzy"
+              allowfullscreen
+            ></iframe>
+          </div> -->
+        <!-- <div class="video-container3">
+            <img class="tv-shell" src="images/TV3.webp" alt="TV frame" />
+          </div> -->
+        <!-- <div class="video-container3">
+            <iframe
+              class="video"
+              id="video3"
+              src="https://www.youtube.com/embed/qBAFttUkG6c?si=8o5Bh6YT6mUVy8WV"
+              title="Pharma Frenzy"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div> -->
+
+        <!-- <div class="videos" id="videos">
+          <div class="video-container">
+            <img class="tv-shell" src="images/TV3.webp" alt="TV frame" />
+            <div class="video-position">
+              <iframe
+                class="video"
+                src="https://www.youtube.com/embed/qBAFttUkG6c?si=8o5Bh6YT6mUVy8WV"
+                title="Pharma Frenzy"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div> -->
+
+        <!-- <iframe
+            class="video right"
+            src="https://www.youtube.com/embed/9cdm2rBfAHo?si=g5bBVyzxld6vmSb5"
+            title="Don't Rain on My Parade"
+          ></iframe> -->
+        <!-- </div> -->
+
+        <!-- Contact form -->
+        <form id="contact-form" action="alert('Hi')" method="post" class="hidden">
+          <div class="form-title">Contact Form</div>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" maxlength="300" required></textarea>
+          <input type="submit" class="form-button" id="submit" value="Submit to Larry" />
+          <input type="button" class="form-button" id="cancel" tabindex="-1" value="Cancel" />
+          <input type="reset" class="form-button" id="reset" tabindex="-1" value="Reset" />
+        </form>
+      </div>
+    </main>
+
+    <footer>
+      <div id="footer-bottom">
+        <div id="footer-text">
+          <span>&copy 2025 Larry Aaronson</span>
+          <span><button type="button" id="contact-button">Contact me...</button></span>
+        </div>
+      </div>
+    </footer>
+    <div class="full-darkening-overlay"></div>
+    <!-- Run script.js after page load -->
+    <script src="scripts/script.js"></script>
+  </body>
+</html>
