@@ -1,5 +1,32 @@
 /** @format */
 
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+
+const contactButton = document.getElementById("contact-button");
+const contactForm = document.getElementById("contact-form");
+const firstField = document.getElementById("name");
+const fullDarkeningOverlay = document.querySelector(".full-darkening-overlay");
+const menuButton = document.getElementById("menu-button");
+const menuTriangle = document.getElementById("menu-triangle-wrapper");
+const darkeningOverlay = document.querySelector(".darkening-overlay");
+
+//Manage whether the page can scroll. (For use when presenting an overlay below.)
+let scrollY = 0;
+function stopScrolling() {
+  scrollY = window.scrollY; // Save the current vertical scroll position
+  document.body.style.position = "fixed";
+  document.body.style.top = `-${scrollY}px`;
+  document.body.style.width = "100%";
+}
+function startScrolling() {
+  document.body.style.position = "";
+  document.body.style.top = "";
+  document.body.style.width = "";
+  window.scrollTo(0, scrollY); // Restore scroll position
+}
+
 // Code to handle graphic art image gallery``
 if (window.location.pathname === "/graphicart.html") {
   // Code that runs only on /about.html
@@ -28,11 +55,13 @@ if (window.location.pathname === "/graphicart.html") {
     currentIndex = index;
     overlayImg.src = currentImages[currentIndex].src;
     overlay.classList.add("visible");
+    stopScrolling();
   }
 
   function hideOverlay() {
     overlay.classList.remove("visible");
     currentIndex = -1;
+    startScrolling();
   }
 
   // Overlay click to close
@@ -81,25 +110,38 @@ if (window.location.pathname === "/graphicart.html") {
   }
 }
 
-const menuButton = document.getElementById("menu-button");
-const menuTriangle = document.getElementById("menu-triangle-wrapper");
-const darkeningOverlay = document.querySelector(".darkening-overlay");
+//Show or hide the menu, and when showing the menu, freeze background scrolling
+function showMenu() {
+  menuTriangle.classList.add("active");
+  darkeningOverlay.classList.add("active");
+  stopScrolling();
+}
+function hideMenu() {
+  menuTriangle.classList.remove("active");
+  darkeningOverlay.classList.remove("active");
+  startScrolling();
+}
+
 menuButton.addEventListener("click", () => {
-  // triangle.classList.toggle("visible");
-  // triangle.classList.toggle("hidden");
-  menuTriangle.classList.toggle("active");
-  darkeningOverlay.classList.toggle("active");
+  if (menuTriangle.classList.contains("active")) {
+    hideMenu();
+  } else {
+    showMenu();
+  }
 });
 window.addEventListener("resize", function () {
   if (menuTriangle.classList.contains("active")) {
-    menuTriangle.classList.toggle("active");
-    darkeningOverlay.classList.toggle("active");
+    hideMenu();
   }
 });
 document.addEventListener("click", function (event) {
-  if (!menuButton.contains(event.target)) {
-    menuTriangle.classList.remove("active");
-    darkeningOverlay.classList.remove("active");
+  if (
+    menuTriangle.classList.contains("active") &&
+    !menuButton.contains(event.target) &&
+    !contactButton.contains(event.target) &&
+    !contactForm.contains(event.target)
+  ) {
+    hideMenu();
   }
 });
 
@@ -111,12 +153,13 @@ menuButton.addEventListener("pointerdown", () => {
   }, 200);
 });
 
-const contactButton = document.getElementById("contact-button");
-const form = document.getElementById("contact-form");
-const firstField = document.getElementById("name");
-const fullDarkeningOverlay = document.querySelector(".full-darkening-overlay");
 contactButton.addEventListener("click", () => {
-  form.classList.toggle("hidden");
+  if (!contactForm.classList.contains("hidden")) {
+    contactForm.reset();
+    contactForm.classList.add("hidden");
+  } else {
+    contactForm.classList.remove("hidden");
+  }
   firstField.focus();
   fullDarkeningOverlay.classList.toggle("active");
 });
@@ -131,70 +174,105 @@ contactButton.addEventListener("pointerdown", () => {
 
 //Cancel button for form
 document.getElementById("cancel").addEventListener("click", function () {
-  form.classList.toggle("hidden");
+  contactForm.reset();
+  contactForm.classList.add("hidden");
   fullDarkeningOverlay.classList.toggle("active");
 });
 
 // Hide form upon submit, and then execute the submission function. ()
-form.addEventListener("submit", function (event) {
+contactForm.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent the default form submission (which triggers the redirect)
   alert("Form submission is under construction...");
   // Hide the form immediately upon submission
-  form.classList.toggle("hidden"); // This keeps it invisible but still in the document flow
+  contactForm.classList.add("hidden"); // This keeps it invisible but still in the document flow
   fullDarkeningOverlay.classList.toggle("active");
-
-  return;
-
-  // Create a FormData object to collect the form data
-  const formData = new FormData(form);
-
-  // Use Fetch API to submit the form data to the Google Apps Script Web App
-  fetch(form.action, {
-    method: "POST",
-    body: formData,
-  })
-    .then((response) => response.text()) // Parse the response as text
-    .then((data) => {
-      // Optionally, you can handle the response here if you need
-      console.log("Form submission successful:", data);
-    })
-    .catch((error) => {
-      console.error("Error submitting form:", error);
-    });
 });
 //Should really add some sort of notice to the user to indicate that the submission worked. Later
 
 //Preload images for graphic art page
 const barShowImages = [
-  "BarShow2009.webp",
-  "BarShow2010.webp",
-  "BarShow2011.webp",
-  "BarShow2012.webp",
-  "BarShow2013.webp",
-  "BarShow2014.webp",
-  "BarShow2014b.webp",
-  "BarShow2015.webp",
-  "BarShow2016.webp",
-  "BarShow2017.webp",
-  "BarShow2018.webp",
-  "BarShow2019.webp",
-  "BarShow2020.webp",
-  "BarShow2024.webp",
-  "BarShow2025.webp",
-  "GlassBowlingBall.webp",
-  "HexIn3D.webp",
-  "LarryInPixels.webp",
-  "TrickOrTree.webp",
-  "TriColoredGlobe.webp",
+  "BarShow/BarShow2009.webp",
+  "BarShow/BarShow2010.webp",
+  "BarShow/BarShow2011.webp",
+  "BarShow/BarShow2012.webp",
+  "BarShow/BarShow2013.webp",
+  "BarShow/BarShow2014.webp",
+  "BarShow/BarShow2014b.webp",
+  "BarShow/BarShow2015.webp",
+  "BarShow/BarShow2016.webp",
+  "BarShow/BarShow2017.webp",
+  "BarShow/BarShow2018.webp",
+  "BarShow/BarShow2019.webp",
+  "BarShow/BarShow2020.webp",
+  "BarShow/BarShow2024.webp",
+  "BarShow/BarShow2025.webp",
+  "OtherArt/GlassBowlingBall.webp",
+  "OtherArt/HexIn3D.webp",
+  "OtherArt/LarryInPixels.webp",
+  "OtherArt/TrickOrTree.webp",
+  "OtherArt/TriColoredGlobe.webp",
 ];
 window.addEventListener("load", () => {
+  window.scrollTo(0, 0);
   barShowImages.forEach((filename) => {
     const img = new Image();
-    img.src = `/images/BarShow/${filename}`;
+    img.src = `/images/${filename}`;
   });
 });
 
-// Go to top of page on page load
-window.addEventListener("load", function () {
-  window.scrollTo(0, 0);
+function addVideoScrolling() {
+  const left = document.querySelector(".left-column");
+  const right = document.querySelector(".right-column");
+  const spacer = document.getElementById("scroll-spacer");
+  const maxHeight = Math.max(
+    left.offsetTop + left.offsetHeight,
+    right.offsetTop + right.offsetHeight
+  );
+  spacer.style.height = maxHeight + "px";
+}
+
+window.addEventListener("load", () => {});
+
+window.addEventListener("load", () => {
+  // Set scanlines in header dynamically based on logo height
+  const logo = document.getElementById("logo");
+  const scanlines = document.querySelector(".scanlines");
+  const resizeObserver = new ResizeObserver((entries) => {
+    const entry = entries[0];
+    const height = entry.contentRect.height;
+    const stripeHeight = height / 45;
+    scanlines.style.backgroundImage = `
+      repeating-linear-gradient(
+        to bottom,
+        rgba(21, 21, 21, 0.4),
+        rgba(21, 21, 21, 0.4) ${stripeHeight / 3}px,
+        transparent ${stripeHeight / 3}px,
+        transparent ${stripeHeight}px
+      )
+    `;
+  });
+  resizeObserver.observe(logo);
+
+  // Set attributes of all YouTube video frames, to avoid having to repeat them in HTML.
+  const videos = document.querySelectorAll(".video");
+  if (videos.length > 0) {
+    videos.forEach((iframe) => {
+      iframe.setAttribute("frameborder", "0");
+      iframe.setAttribute(
+        "allow",
+        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      );
+      iframe.setAttribute("referrerpolicy", "no-referrer");
+    });
+  }
+
+  if (window.location.pathname === "/video.html") {
+    addVideoScrolling();
+  }
+});
+
+window.addEventListener("resize", () => {
+  if (window.location.pathname === "/video.html") {
+    addVideoScrolling();
+  }
 });
