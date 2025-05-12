@@ -7,7 +7,7 @@
     <title>Larry Aaronson - Video Production</title>
     <meta name="description" content="Larry Aaronson - video production" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css?v=1" type="text/css" />
+    <link rel="stylesheet" href="style.css?v=3" type="text/css" />
   </head>
   <body>
     <!-- This is to allow scroll freezing when showing overlay image -->
@@ -256,138 +256,10 @@
               <div class="video-caption">Love is an Open Door</div>
               <div class="video-subcaption">(HP Players - 2021)</div>
             </div>
-            <!-- <div class="video-element">
-              <div class="video-container" id="video-container3">
-                <img class="media" src="images/image1.webp" alt="picture" />
-                <img
-                  class="tv-shell"
-                  src="images/TV1.webp"
-                  alt="frame"
-                  data-top="7"
-                  data-left="5.7"
-                  data-bottom="16.38"
-                  data-right="10.99"
-                />
-              </div>
-              <div class="video-caption">Pharma Frenzy</div>
-            </div>
-            <div class="video-element">
-              <div class="video-container" id="video-container4">
-                <img class="media" src="images/image1.webp" alt="picture" />
-                <img
-                  class="tv-shell"
-                  src="images/TV1.webp"
-                  alt="frame"
-                  data-top="7"
-                  data-left="5.7"
-                  data-bottom="16.38"
-                  data-right="10.99"
-                />
-              </div>
-              <div class="video-caption">Gee, Chief Justice Roberts</div>
-            </div>  -->
           </div>
-          <!-- </div> -->
         </div>
+        <!-- This scroll-spacer takes on the full content height to facilitate scrolling, since absolute positioning poses issue otherwise. -->
         <div id="scroll-spacer"></div>
-
-        <!--This is here to facilitate scrolling since the columns are absolute positioned -->
-
-        <!-- <div class="video-grid">
-          <div class="video-container" id="video-container1">
-            <img class="media" src="images/image1.webp" alt="picture" />
-            <img
-              class="tv-shell"
-              src="images/TV1.webp"
-              alt="frame"
-              data-top="7"
-              data-left="5.7"
-              data-bottom="16.38"
-              data-right="10.99"
-            />
-          </div>
-          <div class="video-container" id="video-container2">
-            <img class="media" src="images/image1.webp" alt="picture" />
-            <img
-              class="tv-shell"
-              src="images/TV1.webp"
-              alt="frame"
-              data-top="7"
-              data-left="5.7"
-              data-bottom="16.38"
-              data-right="10.99"
-            />
-          </div>
-          <div class="video-container" id="video-container3">
-            <img class="media" src="images/image1.webp" alt="picture" />
-            <img
-              class="tv-shell"
-              src="images/TV1.webp"
-              alt="frame"
-              data-top="7"
-              data-left="5.7"
-              data-bottom="16.38"
-              data-right="10.99"
-            />
-          </div> 
-        </div>-->
-        <!-- <div class="video-container1">
-            <img class="tv-shell" src="images/TV3.webp" alt="TV frame" />
-          </div>
-          <div class="video-container1">
-            <iframe
-              class="video"
-              id="video1"
-              src="https://www.youtube.com/embed/qBAFttUkG6c?si=8o5Bh6YT6mUVy8WV"
-              title="Pharma Frenzy"
-              allowfullscreen
-            ></iframe>
-          </div> -->
-        <!-- <div class="video-container2">
-            <img class="tv-shell" src="images/TV3.webp" alt="TV frame" />
-          </div>
-          <div class="video-container2">
-            <iframe
-              class="video"
-              id="video2"
-              src="https://www.youtube.com/embed/qBAFttUkG6c?si=8o5Bh6YT6mUVy8WV"
-              title="Pharma Frenzy"
-              allowfullscreen
-            ></iframe>
-          </div> -->
-        <!-- <div class="video-container3">
-            <img class="tv-shell" src="images/TV3.webp" alt="TV frame" />
-          </div> -->
-        <!-- <div class="video-container3">
-            <iframe
-              class="video"
-              id="video3"
-              src="https://www.youtube.com/embed/qBAFttUkG6c?si=8o5Bh6YT6mUVy8WV"
-              title="Pharma Frenzy"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </div> -->
-
-        <!-- <div class="videos" id="videos">
-          <div class="video-container">
-            <img class="tv-shell" src="images/TV3.webp" alt="TV frame" />
-            <div class="video-position">
-              <iframe
-                class="video"
-                src="https://www.youtube.com/embed/qBAFttUkG6c?si=8o5Bh6YT6mUVy8WV"
-                title="Pharma Frenzy"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div> -->
-
-        <!-- <iframe
-            class="video right"
-            src="https://www.youtube.com/embed/9cdm2rBfAHo?si=g5bBVyzxld6vmSb5"
-            title="Don't Rain on My Parade"
-          ></iframe> -->
-        <!-- </div> -->
 
         <!-- Contact form -->
         <form id="contact-form" action="alert('Hi')" method="post" class="hidden">
@@ -400,7 +272,7 @@
           <textarea id="message" name="message" maxlength="300" required></textarea>
           <input type="submit" class="form-button" id="submit" value="Submit to Larry" />
           <input type="button" class="form-button" id="cancel" tabindex="-1" value="Cancel" />
-          <input type="reset" class="form-button" id="reset" tabindex="-1" value="Reset" />
+          <input type="reset" class="form-button" id="resetBtn" tabindex="-1" value="Reset" />
         </form>
       </div>
     </main>
