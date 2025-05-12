@@ -7,9 +7,10 @@
     <title>Larry Aaronson - Graphic Art</title>
     <meta name="description" content="Larry Aaronson - graphic art" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css?v=20" type="text/css" />
+    <link rel="stylesheet" href="style.css?v=22" type="text/css" />
   </head>
   <body>
+    <!-- This is to allow scroll freezing when showing overlay image -->
     <!-- Monitor border (two borders, one with square corners and one with rounded corners)-->
     <div class="viewport-outer-border"><div class="viewport-radius-border"></div></div>
     <!-- Header, including nav -->
@@ -72,11 +73,17 @@
       </div>
       <div class="darkening-overlay"></div>
 
-      <div id="graphic-art-content">
+      <div id="page-content">
+        <!-- The overlay (hidden by default) -->
+        <div id="overlay">
+          <img id="overlay-img" src="images/tempOverlay.webp" alt="Temporary overlay (empty)  " />
+          <!-- Starter image -->
+        </div>
+
         <h1>Bar Show Poster Art</h1>
         <p class="subtitle-text">
           I created these posters for the Chicago Bar Association's irreverent musical comedy revue,
-          The Bar Show, from 2009 through 2025.
+          The&nbsp;Bar&nbsp;Show, from&nbsp;2009&nbsp;through&nbsp;2025.
         </p>
         <div class="grid" id="barshow-grid">
           <img class="grid-img" src="images/BarShow/BarShow2009.webp" alt="2009 Bar Show" />
@@ -100,14 +107,12 @@
             alt="More to Come..."
           /> -->
         </div>
-        <!-- The overlay (hidden by default) -->
-        <div id="overlay">
-          <img id="overlay-img" src="images/BarShow/BarShow2009.webp" alt="2009 Bar Show" />
-          <!-- Starter image -->
-        </div>
 
+        <hr />
         <h1>Other Graphic Art Projects</h1>
-        <p class="subtitle-text">This is a random sampling of my other graphic art projects</p>
+        <p class="subtitle-text">
+          This is a random sampling of my other graphic&nbsp;art&nbsp;projects
+        </p>
         <div class="grid" id="otherart-grid">
           <img class="grid-img" src="images/OtherArt/HexIn3D.webp" alt="Hex in 3D" />
           <img class="grid-img" src="images/OtherArt/LarryInPixels.webp" alt="Larry in Pixels" />
@@ -135,7 +140,7 @@
           <textarea id="message" name="message" maxlength="300" required></textarea>
           <input type="submit" class="form-button" id="submit" value="Submit to Larry" />
           <input type="button" class="form-button" id="cancel" tabindex="-1" value="Cancel" />
-          <input type="reset" class="form-button" id="reset" tabindex="-1" value="Reset" />
+          <input type="reset" class="form-button" id="resetBtn" tabindex="-1" value="Reset" />
         </form>
       </div>
     </main>

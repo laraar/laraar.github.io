@@ -30,6 +30,13 @@ b {
   font-size: inherit;
   font-weight: bold; /* optional — reinforces intent */
 }
+hr {
+  height: 2px;
+  width: 85%;
+  border: none;
+  background-color: var(--amber);
+  margin-bottom: 3dvw;
+}
 
 /* Monitor border */
 .viewport-outer-border {
@@ -129,9 +136,11 @@ header {
     transparent 0.1dvw,
     transparent 0.3dvw
   );
+  background-size: 100% calc(5px * (100vw / 1920));
   z-index: 102;
   pointer-events: none;
 }
+
 /* Header grid components  */
 .logo-block {
   grid-column: 2; /* Larry image is in the first column */
@@ -399,6 +408,9 @@ main {
   display: block;
   opacity: 1;
 }
+#all-but-footer {
+  display: relative;
+}
 /* darkening overlay for full page */
 .full-darkening-overlay {
   display: none;
@@ -423,7 +435,7 @@ main {
   display: flex;
   gap: 30px;
   margin: auto;
-  margin-top: 3vw;
+  margin-top: 2%;
   padding-top: 25px;
   padding-bottom: 50px;
 }
@@ -468,6 +480,7 @@ main {
   #home-content {
     width: 500px;
     gap: 25px;
+    margin-top: 2dvw;
   }
   #home-text p {
     font-size: 1.1rem;
@@ -475,12 +488,12 @@ main {
 }
 @media (max-width: 650px) {
   #home-content {
-    width: 380px;
+    width: 430px;
     gap: 15px;
   }
   #home-text p {
     flex: 2.3;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 }
 @media (max-width: 500px) {
@@ -488,7 +501,7 @@ main {
     width: 80dvw;
     gap: 15px;
     flex-direction: column;
-    padding-top: 10px;
+    padding-top: 15px;
   }
   #home-text p {
     flex: 2.3;
@@ -516,7 +529,7 @@ main {
   }
 }
 
-#graphic-art-content {
+#page-content {
   text-align: center;
   align-items: center;
   display: flex;
@@ -524,9 +537,9 @@ main {
   padding-top: 3dvw;
 }
 
-#graphic-art-content p.subtitle-text {
+#page-content p.subtitle-text {
   text-align: center;
-  width: 63%;
+  width: 75%;
 }
 
 .grid {
@@ -622,6 +635,184 @@ main {
   }
 }
 
+#video-grid-spacer {
+  height: 2dvw;
+}
+#scroll-spacer {
+  margin-bottom: 7dvw;
+}
+.wrapper {
+  width: 83dvw;
+  margin: auto;
+  /* display: flex;
+  justify-content: space-between; */
+  display: block;
+  position: relative;
+}
+.left-column,
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 5dvw;
+  width: 34.9dvw;
+  margin-bottom: 7dvw;
+}
+.left-column {
+  align-items: flex-start;
+  position: absolute;
+  left: 0;
+  margin-left: 4dvw;
+}
+.right-column {
+  margin-top: 7dvw;
+  align-items: flex-end;
+  margin-right: 4dvw;
+  position: absolute;
+  right: 0;
+}
+
+.video-container {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: fit-content;
+}
+.tv-shell {
+  position: relative;
+  width: 100%;
+  height: auto;
+  z-index: 2;
+}
+.video-container .tv-shell {
+  pointer-events: none;
+}
+.media {
+  position: absolute;
+  top: 6.4%;
+  left: 5.7%;
+  width: 83.9%; /* This makes the image 90% of the tv-shell's width */
+  aspect-ratio: 16 / 9;
+  object-fit: contain; /* or cover, as needed */
+  display: block;
+  pointer-events: auto;
+}
+.video-caption {
+  z-index: 3;
+  margin-top: -0.5dvw;
+  font-size: 2dvw;
+}
+.video-subcaption {
+  z-index: 3;
+  margin-top: 0.2dvw;
+  font-size: 1.5dvw;
+}
+
+@media only screen and (max-width: 700px) {
+  .wrapper {
+    width: 88%;
+    margin-bottom: 9dvw;
+    margin-top: 2dvw;
+  }
+  .left-column,
+  .right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 70dvw;
+    width: 80dvw;
+    margin-bottom: 7dvw;
+  }
+  .right-column {
+    margin-top: 65dvw;
+  }
+  .left-column {
+    margin-top: 2dvw;
+  }
+  .video-caption {
+    font-size: clamp(1.3rem, 2dvw, 2rem);
+  }
+  .video-subcaption {
+    font-size: clamp(1.2rem, 1.7dvw, 1.7rem);
+  }
+}
+/* .mediaThumbnail {
+  display: block;
+  z-index: 2;
+}
+.mediaVideo {
+  display: block;
+  z-index: 1;
+}
+.playButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-68%, -68%);
+  width: clamp(70px, 20%, 14%);
+  height: auto;
+  z-index: 5;
+  pointer-events: auto;
+  cursor: pointer;
+} */
+
+/*Consider static in the TV, with the name of the video, and cause the video to play upon clicking that.
+
+/* .mediaThumbnail {
+  display: block;
+  z-index: 2;
+}
+.mediaVideo {
+  display: block;
+  z-index: 1;
+}
+.playButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-68%, -68%);
+  width: clamp(70px, 20%, 14%);
+  height: auto;
+  z-index: 3;
+  pointer-events: auto;
+  cursor: pointer;
+}
+/* Fade-able overlays */
+/* .mediaThumbnail,
+.playButton {
+  transition: opacity 0.5s ease;
+}
+.hiddenVideoOverlay {
+  opacity: 0;
+  pointer-events: none;
+} */
+
+/*
+
+.video-container {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: auto;
+  pointer-events: auto;
+}
+.video-container .tv-shell {
+  position: absolute;
+  height: 100%;
+  width: auto;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
+}
+.tv-shell {
+  pointer-events: auto;
+}
+.media {
+  position: absolute;
+  z-index: 1;
+  object-fit: fill;
+} */
+
 footer {
   display: relative;
 }
@@ -654,6 +845,8 @@ footer {
   font-size: clamp(1.4rem, 1.5dvw, 2rem);
   background-color: transparent;
   border: none;
+  z-index: 901;
+  pointer-events: auto;
 }
 #contact-button {
   text-decoration: none;
@@ -824,14 +1017,11 @@ footer {
   #contact-form .form-button {
     font-size: 5dvw;
   }
-  #graphic-art-content {
+  #page-content {
     padding-top: 5dvw;
   }
   .grid {
     margin-top: 3dvw;
-  }
-  #graphic-art-content p.subtitle-text {
-    width: 75%;
   }
 }
 @media only screen and (max-width: 385px) {
