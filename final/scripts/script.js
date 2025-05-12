@@ -5,7 +5,7 @@ if ("scrollRestoration" in history) {
 }
 
 const contactButton = document.getElementById("contact-button");
-const form = document.getElementById("contact-form");
+const contactForm = document.getElementById("contact-form");
 const firstField = document.getElementById("name");
 const fullDarkeningOverlay = document.querySelector(".full-darkening-overlay");
 const menuButton = document.getElementById("menu-button");
@@ -136,6 +136,7 @@ window.addEventListener("resize", function () {
 });
 document.addEventListener("click", function (event) {
   if (
+    menuTriangle.classList.contains("active") &&
     !menuButton.contains(event.target) &&
     !contactButton.contains(event.target) &&
     !contactForm.contains(event.target)
@@ -153,7 +154,12 @@ menuButton.addEventListener("pointerdown", () => {
 });
 
 contactButton.addEventListener("click", () => {
-  form.classList.toggle("hidden");
+  if (!contactForm.classList.contains("hidden")) {
+    contactForm.reset();
+    contactForm.classList.add("hidden");
+  } else {
+    contactForm.classList.remove("hidden");
+  }
   firstField.focus();
   fullDarkeningOverlay.classList.toggle("active");
 });
@@ -168,36 +174,18 @@ contactButton.addEventListener("pointerdown", () => {
 
 //Cancel button for form
 document.getElementById("cancel").addEventListener("click", function () {
-  form.classList.toggle("hidden");
+  contactForm.reset();
+  contactForm.classList.add("hidden");
   fullDarkeningOverlay.classList.toggle("active");
 });
 
 // Hide form upon submit, and then execute the submission function. ()
-form.addEventListener("submit", function (event) {
+contactForm.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent the default form submission (which triggers the redirect)
   alert("Form submission is under construction...");
   // Hide the form immediately upon submission
-  form.classList.toggle("hidden"); // This keeps it invisible but still in the document flow
+  contactForm.classList.add("hidden"); // This keeps it invisible but still in the document flow
   fullDarkeningOverlay.classList.toggle("active");
-
-  return;
-
-  // Create a FormData object to collect the form data
-  const formData = new FormData(form);
-
-  // Use Fetch API to submit the form data to the Google Apps Script Web App
-  fetch(form.action, {
-    method: "POST",
-    body: formData,
-  })
-    .then((response) => response.text()) // Parse the response as text
-    .then((data) => {
-      // Optionally, you can handle the response here if you need
-      console.log("Form submission successful:", data);
-    })
-    .catch((error) => {
-      console.error("Error submitting form:", error);
-    });
 });
 //Should really add some sort of notice to the user to indicate that the submission worked. Later
 
@@ -243,64 +231,9 @@ function addVideoScrolling() {
   spacer.style.height = maxHeight + "px";
 }
 
-// function positionMedia(videoContainer) {
-//   return;
-//   const media = videoContainer.querySelectorAll(".media");
-//   const tvShell = videoContainer.querySelector(".tv-shell");
-//   if (!media[0] || !tvShell) return;
-
-//   // Read the anchor points from image2's data attributes
-//   const topPct = parseFloat(tvShell.dataset.top);
-//   const leftPct = parseFloat(tvShell.dataset.left);
-//   const bottomPct = parseFloat(tvShell.dataset.bottom);
-//   const rightPct = parseFloat(tvShell.dataset.right);
-
-//   // These calculate how far the top-left corner of tvShell is from the top-left of the container.
-//   const containerRect = videoContainer.getBoundingClientRect();
-//   const tvShellRect = tvShell.getBoundingClientRect();
-
-//   // These calculate how far the top-left corner of tvShell is from the top-left of the container.
-//   const offsetX = tvShellRect.left - containerRect.left;
-//   const offsetY = tvShellRect.top - containerRect.top;
-
-//   // Get the dimensions of the tvShell
-//   const tvShellWidth = tvShellRect.width;
-//   const tvShellHeight = tvShellRect.height;
-
-//   // These lines turn the percent values from the data-* attributes into actual pixel coordinates inside the container.
-//   const left = offsetX + (leftPct / 100) * tvShellWidth;
-//   const top = offsetY + (topPct / 100) * tvShellHeight;
-//   const right = offsetX + tvShellWidth - (rightPct / 100) * tvShellWidth;
-//   const bottom = offsetY + tvShellHeight - (bottomPct / 100) * tvShellHeight;
-
-//   // These calculate the final size. Namely, derive the pixel dimensions of the .media element based on the bounding box formed by top/left and bottom/right.
-//   const width = right - left;
-//   const height = bottom - top;
-
-//   // Then assign the absolute pixel positions for the image in the container,
-//   // to be positioned as designatged in the tv-shell.
-//   media.forEach((mediaInstance, index) => {
-//     mediaInstance.style.position = "absolute";
-//     mediaInstance.style.left = `${left}px`;
-//     mediaInstance.style.top = `${top}px`;
-//     mediaInstance.style.width = `${width}px`;
-//     mediaInstance.style.height = `${height}px`;
-//     mediaInstance.style.objectFit = "fill";
-//   });
-// }
-
-// Run the positionMedia function for each element of class .video-container if any
-// function positionAllMedia() {
-//   const allVideoContainers = document.querySelectorAll(".video-container");
-//   if (allVideoContainers.length > 0) {
-//     allVideoContainers.forEach(positionMedia);
-//   }
-// }
+window.addEventListener("load", () => {});
 
 window.addEventListener("load", () => {
-  // position media in tv-shells if there are any .video-container elements on the page.
-  // positionAllMedia();
-
   // Set scanlines in header dynamically based on logo height
   const logo = document.getElementById("logo");
   const scanlines = document.querySelector(".scanlines");
@@ -319,9 +252,7 @@ window.addEventListener("load", () => {
     `;
   });
   resizeObserver.observe(logo);
-});
 
-window.addEventListener("load", () => {
   // Set attributes of all YouTube video frames, to avoid having to repeat them in HTML.
   const videos = document.querySelectorAll(".video");
   if (videos.length > 0) {
@@ -334,9 +265,7 @@ window.addEventListener("load", () => {
       iframe.setAttribute("referrerpolicy", "no-referrer");
     });
   }
-});
 
-window.addEventListener("load", () => {
   if (window.location.pathname === "/video.html") {
     addVideoScrolling();
   }
