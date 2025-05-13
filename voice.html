@@ -7,7 +7,7 @@
     <title>Larry Aaronson - Voice Work</title>
     <meta name="description" content="Larry Aaronson - voice work" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css?v=2" type="text/css" />
+    <link rel="stylesheet" href="style.css?v=3" type="text/css" />
   </head>
   <body>
     <!-- Monitor border (two borders, one with square corners and one with rounded corners)-->
@@ -38,24 +38,122 @@
           </ul>
         </nav>
       </div>
+
+      <!-- Mobile menu button -->
       <div class="right-block bottom-right-narrow">
         <button type="button" id="menu-button">menu &#9776;</button>
       </div>
     </header>
-    <div id="dropdown-menu-container">
-      <!--Including this to allow this dropdown menu container to be present on mobile -->
-      <div id="dropdown-menu" class="hidden">
-        <ul>
-          <li><a class="dropdown-item" href="index.html">Home</a></li>
-          <li><a class="dropdown-item" href="graphicart.html">Graphic Art</a></li>
-          <li><a class="dropdown-item" href="video.html">Video Prod</a></li>
-          <li><a class="dropdown-item" href="voice.html">Voice Work</a></li>
-          <li><a class="dropdown-item" href="patentlaw.html">Patent Law</a></li>
-        </ul>
-      </div>
-    </div>
+
     <!-- Main content section -->
     <main>
+      <!-- Mobile menu -->
+      <div id="menu-triangle-wrapper">
+        <div class="menu-triangle" id="menu-triangle">
+          <ul>
+            <li>
+              <div class="mobile-text"><a href="index.html">Home •</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="graphicart.html">Graphic Art •</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="video.html">Video Production •</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="voice.html">Voice Work •</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="patentlaw.html">Patent Law •</a></div>
+            </li>
+          </ul>
+          <div class="menu-copyright">&copy; LHA</div>
+        </div>
+      </div>
+      <div class="darkening-overlay"></div>
+
+      <div id="page-content">
+        <div class="voice-header">
+          <div class="voice-header-text">
+            <h1>My Voice Work</h1>
+            <p class="voice-header-text2">
+              Enjoy some samples of my voice work, including radio spots and pre&#8209;show
+              announcements.
+            </p>
+          </div>
+          <div class="voice-header-image">
+            <img id="Larry-studio" src="images/LarryStudio.webp" alt="Larry in the voice studio" />
+          </div>
+        </div>
+        <div class="voice-item">
+          <p class="voice-title">
+            <span class="mic">&#x1F399;</span> WBBM Radio Spot - 2024 Bar Show
+          </p>
+          <div class="play-controls">
+            <audio controls>
+              <source src="media/WBBM-bar-show-2024.mp3" type="audio/mp3" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+
+        <div class="voice-item">
+          <p class="voice-title">
+            <span class="mic">&#x1F399;</span> WBBM Radio Spot - 2018 Bar Show
+          </p>
+          <div class="play-controls">
+            <audio controls>
+              <source src="media/WBBM-bar-show-2018-I.mp3" type="audio/mp3" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+        <div class="voice-item">
+          <p class="voice-title">
+            <span class="mic">&#x1F399;</span> Pre-Show Announcement - 2013 Bar Show
+          </p>
+          <div class="play-controls">
+            <audio controls>
+              <source src="media/pre-show-bar-show-2013.mp3" type="audio/mp3" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+        <div class="voice-item">
+          <p class="voice-title">
+            <span class="mic">&#x1F399;</span> Pre-Show Announcement - 2010 Bar Show
+          </p>
+          <div class="play-controls">
+            <audio controls>
+              <source src="media/pre-show-bar-show-2010.mp3" type="audio/mp3" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+        <div class="voice-item">
+          <p class="voice-title">
+            <span class="mic">&#x1F399;</span> Pre-Show Announcement - 2015 DFT
+          </p>
+          <div class="play-controls">
+            <audio controls>
+              <source src="media/pre-show-dft-2015.mp3" type="audio/mp3" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+        <div class="voice-item">
+          <p class="voice-title">
+            <span class="mic">&#x1F399;</span> WBBM Radio Spot - 2017 Bar Show
+          </p>
+          <div class="play-controls">
+            <audio controls>
+              <source src="media/WBBM-bar-show-2017.mp3" type="audio/mp3" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+      </div>
+
       <!-- Contact form -->
       <form id="contact-form" action="alert('Hi')" method="post" class="hidden">
         <div class="form-title">Contact Form</div>

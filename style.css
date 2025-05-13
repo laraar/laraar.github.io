@@ -535,6 +535,7 @@ main {
   display: flex;
   flex-direction: column;
   padding-top: 3dvw;
+  margin-bottom: 5dvw;
 }
 
 #page-content p.subtitle-text {
@@ -727,91 +728,91 @@ main {
   .left-column {
     margin-top: 2dvw;
   }
+
   .video-caption {
-    font-size: clamp(1.3rem, 2dvw, 2rem);
+    font-size: 4dvw;
   }
   .video-subcaption {
-    font-size: clamp(1.2rem, 1.7dvw, 1.7rem);
+    font-size: 3.5dvw;
   }
 }
-/* .mediaThumbnail {
-  display: block;
-  z-index: 2;
+
+.voice-header {
+  width: 55dvw;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  margin: auto;
+  justify-content: flex-end;
+  padding-bottom: clamp(25px, 3dvw, 30px);
+  border-bottom: solid 2px var(--amber);
 }
-.mediaVideo {
-  display: block;
-  z-index: 1;
+.voice-header-text {
+  flex: 2.3;
+  text-align: right;
+  margin-left: auto;
 }
-.playButton {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-68%, -68%);
-  width: clamp(70px, 20%, 14%);
+.voice-header-image {
+  flex: 1;
+  padding-top: 1dvw;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+#Larry-studio {
+  width: 80%;
   height: auto;
-  z-index: 5;
-  pointer-events: auto;
-  cursor: pointer;
-} */
-
-/*Consider static in the TV, with the name of the video, and cause the video to play upon clicking that.
-
-/* .mediaThumbnail {
   display: block;
-  z-index: 2;
 }
-.mediaVideo {
-  display: block;
-  z-index: 1;
-}
-.playButton {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-68%, -68%);
-  width: clamp(70px, 20%, 14%);
-  height: auto;
-  z-index: 3;
-  pointer-events: auto;
-  cursor: pointer;
-}
-/* Fade-able overlays */
-/* .mediaThumbnail,
-.playButton {
-  transition: opacity 0.5s ease;
-}
-.hiddenVideoOverlay {
-  opacity: 0;
-  pointer-events: none;
-} */
 
-/*
-
-.video-container {
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-  width: auto;
-  pointer-events: auto;
+@media only screen and (min-width: 1050px) {
+  .voice-header-image {
+    padding: 0;
+  }
 }
-.video-container .tv-shell {
-  position: absolute;
-  height: 100%;
-  width: auto;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  pointer-events: none;
+@media only screen and (max-width: 1360px) {
+  .voice-header {
+    width: 70dvw;
+  }
 }
-.tv-shell {
-  pointer-events: auto;
+@media only screen and (max-width: 700px) {
+  .voice-header {
+    width: 80dvw;
+    gap: 15px;
+  }
+  .voice-header-text {
+    flex: 1.8;
+  }
 }
-.media {
-  position: absolute;
-  z-index: 1;
-  object-fit: fill;
-} */
+.voice-item {
+  width: 85dvw;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: auto;
+  margin-top: 2.5dvw;
+}
+p.voice-title {
+  font-size: 3dvw;
+  color: #fff;
+}
+span.mic {
+  font-size: 4dvw;
+}
+.play-control {
+  width: 60dvw;
+}
+@media only screen and (max-width: 700px) {
+  .voice-item {
+    margin-top: 5dvw;
+    gap: 8px;
+  }
+  p.voice-title {
+    font-size: clamp(1.3rem, 3dvw, 1.5rem);
+  }
+  span.mic {
+    font-size: 5dvw;
+  }
+}
 
 footer {
   display: relative;
