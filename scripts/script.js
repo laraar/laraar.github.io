@@ -276,3 +276,6 @@ window.addEventListener("resize", () => {
     addVideoScrolling();
   }
 });
+
+onclick = "document.querySelector('player').play()";
+onclick = "document.querySelector('player').pause()";
