@@ -7,7 +7,7 @@
     <title>Larry Aaronson - Patent Law</title>
     <meta name="description" content="Larry Aaronson - patent law" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css?v=2" type="text/css" />
+    <link rel="stylesheet" href="style.css?v=3" type="text/css" />
   </head>
   <body>
     <!-- Monitor border (two borders, one with square corners and one with rounded corners)-->
@@ -38,24 +38,67 @@
           </ul>
         </nav>
       </div>
+
+      <!-- Mobile menu button -->
       <div class="right-block bottom-right-narrow">
         <button type="button" id="menu-button">menu &#9776;</button>
       </div>
     </header>
-    <div id="dropdown-menu-container">
-      <!--Including this to allow this dropdown menu container to be present on mobile -->
-      <div id="dropdown-menu" class="hidden">
-        <ul>
-          <li><a class="dropdown-item" href="index.html">Home</a></li>
-          <li><a class="dropdown-item" href="graphicart.html">Graphic Art</a></li>
-          <li><a class="dropdown-item" href="video.html">Video Prod</a></li>
-          <li><a class="dropdown-item" href="voice.html">Voice Work</a></li>
-          <li><a class="dropdown-item" href="patentlaw.html">Patent Law</a></li>
-        </ul>
-      </div>
-    </div>
+
     <!-- Main content section -->
     <main>
+      <!-- Mobile menu -->
+      <div id="menu-triangle-wrapper">
+        <div class="menu-triangle" id="menu-triangle">
+          <ul>
+            <li>
+              <div class="mobile-text"><a href="index.html">Home •</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="graphicart.html">Graphic Art •</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="video.html">Video Production •</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="voice.html">Voice Work •</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="patentlaw.html">Patent Law •</a></div>
+            </li>
+          </ul>
+          <div class="menu-copyright">&copy; LHA</div>
+        </div>
+      </div>
+      <div class="darkening-overlay"></div>
+
+      <div id="page-content">
+        <h1>Larry the Lawyer</h1>
+        <img id="larry-lawyer" src="images/LarryLawyer.webp" alt="Larry the Lawyer" />
+        <div class="lawyer-text">
+          <h2>Patently experienced...</h2>
+          <p>
+            I've been having fun practicing patent law for over 33 years and counting, learning
+            about my clients' inventions and helping them secure valuable patent protection in the
+            US and beyond.
+          </p>
+          <p>
+            I am a partner at the Chicago intellectual-property firm of MBHB. My practice is focused
+            on communications and software technology, ranging from cellular wireless communications
+            to automatic content recognition to the latest machine-learning advances. I take pride
+            in drafting technically detailed and engaging patent applications for my clients. And I
+            have extensive experience arguing appeals in oral hearings before the USPTO's Patent
+            Trial and Appeal Board. I also serve as co-chair of the firm's telecommunications
+            practice group, and as co-overseer of our IT department.
+          </p>
+          <p>
+            I have a B.S. in Electrical Engineering from the University of Michigan, and a J.D from
+            the University of Illinois College of Law.
+          </p>
+          <p class="lawyer-contacts">&#9993; aaronson@mbhb.com, &#9742; 312-913-2141</p>
+        </div>
+      </div>
+
       <!-- Contact form -->
       <form id="contact-form" action="alert('Hi')" method="post" class="hidden">
         <div class="form-title">Contact Form</div>

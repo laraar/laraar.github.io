@@ -92,7 +92,7 @@ h2 {
 h3 {
   color: var(--amber);
   font-family: "Arial Narrow ", sans-serif;
-  font-size: calc(0.5rem + 2.25dvw);
+  font-size: calc(0.5rem + 2dvw);
   font-weight: 500;
   margin-bottom: 1dvw;
 }
@@ -814,6 +814,25 @@ span.mic {
   }
 }
 
+#larry-lawyer {
+  width: 60dvw;
+  margin-top: 1dvw;
+  height: auto;
+}
+.lawyer-text {
+  margin-top: 2dvw;
+  width: 50dvw;
+  text-align: left;
+}
+p.lawyer-contacts {
+  margin-top: 4dvw;
+}
+@media only screen and (max-width: 700px) {
+  #larry-lawyer {
+    margin-top: 2.5dvw;
+    width: 75dvw;
+  }
+}
 footer {
   display: relative;
 }
