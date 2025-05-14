@@ -798,6 +798,7 @@ span.mic {
 }
 .voice-video-container {
   margin: auto;
+  margin-bottom: 4dvw;
 }
 .voice-video {
   width: 50dvw;
@@ -816,8 +817,8 @@ span.mic {
     font-size: 5dvw;
   }
   .voice-video {
-    width: 60dvw;
-    height: 33.75dvw;
+    width: 70dvw;
+    height: 39.38dvw;
     display: block;
   }
 }
