@@ -854,10 +854,10 @@ p.lawyer-contacts {
     width: 75dvw;
   }
   .lawyer-text h2 {
-    font-size: 1.3rem;
+    font-size: calc(0.51rem + 2.75dvw);
   }
   .lawyer-text p {
-    font-size: 1rem;
+    font-size: calc(0.25rem + 2.75dvw);
   }
 }
 footer {
