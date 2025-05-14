@@ -718,6 +718,10 @@ main {
     gap: 70dvw;
     width: 80dvw;
     margin-bottom: 7dvw;
+    pointer-events: none;
+  }
+  .mediaVideo {
+    pointer-events: auto;
   }
   .right-column {
     margin-top: 66dvw;
