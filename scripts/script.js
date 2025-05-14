@@ -54,6 +54,7 @@ if (window.location.pathname === "/graphicart.html") {
     if (index >= currentImages.length) index = 0;
     currentIndex = index;
     overlayImg.src = currentImages[currentIndex].src;
+    console.log(overlayImg.src);
     overlay.classList.add("visible");
     stopScrolling();
   }
@@ -230,8 +231,6 @@ function addVideoScrolling() {
   );
   spacer.style.height = maxHeight + "px";
 }
-
-window.addEventListener("load", () => {});
 
 window.addEventListener("load", () => {
   // Set scanlines in header dynamically based on logo height
