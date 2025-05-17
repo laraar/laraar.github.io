@@ -182,8 +182,6 @@ document.getElementById("cancel").addEventListener("click", function () {
 
 // Hide form upon submit, and then execute the submission function. ()
 contactForm.addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent the default form submission (which triggers the redirect)
-  alert("Form submission is under construction...");
   // Hide the form immediately upon submission
   contactForm.classList.add("hidden"); // This keeps it invisible but still in the document flow
   fullDarkeningOverlay.classList.toggle("active");
@@ -232,6 +230,16 @@ function addVideoScrolling() {
   spacer.style.height = maxHeight + "px";
 }
 
+//Add contact-form action - adds URL coded here
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contact-form");
+  if (form) {
+    const encoded = "aHR0cHM6Ly9mb3Jtc3ByZWUuaW8vZi9tYmxvcW56dg==";
+    console.log(atob(encoded));
+    form.setAttribute("action", atob(encoded));
+  }
+});
+
 window.addEventListener("load", () => {
   // Set scanlines in header dynamically based on logo height
   const logo = document.getElementById("logo");
@@ -275,3 +283,51 @@ window.addEventListener("resize", () => {
     addVideoScrolling();
   }
 });
+
+var form = document.getElementById("contact-form");
+
+async function handleSubmit(event) {
+  event.preventDefault();
+  var status = document.getElementById("my-form-status");
+  var data = new FormData(event.target);
+  fetch(event.target.action, {
+    method: form.method,
+    body: data,
+    headers: {
+      Accept: "application/json",
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        status.innerHTML = "Thanks!";
+        form.reset();
+      } else {
+        response.json().then((data) => {
+          if (Object.hasOwn(data, "errors")) {
+            status.innerHTML = data["errors"].map((error) => error["message"]).join(", ");
+          } else {
+            status.innerHTML = "Oops! There was a problem submitting your form";
+          }
+        });
+      }
+    })
+    .catch((error) => {
+      status.innerHTML = "Oops! There was a problem submitting your form";
+    });
+
+  // Step 1: Make sure the status div is in the DOM
+  status.style.display = "block";
+  // Step 2: Wait a tick for layout to update, then fade in
+  requestAnimationFrame(() => {
+    status.classList.add("visible");
+  });
+  // Step 3: Wait 2 seconds, then fade out
+  setTimeout(() => {
+    status.classList.remove("visible");
+    // Step 4: After fade-out, hide again
+    setTimeout(() => {
+      status.style.display = "none";
+    }, 500); // match CSS transition duration
+  }, 2000);
+}
+form.addEventListener("submit", handleSubmit);
