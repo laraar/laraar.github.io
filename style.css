@@ -976,6 +976,23 @@ footer {
 .form-message {
   display: none;
 }
+#my-form-status {
+  color: #000;
+  background-color: var(--amber);
+  border-radius: 1dvw;
+  font-size: clamp(1.5rem, 3dvw, 2rem);
+  padding: 1%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  display: none;
+  margin: auto;
+  margin-bottom: 6dvw;
+}
+
+#my-form-status.visible {
+  display: block;
+  opacity: 1;
+}
 
 /* Media queries */
 @media only screen and (min-width: 850px) {
