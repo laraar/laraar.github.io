@@ -9,6 +9,10 @@
   font-family: "CRTfont";
   src: url("fonts/CRTfont.ttf") format("truetype");
 }
+@font-face {
+  font-family: "Scanline";
+  src: url("fonts/Scanline.ttf") format("truetype");
+}
 * {
   margin: 0;
   padding: 0;
@@ -78,6 +82,7 @@ body {
 h1 {
   color: var(--amber);
   font-family: "Arial Narrow ", sans-serif;
+  font-family: "CRTfont", sans-serif;
   font-size: calc(0.55rem + 2.75dvw);
   font-weight: 500;
   margin-bottom: 1dvw;
@@ -85,6 +90,7 @@ h1 {
 h2 {
   color: var(--amber);
   font-family: "Arial Narrow ", sans-serif;
+  font-family: "CRTfont", sans-serif;
   font-size: calc(0.525rem + 2.5dvw);
   font-weight: 500;
   margin-bottom: 1dvw;
@@ -92,6 +98,7 @@ h2 {
 h3 {
   color: var(--amber);
   font-family: "Arial Narrow ", sans-serif;
+  font-family: "CRTfont", sans-serif;
   font-size: calc(0.5rem + 2dvw);
   font-weight: 500;
   margin-bottom: 1dvw;
@@ -99,14 +106,16 @@ h3 {
 h4 {
   color: var(--amber);
   font-family: "Arial Narrow ", sans-serif;
-  font-size: calc(0.5rem + 1.8dvw);
+  font-family: "CRTfont", sans-serif;
+  font-size: calc(0.5rem + 1.9dvw);
   font-weight: 500;
   margin-bottom: 1dvw;
 }
 p {
   color: var(--amber);
   font-family: "Arial Narrow ", sans-serif;
-  font-size: calc(0.5rem + 1.3dvw);
+  font-family: "CRTfont", sans-serif;
+  font-size: calc(0.5rem + 1.8dvw);
   margin-bottom: 2dvw;
 }
 
@@ -442,7 +451,7 @@ main {
   text-align: right;
 }
 #home-text p {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 #home-image {
   flex: 1;
@@ -465,14 +474,15 @@ main {
 
 @media (min-width: 1600px) {
   #home-content {
-    width: 50dvw;
+    width: 48dvw;
     gap: 3dvw;
     padding-top: 0.7dvw;
   }
   #home-text p {
-    font-size: 1.7dvw;
+    font-size: 2dvw;
   }
 }
+/* For font sizes between 900 and 1600, see above home-content p */
 @media (max-width: 900px) {
   #home-content {
     width: 500px;
@@ -480,7 +490,7 @@ main {
     margin-top: 2dvw;
   }
   #home-text p {
-    font-size: 1.1rem;
+    font-size: 1.32rem;
   }
 }
 @media (max-width: 650px) {
@@ -490,7 +500,7 @@ main {
   }
   #home-text p {
     flex: 2.3;
-    font-size: 0.9rem;
+    font-size: 1.22rem;
   }
 }
 @media (max-width: 500px) {
@@ -503,7 +513,7 @@ main {
   #home-text p {
     flex: 2.3;
     width: 98%;
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-align: left;
     margin: auto;
     margin-bottom: 10px;
@@ -642,8 +652,6 @@ main {
 .wrapper {
   width: 83dvw;
   margin: auto;
-  /* display: flex;
-  justify-content: space-between; */
   display: block;
   position: relative;
 }
@@ -753,6 +761,9 @@ main {
   text-align: right;
   margin-left: auto;
 }
+p.voice-header-text2 {
+  font-size: 2.45dvw;
+}
 .voice-header-image {
   flex: 1;
   padding-top: 1dvw;
@@ -772,16 +783,22 @@ main {
 }
 @media only screen and (max-width: 1360px) {
   .voice-header {
-    width: 70dvw;
+    width: 57dvw;
+  }
+  p.voice-header-text2 {
+    font-size: 2.6dvw;
   }
 }
 @media only screen and (max-width: 700px) {
   .voice-header {
-    width: 80dvw;
+    width: 70dvw;
     gap: 15px;
   }
   .voice-header-text {
     flex: 1.8;
+  }
+  p.voice-header-text2 {
+    font-size: 3.3dvw;
   }
 }
 .voice-item {
@@ -809,13 +826,18 @@ span.mic {
   height: 28.2dvw;
   display: block;
 }
+@media only screen and (max-width: 1000px) {
+  p.voice-title {
+    font-size: clamp(2rem, 3dvw, 1.5rem);
+  }
+}
 @media only screen and (max-width: 700px) {
   .voice-item {
     margin-top: 5dvw;
     gap: 8px;
   }
   p.voice-title {
-    font-size: clamp(1.3rem, 3dvw, 1.5rem);
+    font-size: clamp(1.8rem, 3dvw, 1.5rem);
   }
   span.mic {
     font-size: 5dvw;
