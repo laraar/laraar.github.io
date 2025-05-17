@@ -513,7 +513,7 @@ main {
   #home-text p {
     flex: 2.3;
     width: 98%;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     text-align: left;
     margin: auto;
     margin-bottom: 10px;
@@ -889,10 +889,12 @@ p.lawyer-contacts {
     width: 75dvw;
   }
   .lawyer-text h2 {
-    font-size: calc(0.51rem + 2.75dvw);
+    font-size: 1.75rem;
+    margin-bottom: 3dvw;
   }
   .lawyer-text p {
-    font-size: calc(0.25rem + 2.75dvw);
+    font-size: 1.5rem;
+    margin-bottom: 3dvw;
   }
 }
 footer {
