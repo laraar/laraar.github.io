@@ -987,6 +987,7 @@ footer {
   display: none;
   margin: auto;
   margin-bottom: 6dvw;
+  text-align: center;
 }
 
 #my-form-status.visible {
