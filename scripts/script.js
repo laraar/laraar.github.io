@@ -10,7 +10,7 @@ const firstField = document.getElementById("name");
 const fullDarkeningOverlay = document.querySelector(".full-darkening-overlay");
 const menuButton = document.getElementById("menu-button");
 const menuTriangle = document.getElementById("menu-triangle-wrapper");
-const darkeningOverlay = document.querySelector(".darkening-overlay");
+const darkeningOverlay = document.querySelector(".darkening-overlay"); 
 
 //Manage whether the page can scroll. (For use when presenting an overlay below.)
 let scrollY = 0;
