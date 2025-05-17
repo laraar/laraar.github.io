@@ -10,7 +10,7 @@ const firstField = document.getElementById("name");
 const fullDarkeningOverlay = document.querySelector(".full-darkening-overlay");
 const menuButton = document.getElementById("menu-button");
 const menuTriangle = document.getElementById("menu-triangle-wrapper");
-const darkeningOverlay = document.querySelector(".darkening-overlay"); 
+const darkeningOverlay = document.querySelector(".darkening-overlay");
 
 //Manage whether the page can scroll. (For use when presenting an overlay below.)
 let scrollY = 0;
@@ -143,6 +143,15 @@ document.addEventListener("click", function (event) {
     !contactForm.contains(event.target)
   ) {
     hideMenu();
+  }
+  if (
+    !contactForm.classList.contains("hidden") &&
+    !contactForm.contains(event.target) &&
+    !contactButton.contains(event.target)
+  ) {
+    contactForm.reset;
+    contactForm.classList.add("hidden");
+    fullDarkeningOverlay.classList.toggle("active");
   }
 });
 
