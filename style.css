@@ -513,7 +513,7 @@ main {
   #home-text p {
     flex: 2.3;
     width: 98%;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     text-align: left;
     margin: auto;
     margin-bottom: 10px;
@@ -548,6 +548,15 @@ main {
 #page-content p.subtitle-text {
   text-align: center;
   width: 75%;
+}
+@media (max-width: 700px) {
+  h1 {
+    font-size: 2rem;
+  }
+  #page-content p.subtitle-text {
+    width: 82%;
+    font-size: 1.5rem;
+  }
 }
 
 .grid {
@@ -791,14 +800,14 @@ p.voice-header-text2 {
 }
 @media only screen and (max-width: 700px) {
   .voice-header {
-    width: 70dvw;
+    width: 80dvw;
     gap: 15px;
   }
   .voice-header-text {
     flex: 1.8;
   }
   p.voice-header-text2 {
-    font-size: 3.3dvw;
+    font-size: 1.3rem;
   }
 }
 .voice-item {
