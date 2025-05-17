@@ -4,613 +4,128 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" />
-    <link rel="stylesheet" href="style.css?v=3" />
-    <link rel="preload" href="images/embossed.webp" as="image" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <title>Deerfield Family Theater</title>
+    <title>Larry Aaronson, the website</title>
+    <meta name="description" content="A portfolio of Larry Aaronson's stuff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css?v=7" type="text/css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WTX66DZ2CJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-WTX66DZ2CJ");
+    </script>
   </head>
   <body>
-    <!-- Page header, which includes a partially transparent background to make it nearly white -->
-    <div class="header">
-      <img id="program-header" src="images/DFT-header.png" alt="header" />
-      <!-- This is the page navigation bar. -->
-      <div id="nav-bar">
-        <div id="nav-bar-logo-container">
-          <img id="nav-bar-logo" src="images/DFT-logo.webp" alt="nav bar logo" />
-        </div>
-        <div id="nav-buttons">
-          <div class="nav-btn" id="home">Home</div>
-          <div class="nav-btn" id="about">About DFT</div>
-          <div class="nav-btn" id="pastshows">Past Shows</div>
-          <div class="nav-btn" id="donations">Donations</div>
-          <div class="nav-btn" id="theaterd">Theater D</div>
-          <div class="nav-btn" id="deerfieldtya">Deerfield TYA</div>
+    <!-- Monitor border (two borders, one with square corners and one with rounded corners)-->
+    <div class="viewport-outer-border"><div class="viewport-radius-border"></div></div>
+    <!-- Header, including nav -->
+    <header>
+      <div class="scanlines"></div>
+      <div class="logo-block">
+        <img id="logo" src="images/larrypixel.webp" alt="Larry in pixels" />
+      </div>
+      <div class="right-block top-right crt-text">
+        <!-- Manually spacing the words here to fix kerning of this font; will later edit the font to avoid this issue-->
+        Larry<span class="space"></span>Aaronson,<br class="line-break" /><span class="space1"
+          >&nbsp;&nbsp;&nbsp;</span
+        >the<span class="space"></span>website...
+      </div>
+      <div class="right-block bottom-right-wide">
+        <nav>
+          <ul>
+            <li>
+              <a class="nav crt-amber-glow" href="index.html">Home</a>
+              <div class="pointer"></div>
+            </li>
+            <li><a class="nav crt-amber-glow" href="graphicart.html">Graphic Art</a></li>
+            <li><a class="nav crt-amber-glow" href="video.html">Video Prod</a></li>
+            <li><a class="nav crt-amber-glow" href="voice.html">Voice Work</a></li>
+            <li><a class="nav crt-amber-glow" href="patentlaw.html">Patent Law</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="right-block bottom-right-narrow">
+        <button type="button" id="menu-button">menu &#9776;</button>
+      </div>
+    </header>
+
+    <!-- Main content section -->
+    <main>
+      <!-- Mobile menu -->
+      <div id="menu-triangle-wrapper">
+        <div class="menu-triangle" id="menu-triangle">
+          <ul>
+            <li>
+              <div class="mobile-text"><a href="index.html">Home •</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="graphicart.html">Graphic Art •</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="video.html">Video Production •</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="voice.html">Voice Work •</a></div>
+            </li>
+            <li>
+              <div class="mobile-text"><a href="patentlaw.html">Patent Law •</a></div>
+            </li>
+          </ul>
+          <div class="menu-copyright">&copy; LHA</div>
         </div>
       </div>
-    </div>
-    <!-- Next is everything after page header. The after-header div has gradient that continues from the header color -->
-    <div class="after-header">
-      <!-- This is the main page content after the nav-bar. Can be different per page. -->
-      <div id="main-page-content">
-        <!-- This is then the show announcement, with text (narrow or wide), 
-        and show image with overlay text (narrow or wide) -->
-        <div id="home-page">
-          <div id="banner-container">
-            <!-- DTYA banner advertisement. -->
-            <a href="https://deerfieldtheater.ludus.com"
-              ><img id="wide-banner-ad" src="images/OurTownWideBannerAd.webp" alt="Banner ad" />
-              <img id="narrow-banner-ad" src="images/OurTownNarrowBannerAd.webp" alt="Banner ad"
-            /></a>
-          </div>
-          <a class="link-inherit" href="https://deerfieldtheater.ludus.com/">
-            <div id="info-text-wide">
-              <div id="ticket-sales-header">
-                <img id="golden-ticket" src="images/golden-ticket.webp" />
-                <div id="tickets-text">
-                  <div id="line1">DFT Tickets are Now on Sale!</div>
-                  <div id="line2">(Click below to reserve your seats)</div>
-                </div>
-              </div>
-              Announcing DFT's<br />November 2025 Production!
-              <!-- Announcing Auditions for<br />DFT's November 2025 Production! -->
-            </div>
-            <div id="thank-you-stay-tuned">
-              <div class="thank-you-text">
-                Thank you to everyone<br />
-                who came out to see<br />
-                our November 2024 production!
-              </div>
-              <div>
-                <img id="showlogo2" src="images/DFT-show2.webp" alt="DFT show" />
-              </div>
-              <!-- <div class="thank-you-text2">Stay tuned for info about our next production!</div> -->
-            </div>
-
-            <div id="logo-container">
-              <img
-                id="showlogo"
-                class="zoom-image"
-                src="images/DFT-show4.webp"
-                alt="DFT show logo"
-              />
-              <div id="show-info-wide">
-                <p>November 14-16 &amp; 21-23, 2025 • Caruso Auditorium, Deerfield</p>
-              </div>
-            </div>
-            <div id="show-info-narrow">
-              November 14-16 &amp; 21-23, 2025<br />Caruso Auditorium, Deerfield
-              <div id="auditions-announce">
-                <br />Auditions in late August - stay tuned for info!
-              </div>
-            </div>
-          </a>
-          <div id="credits">
-            <div id="staff-credit-row">
-              <div>Director<br />Matt Canon</div>
-              <div>Music Director<br />Marty Karlin</div>
-              <div>Choreographer<br />Sarah Canon</div>
-              <div>Producer<br />Ryan Elliott</div>
-            </div>
-            <div class="first-credit-row">
-              <div>Book by<br />David Greig</div>
-              <div>Music by<br />Marc Shaiman</div>
-              <div>Lyrics by<br />Scott Wittman<br />Marc Shaiman</div>
-            </div>
-            <div id="second-credit-row">
-              <div id="Dahl">Based on the novel by ROALD DAHL</div>
-            </div>
-            <div class="third-credit-row">
-              <div id="Songs">
-                Songs from the Motion Picture by<br />LESLIE BRICUSSE and ANTHONY NEWLEY
-              </div>
-            </div>
-          </div>
-          <div id="performance-info">
-            <div id="performance-text-items">
-              <div class="performance-text">
-                Caruso Auditorium &#x2022; 1801 Montgomery Rd. &#x2022; Deerfield
-              </div>
-              <div class="performance-text">
-                Fridays, Nov. 15 and 22 - 7:00pm<br />
-                Saturdays, Nov. 16 and 23 - 1:00pm and 7:00pm<br />
-                Sundays, Nov. 17 and 24 - 1:00pm
-              </div>
-              <a class="link-inherit" href="https://deerfieldtheater.ludus.com/"
-                ><div class="performance-text ital put-border">
-                  Tickets are now on sale!<br />Click here to reserve your seats.
-                  <div class="smaller-text"><br />(Suggested for 1st grade and older)</div>
-                </div></a
-              >
-            </div>
-          </div>
-
-          <div id="workshop-info">
-            <div id="workshop-title">Audition Workshop</div>
-            <div id="workshop-text-items">
-              <div class="workshop-text">
-                Join our 2024 production staff for a fun and informative AUDITION WORKSHOP at Jewett
-                Park Community Center on Saturday, July 13th, from 1:00 to 2:30pm. Learn about the
-                DFT audition process, sing, dance, and get valuable audition tips from our 2024
-                dream team!
-              </div>
-              <div class="workshop-text">
-                Free and open to everyone (4th grade and up), this workshop is not a prerequisite
-                for auditioning.
-              </div>
-              <div class="audition-text space">
-                Click
-                <a
-                  href="https://www.signupgenius.com/go/20F0C4FACAC22A6FD0-50049282-audition#/"
-                  id="workshop-signup"
-                  >here</a
-                >
-                to sign up for the workshop.
-              </div>
-              <div id="workshop-signup-coming" class="workshop-text ital">
-                Online workshop signups coming soon.
-              </div>
-            </div>
-          </div>
-          <div id="cast-info">
-            <!--Not used for TD show in 2024-->
-            <div id="cast-title">We are excited to announce our cast!</div>
-            <div id="cast-list">
-              <div class="cast-item">
-                <div class="character-name">WILLY WONKA</div>
-                <div class="actor-name">Aaron G. Stash</div>
-              </div>
-              <div class="cast-item">
-                <div class="character-name">CHARLIE BUCKET</div>
-                <div class="actor-name">Brielle Hope Horwitch</div>
-              </div>
-              <div class="cast-item">
-                <div class="character-name">GRANDPA JOE</div>
-                <div class="actor-name">Larry Aaronson</div>
-              </div>
-              <div class="cast-item">
-                <div class="character-name">MRS. BUCKET</div>
-                <div class="actor-name">Elise de Roulet</div>
-              </div>
-              <div class="cast-item">
-                <div class="character-name">AUGUSTUS GLOOP</div>
-                <div class="actor-name">Henry Gessner</div>
-              </div>
-              <div class="cast-item">
-                <div class="character-name">VERUCA SALT</div>
-                <div class="actor-name">Danielle Piccolomini</div>
-              </div>
-              <div class="cast-item">
-                <div class="character-name">VIOLET BEAUREGARDE</div>
-                <div class="actor-name">Emily Kallas</div>
-              </div>
-              <div class="cast-item">
-                <div class="character-name">MIKE TEAVEE</div>
-                <div class="actor-name">Danny Mulae</div>
-              </div>
-              <div class="cast-item">
-                <div class="character-name">MRS. GLOOP</div>
-                <div class="actor-name">Stacy Eppel</div>
-              </div>
-              <div class="cast-item">
-                <div class="character-name">MR. SALT</div>
-                <div class="actor-name">Bruce Moore</div>
-              </div>
-              <div class="cast-item">
-                <div class="character-name">MR. BEAUREGARDE</div>
-                <div class="actor-name">Jamie Davidson</div>
-              </div>
-              <div class="cast-item">
-                <div class="character-name">MRS. TEAVEE</div>
-                <div class="actor-name">Christine Jones</div>
-              </div>
-              <div class="cast-item">
-                <div class="character-name">GRANDPA GEORGE</div>
-                <div class="actor-name">Richard Schram</div>
-              </div>
-              <div class="cast-item">
-                <div class="character-name">GRANDMA GEORGINA</div>
-                <div class="actor-name">Julie Schneider</div>
-              </div>
-              <div class="cast-item">
-                <div class="character-name">GRANDMA JOSEPHINE</div>
-                <div class="actor-name">Anita Silvert</div>
-              </div>
-              <br />
-              <div id="ensemble-title">ENSEMBLE</div>
-              <br />
-              <div class="cast-item">
-                <div class="character-name">U/S CHARLIE BUCKET</div>
-                <div class="actor-name">Alice Bath</div>
-              </div>
-              <div class="cast-item">
-                <div class="character-name">JERRY</div>
-                <div class="actor-name">Christopher Finch</div>
-              </div>
-              <div class="cast-item">
-                <div class="character-name">CHERRY</div>
-                <div class="actor-name">Kimberly Karlin</div>
-              </div>
-              <div class="cast-item">
-                <div class="character-name">MR. GREEN</div>
-                <div class="actor-name">Larry Mason</div>
-              </div>
-              <div id="ensemble-list">
-                Paxton&nbsp;Cobb, Avery&nbsp;Gollwitzer, Lyla&nbsp;Gollwitzer, Claire&nbsp;Higgins,
-                Sara&nbsp;Kagay, James&nbsp;R&nbsp;B&nbsp;Kieliszewski, Annika&nbsp;Reece,
-                Lee&nbsp;Rivlin, Eliza&nbsp;Sible, Helena&nbsp;Sprajcer, Sue&nbsp;Vani,
-                Jacquie&nbsp;Wahlstrom, Teagan&nbsp;Yokozawa
-              </div>
-            </div>
-          </div>
-
-          <div id="event-info">
-            <div id="event-title">Special Event - Friday, May 30, 2025!</div>
-
-            <div>
-              <a
-                href="https://www.deerfieldparks.org/Calendar.aspx?EID=684&month=5&year=2025&day=16&calType=0"
-              >
-                <img src="images/MurderMystery2025.webp" id="event-image" alt="Murder Mystery 2025"
-              /></a>
-            </div>
-          </div>
+      <div class="darkening-overlay"></div>
+      <div id="home-content">
+        <div id="home-text">
+          <p>
+            <strong>Welcome to my website...</strong> where you can explore my creative work! Check
+            out my artistic creations, including my Bar Show cover art and my video production
+            projects. Listen to my voice work, from radio spots to pre&#8209;show announcements. And
+            discover my decades of experience as a patent attorney, crafting equally creative
+            patent&nbsp;applications.
+          </p>
+          <p class="center-align">- Enjoy your stay!</p>
         </div>
-
-        <div id="past-shows">
-          <div id="past-shows-title">Our Past Shows!</div>
-          <div id="show-blocks">
-            <div class="logo-block">
-              <img class="past-show-logo" src="images/pastshows/Charlie2024.webp" alt="2024 show" />
-              <div class="past-show-year">2024</div>
-            </div>
-            <div class="logo-block">
-              <img class="past-show-logo" src="images/pastshows/Beauty2023.webp" alt="2023 show" />
-              <div class="past-show-year">2023</div>
-            </div>
-            <div class="logo-block">
-              <img class="past-show-logo" src="images/pastshows/BigFish2022.webp" alt="2022 show" />
-              <div class="past-show-year">2022</div>
-            </div>
-            <div class="logo-block">
-              <img
-                class="past-show-logo"
-                src="images/pastshows/SchoolhouseRock2021.webp"
-                alt="2021 show"
-              />
-              <div class="past-show-year">2021</div>
-            </div>
-            <div class="logo-block">
-              <img class="past-show-logo" src="images/pastshows/Annie2019.webp" alt="2019 show" />
-              <div class="past-show-year">2019</div>
-            </div>
-            <div class="logo-block">
-              <img
-                class="past-show-logo"
-                src="images/pastshows/LittleShop2018.webp"
-                alt="2018 show"
-              />
-              <div class="past-show-year">2018</div>
-            </div>
-            <div class="logo-block">
-              <img
-                class="past-show-logo"
-                src="images/pastshows/IntoTheWoods2017.webp"
-                alt="2017 show"
-              />
-              <div class="past-show-year">2017</div>
-            </div>
-            <div class="logo-block">
-              <img class="past-show-logo" src="images/pastshows/Big2016.webp" alt="2016 show" />
-              <div class="past-show-year">2016</div>
-            </div>
-            <div class="logo-block">
-              <img
-                class="past-show-logo"
-                src="images/pastshows/MaryPoppins2015.webp"
-                alt="2015 show"
-              />
-              <div class="past-show-year">2015</div>
-            </div>
-            <div class="logo-block">
-              <img
-                class="past-show-logo"
-                src="images/pastshows/SecretGarden2013.webp"
-                alt="2013 show"
-              />
-              <div class="past-show-year">2013</div>
-            </div>
-            <div class="logo-block">
-              <img
-                class="past-show-logo"
-                src="images/pastshows/KingAndI2012.webp"
-                alt="2012 show"
-              />
-              <div class="past-show-year">2012</div>
-            </div>
-            <div class="logo-block">
-              <img class="past-show-logo" src="images/pastshows/Honk2011.webp" alt="2011 show" />
-              <div class="past-show-year">2011</div>
-            </div>
-            <div class="logo-block">
-              <img class="past-show-logo" src="images/pastshows/Oliver2010.webp" alt="2010 show" />
-              <div class="past-show-year">2010</div>
-            </div>
-            <div class="logo-block">
-              <img class="past-show-logo" src="images/pastshows/Wonka2009.webp" alt="2009 show" />
-              <div class="past-show-year">2009</div>
-            </div>
-            <div class="logo-block">
-              <img
-                class="past-show-logo"
-                src="images/pastshows/ByeByeBirdie2008.webp"
-                alt="2008 show"
-              />
-              <div class="past-show-year">2008</div>
-            </div>
-            <div class="logo-block">
-              <img class="past-show-logo" src="images/pastshows/Joseph2007.webp" alt="2007 show" />
-              <div class="past-show-year">2007</div>
-            </div>
-            <div class="logo-block">
-              <img
-                class="past-show-logo"
-                src="images/pastshows/WizardOfOz2006.webp"
-                alt="2006 show"
-              />
-              <div class="past-show-year">2006</div>
-            </div>
-            <div class="logo-block">
-              <img
-                class="past-show-logo"
-                src="images/pastshows/PeterPan2005.webp"
-                alt="2005 show"
-              />
-              <div class="past-show-year">2005</div>
-            </div>
-            <div class="logo-block">
-              <img
-                class="past-show-logo"
-                src="images/pastshows/Seusical2004.webp"
-                alt="2004 show"
-              />
-              <div class="past-show-year">2004</div>
-            </div>
-            <div class="logo-block">
-              <img
-                class="past-show-logo"
-                src="images/pastshows/MusicMan2003.webp"
-                alt="2003 show"
-              />
-              <div class="past-show-year">2003</div>
-            </div>
-            <div class="logo-block">
-              <img
-                class="past-show-logo"
-                src="images/pastshows/Oklahoma2002.webp"
-                alt="2002 show"
-              />
-              <div class="past-show-year">2002</div>
-            </div>
-            <div class="logo-block">
-              <img
-                class="past-show-logo"
-                src="images/pastshows/OnceOnThisIsland2001.webp"
-                alt="2001 show"
-              />
-              <div class="past-show-year">2001</div>
-            </div>
-            <div class="logo-block">
-              <img
-                class="past-show-logo"
-                src="images/pastshows/DearEdwina2000.webp"
-                alt="2000 show"
-              />
-              <div class="past-show-year">2000</div>
-            </div>
-          </div>
-        </div>
-        <div id="donations-page">
-          <div id="donations-title">Donate to Support Deerfield Theater Programs</div>
-          <div id="donations-page-text">
-            <div class="donations-text">It takes a lot of help to put a show together!</div>
-            <div class="donations-text">
-              If you would like to volunteer for any of our shows, please contact Shannon Cahill,
-              Recreation Supervisor - Cultural Arts, Special Events, and Community Programming, at
-              <a href="mailto:ShannonC@deerfieldparks.org">ShannonC@deerfieldparks.org</a>.
-            </div>
-            <div class="donations-text">
-              To make a cash donation, please click
-              <a href="https://deerfieldtheater.ludus.com/donate.php">here</a>
-              or <br />contact the Deerfield Park District at 847-945-0650.
-            </div>
-            <div class="donations-text">Thank you!</div>
-          </div>
-        </div>
-        <div id="about-page">
-          <div class="about-title">About Deerfield Family Theater</div>
-          <div id="about-page-text">
-            <div class="about-text">
-              <p>
-                Deerfield Family Theater was founded in 2000 by the Deerfield Park District, and
-                with the devotion of Susan Redondo, as a successor to the long running and
-                successful Children's Theater of Deerfield, Inc. DFT combines all the fun and
-                excitement of a professional theater environment, with a neighborhood atmosphere and
-                a family-oriented setting.
-              </p>
-              <p>
-                Our mission is to produce the highest quality theater experience for Deerfield and
-                our surrounding communities, whether in the audience, on stage, or as part of the
-                production staff. All productions are appropriate for family entertainment and have
-                children as an integral part of the cast.
-              </p>
-              <p>
-                Through our professional staff and seasoned adult performers, we strive to mentor
-                young actors by giving them the unique opportunity to learn and perform in a
-                professional quality theater group.
-              </p>
-              <p>
-                Deerfield Family Theater is supported, in part, through the Illinois Arts Council,
-                the National Endowment for the Arts, ticket sales, community sponsors, and ad sales.
-                We are governed by a board of directors who meet throughout the year. It takes a lot
-                of help to put a show together!
-              </p>
-            </div>
-            <div class="about-title">The Deerfield Theater<br />Board of Directors</div>
-            <div class="board-text">
-              Larry Aaronson<br />
-              Marci Medwed Barnett<br />
-              Dan Berman<br />
-              Shannon Cahill<br />
-              Chas Carol<br />
-              Ryan Elliott<br />
-              Arlene Fine<br />
-              Jo Anne Gottfried<br />
-              Claire Higgins<br />
-              Emily Kallas<br />
-              Mathew Kerbis<br />
-              Larry Mason<br />
-              Susie Mason<br />
-              Chris Morgan<br />
-              Lauren Price<br />
-              Marc Price<br />
-              Lee Rivlin<br />
-              Julie Schneider<br />
-              Julie Stevens<br />
-              Sue Vani<br />
-              Steve Zeal<br />
-            </div>
-            <div id="box-around">
-              <div class="join-board-title">Interested in joining our team?</div>
-              <div class="join-board-text">
-                We are now accepting applications for new board members. Click
-                <a
-                  href="https://forms.office.com/Pages/ResponsePage.aspx?id=W1OCfeLK0EqK5uj6yYMTumB_jPudnO5MqlzcRm-KI71UM0pRUFNNMkg5TjdHTlQxMFJEVkFQNVc2US4u"
-                  id="board-application"
-                  >here</a
-                >
-                to apply now!
-              </div>
-            </div>
-            <div class="history-title">Deerfield Theater History!</div>
-            <div class="about-text">
-              <p>
-                As noted above, Deerfield Family Theater continues as a successor to Children's
-                Theater of Deerfield. Deerfield historical records also give us the following
-                Deerfield theater gem, from way back in 1913...
-              </p>
-            </div>
-            <div id="old-deerfield">
-              <img id="history-image" src="images/deerfielddramaticclub.webp" alt="DFT history" />
-            </div>
-            <div id="ADA-title">Americans with Disabilities Act</div>
-            <div id="ADA-notice">
-              <p>
-                Our Park District and other public agencies are subject to the provisions of the
-                Americans with Disabilities Act (ADA), which prohibits discrimination in the
-                services, programs or facilities provided to individuals with disabilities. If you
-                believe that, in accordance with the Americans with Disabilities Act, special
-                assistance may be required when participating in a program, using a facility or
-                receiving a service, please contact Executive Director Jeff Harvey at 847-572-2612.
-              </p>
-            </div>
-          </div>
+        <div id="home-image">
+          <img id="Larry-image" src="images/headshot.webp" alt="Larry Aaronson" />
+          <figcaption>Me, circa 2024</figcaption>
         </div>
       </div>
 
-      <!-- Directions bar -->
-      <!-- <div id="direction-bar">
-        <div id="directions-intro">DIRECTIONS TO THE THEATER:</div>
-        <div class="directions">
-          <img class="map-pin" src="images/map-pin.webp" />
-          <a
-            class="direction-link"
-            href="https://www.google.com/maps/dir/Current+Location/42.16936129460675,-87.87289655274725"
-            target="_self"
-            >From your location</a
-          >
-        </div>
-        <div class="directions">
-          <img class="map-pin" src="images/map-pin.webp" />
-          <a
-            class="directions-link"
-            href="https://www.google.com/maps/dir/?api=1&origin=42.16911208400764,-87.87140041251554&destination=42.16936129460675,-87.87289655274725&travelmode=driving"
-            target="_self"
-            >From Caruso entrance road</a
-          >
-        </div>
-      </div> -->
+      <!-- Contact form -->
+      <form id="contact-form" action="" method="post" class="hidden">
+        <div class="form-title">Contact Form</div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" maxlength="300" required></textarea>
+        <input type="submit" class="form-button" id="submit" value="Submit to Larry" />
+        <input type="button" class="form-button" id="cancel" tabindex="-1" value="Cancel" />
+        <input type="reset" class="form-button" id="resetBtn" tabindex="-1" value="Reset" />
+      </form>
+      <div id="my-form-status"></div>
+    </main>
 
-      <!-- This is the icon-bar -->
-      <div id="icon-bar">
-        <div id="icons">
-          <a
-            href="https://open.spotify.com/show/3oloGjAdwDtbNd8TybNMI5?si=1eKesfZeSTqVe9DHbE5gPw&dl_branch=1"
-            ><img id="podcast" class="icon-item" src="images/DFT-podcast.png" alt="DFT podcast"
-          /></a>
-          <a href="https://deerfieldtheater.substack.com/subscribe"
-            ><img id="DFT-email" class="icon-item" src="images/DFT-email.png" alt="DFT email"
-          /></a>
-          <a href="http://www.deerfieldparks.org/"
-            ><img
-              id="DFPD"
-              class="icon-item"
-              src="images/DFPDlogo.png"
-              alt="Deerfield Park District"
-          /></a>
-          <a href="http://www.arts.illinois.gov/"
-            ><img id="IAC" class="icon-item" src="images/IAC.png" alt="Illinois Arts Council"
-          /></a>
-          <a href="https://www.arts.gov/"
-            ><img
-              id="NEA"
-              class="icon-item"
-              src="images/NEA.png"
-              alt="National Endowment for the Arts"
-          /></a>
+    <footer>
+      <div id="footer-bottom">
+        <div id="footer-text">
+          <span class="normal-copyright">&copy 2025 Larry Aaronson</span>
+          <span class="abridged-copyright">&copy 2025 LHA</span>
+          <span><button type="button" id="contact-button">Contact me...</button></span>
         </div>
       </div>
-      <div id="photo-box">
-        <img class="photo" src="images/photos/Beauty1.webp" alt="A snapshop of DFT!" />
-        <img class="photo" src="images/photos/Beauty2.webp" alt="A snapshop of DFT!" />
-        <img class="photo" src="images/photos/BigFish1.webp" alt="A snapshop of DFT!" />
-        <img class="photo" src="images/photos/Beauty3.webp" alt="A snapshop of DFT!" />
-        <img class="photo" src="images/photos/Beauty4.webp" alt="A snapshop of DFT!" />
-        <img class="photo" src="images/photos/BigFish3.webp" alt="A snapshop of DFT!" />
-        <img class="photo" src="images/photos/Beauty5.webp" alt="A snapshop of DFT!" />
-        <img class="photo" src="images/photos/BigFish4.webp" alt="A snapshop of DFT!" />
-        <img class="photo" src="images/photos/Beauty6.webp" alt="A snapshop of DFT!" />
-        <img class="photo" src="images/photos/Beauty7.webp" alt="A snapshop of DFT!" />
-        <img class="photo" src="images/photos/BigFish5.webp" alt="A snapshop of DFT!" />
-        <img class="photo" src="images/photos/Beauty8.webp" alt="A snapshop of DFT!" />
-        <img class="photo" src="images/photos/Beauty9.webp" alt="A snapshop of DFT!" />
-      </div>
-      <div id="bottom-bar">
-        <div id="DFT-info">
-          <div id="top-row">
-            <div id="address-name">
-              <div id="DFT-name">&copy; Deerfield Family Theater</div>
-              <div id="DFT-address">836 Jewett Park Drive • Deerfield IL 60015</div>
-            </div>
-            <div id="social-media">
-              <a href="https://m.facebook.com/DeerfieldFamilyTheater">
-                <img id="facebook" src="images/facebook.webp" alt="Facebook"
-              /></a>
-              <a href="https://www.instagram.com/DeerfieldFamilyTheater">
-                <img id="instagram" src="images/instagram.webp" alt="Instagram"
-              /></a>
-            </div>
-          </div>
-          <div id="for-more-info">
-            For more information:<br />
-            Contact Shannon Cahill, Recreation Supervisor - Cultural Arts, Special Events, and
-            Community Programming, at ShannonC@deerfieldparks.org
-          </div>
-        </div>
-      </div>
-    </div>
-    <script src="script.js"></script>
-    <!-- </div> -->
+    </footer>
+    <div class="full-darkening-overlay"></div>
+    <!-- Run script.js after page load -->
+    <script src="scripts/script.js"></script>
   </body>
 </html>
