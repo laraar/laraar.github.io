@@ -26,6 +26,7 @@ html {
   font-size: 16px;
   height: 100%;
   overflow-y: scroll;
+  line-height: 0.9; /* This is necessary to avoid issues with some browsers like Firefox */
 }
 
 strong,
@@ -912,6 +913,7 @@ footer {
   justify-content: space-between;
   border-top: solid 2px var(--amber);
   font-size: clamp(1.3rem, 1.5dvw, 2rem);
+  line-height: 1.5;
 }
 #footer-text span {
   display: inline-block;
