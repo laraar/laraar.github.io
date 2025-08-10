@@ -6,7 +6,6 @@
     <title>🎉 The Purple Vest Tradition | A Timeless 58th Birthday Gift for Holly 🎉</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
         :root {
             --purple-dark: #5b21b6;
@@ -32,6 +31,32 @@
             overflow-x: hidden;
             position: relative;
         }
+        
+        .confetti-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent-pink);
+            transform: rotate(45deg);
+            opacity: 0;
+            animation: confetti-fall 5s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
 
         .container {
             max-width: 1200px;
@@ -48,24 +73,8 @@
             position: relative;
             overflow: hidden;
         }
-        
-        .confetti-piece {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: var(--accent-pink);
-            transform: rotate(45deg);
-            opacity: 0;
-            animation: confetti-fall 5s infinite;
-        }
-
-        @keyframes confetti-fall {
-            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-        }
 
         header h1 {
-            font-family: 'Pacifico', cursive;
             font-size: clamp(2.5rem, 8vw, 4.5rem);
             margin-bottom: 0.5rem;
             text-shadow: 3px 3px var(--accent-pink);
@@ -98,12 +107,13 @@
             align-items: center;
             gap: 20px;
             margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
         
         .hero-img {
             width: 100%;
             max-width: 350px;
-            height: auto;
+            height: 250px;
             object-fit: cover;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
@@ -126,38 +136,6 @@
             max-width: 800px;
             margin: 0 auto;
             color: var(--text-dark);
-        }
-
-        .holly-callout {
-            background: var(--accent-pink);
-            color: var(--text-light);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 15px;
-            text-align: center;
-            font-size: clamp(1.2rem, 4vw, 1.5rem);
-            font-weight: 600;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-            animation: pulse-border 2s infinite;
-        }
-        
-        .holly-callout::before, .holly-callout::after {
-            content: '🎶';
-            position: absolute;
-            font-size: 2rem;
-            top: 50%;
-            transform: translateY(-50%);
-            animation: float 2s infinite ease-in-out;
-        }
-        
-        .holly-callout::before { left: 5%; }
-        .holly-callout::after { right: 5%; animation-delay: 1s; }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(-50%) scale(1); }
-            50% { transform: translateY(-60%) scale(1.1); }
         }
 
         .content {
@@ -191,6 +169,15 @@
             border-left: 5px solid var(--purple-main);
             border-radius: 10px;
             margin-bottom: 1.5rem;
+        }
+        
+        .section-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
         }
 
         .section p {
@@ -244,7 +231,6 @@
         }
 
         .gallery-item h4 {
-            font-family: 'Pacifico', cursive;
             color: var(--purple-dark);
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
@@ -272,7 +258,6 @@
         .cta h3 {
             font-size: clamp(2rem, 6vw, 3rem);
             margin-bottom: 1rem;
-            font-family: 'Pacifico', cursive;
         }
 
         .cta p {
@@ -312,7 +297,6 @@
         }
         
         .footer-logo {
-            font-family: 'Pacifico', cursive;
             font-size: 2rem;
             color: var(--purple-main);
             margin-bottom: 1rem;
@@ -334,7 +318,7 @@
     </style>
 </head>
 <body>
-    <header>
+    <div class="confetti-container">
         <div class="confetti-piece" style="left: 10%; animation-delay: 0s;"></div>
         <div class="confetti-piece" style="left: 20%; animation-delay: 1s;"></div>
         <div class="confetti-piece" style="left: 30%; animation-delay: 2s;"></div>
@@ -344,6 +328,9 @@
         <div class="confetti-piece" style="left: 70%; animation-delay: 6s;"></div>
         <div class="confetti-piece" style="left: 80%; animation-delay: 7s;"></div>
         <div class="confetti-piece" style="left: 90%; animation-delay: 8s;"></div>
+    </div>
+    
+    <header>
         <div class="container">
             <h1>The Purple Vest Tradition</h1>
             <p>Celebrating 58 Years with Honor and Style</p>
@@ -353,20 +340,17 @@
     <div class="container">
         <section class="hero">
             <div class="hero-images">
-                <img src="https://images.unsplash.com/photo-1517441550993-90d565691e84?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Elegant purple vest" class="hero-img">
-                <img src="https://images.unsplash.com/photo-1542845688-662287b411d5?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Modern purple vest" class="hero-img">
+                <img src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-vB4oK9zXn7rGzHk3L1XjKj9j/user-7hE4P3F3N8i3D4yR3h5gJ2xG/img-2xU2V9k2g6v1l3s4a4o9b3u1.png" alt="A classic, elegant purple vest on a mannequin." class="hero-img">
+                <img src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-vB4oK9zXn7rGzHk3L1XjKj9j/user-7hE4P3F3N8i3D4yR3h5gJ2xG/img-9o8c2g1p9k2n7l3e6u5r8h4j.png" alt="A modern, fashionable purple vest on a wooden hanger." class="hero-img">
             </div>
             <h2>Why Purple? Why 58? 🤔</h2>
-            <p>For over three centuries, the purple vest has been the quintessential gift to mark this distinguished milestone. Rooted in ancient traditions of honor and wisdom, this timeless custom celebrates the journey into life's most accomplished chapter - the 58th year.</p>
-        </section>
-
-        <section class="holly-callout">
-            <p>A Very Happy 58th Birthday to our dear Holly! 🎉🎈</p>
+            <p>For over three centuries, the purple vest has been the quintessential gift to mark this distinguished milestone. Rooted in ancient traditions of honor and wisdom, this timeless custom celebrates the journey into life's most accomplished chapter - the 58th year. This year, we continue this noble tradition in celebration of **Holly's 58th birthday!**</p>
         </section>
 
         <div class="content">
             <section class="section history-section">
                 <h3>Ancient Origins 📜</h3>
+                <img src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-vB4oK9zXn7rGzHk3L1XjKj9j/user-7hE4P3F3N8i3D4yR3h5gJ2xG/img-8t7d2v4j9f6s1c3b5h9k7a2y.png" alt="A Roman citizen receives a purple vest in an ancient ceremony." class="section-image">
                 <div class="section-highlight">
                     "In purple we trust, in tradition we honor" - Ancient Roman saying
                 </div>
@@ -376,6 +360,7 @@
 
             <section class="section tradition-section">
                 <h3>The Modern Tradition ✨</h3>
+                <img src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-vB4oK9zXn7rGzHk3L1XjKj9j/user-7hE4P3F3N8i3D4yR3h5gJ2xG/img-5x3b7p4j1k9h8g2u6m4z0w5v.png" alt="An English Lord in the 18th century wearing a purple vest." class="section-image">
                 <div class="section-highlight">
                     The Wiltshire Vest of 1743 sparked a continental movement
                 </div>
@@ -412,22 +397,22 @@
             <h3>Vests Through the Ages 🖼️</h3>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1596700389333-85e683c38b29?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Victorian Vest">
+                    <img src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-vB4oK9zXn7rGzHk3L1XjKj9j/user-7hE4P3F3N8i3D4yR3h5gJ2xG/img-1a5c6b7d-8e9f-4g1h-2j3k-4l5m6n7o8p9q.png" alt="Ornate Victorian purple vest">
                     <h4>👑 Victorian Era</h4>
                     <p>Ceremonial Vest (1890)<br>Hand-embroidered with gold thread and mother-of-pearl buttons.</p>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1518776606013-4318c4e43033?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Art Deco Vest">
+                    <img src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-vB4oK9zXn7rGzHk3L1XjKj9j/user-7hE4P3F3N8i3D4yR3h5gJ2xG/img-2b4f6e8g-9h0i-1j2k-3l4m-5n6o7p8q9r0s.png" alt="Art Deco-style purple vest">
                     <h4>✨ Art Deco</h4>
                     <p>Design (1920s)<br>Bold geometric patterns with shimmering silver accents.</p>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1601732688463-c7827807ac02?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Contemporary Vest">
+                    <img src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-vB4oK9zXn7rGzHk3L1XjKj9j/user-7hE4P3F3N8i3D4yR3h5gJ2xG/img-3c5h7j9k-0l1m-2n3p-4q5r-6s7t8u9v0w1x.png" alt="Sleek, modern purple vest">
                     <h4>🌟 Contemporary</h4>
                     <p>Style (2020s)<br>A modern cut with sustainable materials and minimalist flair.</p>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1606821361956-613d0a273b54?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Luxury Vest">
+                    <img src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-vB4oK9zXn7rGzHk3L1XjKj9j/user-7hE4P3F3N8i3D4yR3h5gJ2xG/img-4d6i8l0m-1n2p-3q4r-5s6t-7u8v9w0x1y2z.png" alt="Luxury purple silk vest with gemstone buttons">
                     <h4>💎 Luxury Collection</h4>
                     <p>Premium Silk Series<br>Hand-tailored with precious stone buttons and custom monogramming.</p>
                 </div>
