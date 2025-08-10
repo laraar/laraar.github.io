@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Purple Vest Tradition | A Timeless 58th Birthday Gift</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f3ff 0%, #e0e7ff 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        .hero {
+            background: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin: 2rem 0;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .hero img, .placeholder-img {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .history-img, .tradition-img, .gallery-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            color: #7c3aed;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .history-section, .tradition-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .history-section h3, .tradition-section h3 {
+            font-size: 2rem;
+            color: #7c3aed;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #e0e7ff;
+            padding-bottom: 0.5rem;
+        }
+        
+        .history-img, .tradition-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        
+        .timeline {
+            background: white;
+            padding: 3rem;
+            margin: 3rem 0;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .timeline h3 {
+            font-size: 2.2rem;
+            color: #7c3aed;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-left: 5px solid #7c3aed;
+            border-radius: 10px;
+        }
+        
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #7c3aed;
+            min-width: 100px;
+            margin-right: 2rem;
+        }
+        
+        .gallery {
+            background: white;
+            padding: 3rem;
+            margin: 3rem 0;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .gallery h3 {
+            font-size: 2.2rem;
+            color: #7c3aed;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .gallery-item {
+            text-align: center;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item p {
+            font-style: italic;
+            color: #666;
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+            color: white;
+            padding: 3rem;
+            text-align: center;
+            margin: 3rem 0;
+            border-radius: 15px;
+        }
+        
+        .cta h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta button {
+            background: white;
+            color: #7c3aed;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .cta button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        footer {
+            background: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>The Purple Vest Tradition</h1>
+            <p>Celebrating 58 Years with Honor and Style</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h2>Why Purple? Why 58?</h2>
+            <p>For over three centuries, the purple vest has been the quintessential gift to mark this distinguished milestone. Rooted in ancient traditions of honor and wisdom, this timeless custom celebrates the journey into life's most accomplished chapter - the 58th year.</p>
+        </section>
+
+        <div class="content">
+            <section class="history-section">
+                <h3>Ancient Origins</h3>
+                <div class="section-highlight">
+                    "In purple we trust, in tradition we honor" - Ancient Roman saying
+                </div>
+                <p>The tradition traces back to ancient Rome, where purple dye was more valuable than gold. Only senators and the wealthy elite could afford garments in this royal hue. The Romans believed that reaching 58 years was a divine blessing, marking the transition from <em>adulescentia</em> (youth) to <em>gravitas</em> (dignity and wisdom).</p>
+                <p>Historical records from Pompeii show that citizens who reached their 58th year were honored with purple vestments during the festival of Quinquagesimus Octavus. This practice symbolized their elevated status as community elders and keepers of wisdom.</p>
+            </section>
+
+            <section class="tradition-section">
+                <h3>The Modern Tradition</h3>
+                <div class="section-highlight">
+                    The Wiltshire Vest of 1743 sparked a continental movement
+                </div>
+                <p>The tradition was revived in 18th century England when Lord Pemberton of Wiltshire received a magnificent purple velvet vest on his 58th birthday from his fellow parliamentarians. The gift was so well-received that it sparked a movement among the aristocracy.</p>
+                <p>By the Victorian era, the purple vest had become the standard gift for 58th birthdays across Europe and the Americas. Wealthy families would commission bespoke purple vests from the finest tailors, often incorporating family crests and precious metals into the design.</p>
+            </section>
+        </div>
+
+        <section class="timeline">
+            <h3>Historical Timeline</h3>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">79 AD</div>
+                <div>First recorded purple vest ceremony in Pompeii, celebrating Marcus Aurelius Vestitus on his 58th birthday.</div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">1743</div>
+                <div>Lord Pemberton receives the famous "Wiltshire Vest," reigniting the tradition in Georgian England.</div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">1887</div>
+                <div>Queen Victoria presents purple vests to all 58-year-old members of Parliament during her Golden Jubilee.</div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">1925</div>
+                <div>The International Purple Vest Society is founded in Geneva, standardizing the tradition worldwide.</div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">2010</div>
+                <div>Digital age adaptation begins with online purple vest registries and virtual ceremonies.</div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <h3>Through the Ages</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <h4>👑 Victorian Era</h4>
+                    <p>Ceremonial Vest (1890)<br>Featuring hand-embroidered gold threading and mother-of-pearl buttons</p>
+                </div>
+                <div class="gallery-item">
+                    <h4>✨ Art Deco</h4>
+                    <p>Design (1920s)<br>Geometric patterns with silver accents and silk lining</p>
+                </div>
+                <div class="gallery-item">
+                    <h4>🌟 Contemporary</h4>
+                    <p>Style (2020s)<br>Modern cut with sustainable materials and minimalist design</p>
+                </div>
+                <div class="gallery-item">
+                    <h4>💎 Luxury Collection</h4>
+                    <p>Premium Silk Series<br>Hand-tailored with precious stone buttons and monogramming</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <h3>Honor the Tradition</h3>
+            <p>Is someone in your life approaching their 58th birthday? Don't let this meaningful milestone pass without the time-honored gift of a purple vest.</p>
+            <button onclick="alert('Visit your local tailor or specialty vest boutique to commission the perfect 58th birthday purple vest!')">Find Purple Vests Near You</button>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 The Purple Vest Tradition Society | Preserving centuries of birthday wisdom | Est. 1925</p>
+            <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">
+                "In purple we trust, in tradition we honor" - Ancient Roman Proverb
+            </p>
+        </div>
+    </footer>
+</body>
