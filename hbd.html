@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Holly's 58th Birthday!</title>
+    <title>Birthday Celebration</title>
     <style>
         * {
             margin: 0;
@@ -15,378 +15,129 @@
 ```
     body {
         min-height: 100vh;
-        height: 100vh;
-        background: #ff6b9d;
-        background: -webkit-linear-gradient(45deg, #ff6b9d, #c44569, #f8b500, #feca57);
-        background: -moz-linear-gradient(45deg, #ff6b9d, #c44569, #f8b500, #feca57);
-        background: linear-gradient(45deg, #ff6b9d, #c44569, #f8b500, #feca57);
-        position: relative;
-        font-family: 'Arial', sans-serif;
-        overflow: hidden;
-        margin: 0;
-        padding: 0;
-    }
-    
-    .content-wrapper {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-    }
-    
-    /* Simple color animation that works on all devices */
-    .animated-bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0.3;
-        z-index: 1;
-    }
-    
-    .animated-bg::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(circle at 30% 80%, #ff4757, transparent 50%),
-                    radial-gradient(circle at 80% 20%, #feca57, transparent 50%),
-                    radial-gradient(circle at 40% 40%, #ff6b9d, transparent 50%);
-        animation: colorShift 6s ease-in-out infinite alternate;
-    }
-    
-    @keyframes colorShift {
-        0% {
-            opacity: 0.3;
-            filter: hue-rotate(0deg);
-        }
-        100% {
-            opacity: 0.6;
-            filter: hue-rotate(60deg);
-        }
-    }
-    
-    .confetti {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-    }
-    
-    .confetti-piece {
-        position: absolute;
-        width: 8px;
-        height: 8px;
-        background: #fff;
-        animation: fall 3s linear infinite;
-    }
-    
-    @keyframes fall {
-        0% {
-            transform: translateY(-100vh) rotate(0deg);
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(100vh) rotate(720deg);
-            opacity: 0;
-        }
-    }
-    
-    .birthday-container {
-        text-align: center;
-        z-index: 10;
-        animation: bounceIn 2s ease-out;
+        background: linear-gradient(135deg, #ffeef8, #e8d5ff, #f0e6ff, #ffe0f0);
+        background-size: 400% 400%;
+        animation: gradientShift 8s ease-in-out infinite;
+        font-family: 'Arial', sans-serif;
         padding: 20px;
-        max-width: 90vw;
-        position: relative;
     }
-    
-    /* iPad and mobile fixes */
-    @media (max-width: 768px) {
-        .content-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            transform: none;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        
-        .confetti-piece {
-            width: 6px;
-            height: 6px;
-        }
-        
-        .birthday-text {
-            margin: 15px 10px;
-        }
-        
-        .continue-button {
-            margin: 20px 10px;
-            min-height: 60px;
-        }
-        
-        .balloon-1, .balloon-3 {
-            left: 2%;
-        }
-        
-        .balloon-2, .balloon-4 {
-            right: 2%;
-        }
+
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
-    
-    @media (max-width: 480px) {
-        .birthday-text {
-            margin: 10px 5px;
-        }
-        
-        .continue-button {
-            letter-spacing: 1px;
-            margin: 15px 5px;
-        }
-        
-        .cake {
-            margin: 15px 0;
-        }
+
+    .cake-container {
+        text-align: center;
+        max-width: 90%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
-    
-    /* iPad specific adjustments */
-    @media (min-width: 768px) and (max-width: 1024px) {
-        .birthday-text {
-            font-size: 5rem;
-        }
-        
-        .cake {
-            font-size: 140px;
-        }
-        
-        .continue-button {
-            font-size: 1.8rem;
-            padding: 25px 50px;
-        }
+
+    .cake-image {
+        max-width: 100%;
+        height: auto;
+        max-height: 70vh;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        transition: transform 0.3s ease;
     }
-    
-    @keyframes bounceIn {
-        0% {
-            transform: scale(0.3) translateY(50px);
-            opacity: 0;
-        }
-        50% {
-            transform: scale(1.1) translateY(-20px);
-        }
-        100% {
-            transform: scale(1) translateY(0);
-            opacity: 1;
-        }
+
+    .cake-image:hover {
+        transform: scale(1.02);
     }
-    
-    .cake {
-        font-size: clamp(80px, 15vw, 120px);
-        margin: 20px 0;
-        animation: pulse 2s ease-in-out infinite;
-        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
-    }
-    
-    @keyframes pulse {
-        0%, 100% {
-            transform: scale(1);
-        }
-        50% {
-            transform: scale(1.1);
-        }
-    }
-    
-    .birthday-text {
-        color: white;
-        font-size: clamp(2.5rem, 8vw, 4rem);
-        font-weight: bold;
-        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-        margin: 20px 10px;
-        animation: textGlow 2s ease-in-out infinite alternate;
-        line-height: 1.1;
-    }
-    
-    @keyframes textGlow {
-        0% {
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.4);
-        }
-        100% {
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 255, 255, 0.8);
-        }
-    }
-    
-    .continue-button {
+
+    .click-button {
         background: linear-gradient(45deg, #ff6b9d, #c44569);
         color: white;
-        font-size: clamp(1rem, 4vw, 1.5rem);
-        font-weight: bold;
-        padding: clamp(15px, 4vw, 20px) clamp(25px, 8vw, 40px);
         border: none;
+        padding: 15px 40px;
+        font-size: 18px;
+        font-weight: bold;
         border-radius: 50px;
         cursor: pointer;
-        margin: 30px 10px;
         text-transform: uppercase;
-        letter-spacing: 2px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        letter-spacing: 1px;
+        box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
         transition: all 0.3s ease;
-        animation: buttonFloat 3s ease-in-out infinite;
-        touch-action: manipulation;
-        -webkit-tap-highlight-color: transparent;
+        text-decoration: none;
+        display: inline-block;
     }
-    
-    @keyframes buttonFloat {
-        0%, 100% {
-            transform: translateY(0);
+
+    .click-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 25px rgba(255, 107, 157, 0.4);
+        background: linear-gradient(45deg, #ff8fab, #d55a7a);
+    }
+
+    .click-button:active {
+        transform: translateY(0);
+        box-shadow: 0 6px 15px rgba(255, 107, 157, 0.3);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .click-button {
+            padding: 12px 30px;
+            font-size: 16px;
         }
-        50% {
-            transform: translateY(-10px);
-        }
-    }
-    
-    .continue-button:hover {
-        transform: scale(1.05) translateY(-5px);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
-    }
-    
-    .continue-button:active {
-        transform: scale(0.95);
-    }
-    
-    .dissolve-transition {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: white;
-        opacity: 0;
-        pointer-events: none;
-        z-index: 1000;
-    }
-    
-    .dissolve {
-        animation: dissolveOut 1.5s ease-in-out forwards;
-    }
-    
-    @keyframes dissolveOut {
-        0% {
-            opacity: 0;
-        }
-        50% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 0;
+        
+        .cake-image {
+            max-height: 60vh;
         }
     }
-    
-    .balloons {
-        position: absolute;
-        font-size: clamp(2rem, 6vw, 3rem);
-        animation: float 4s ease-in-out infinite;
-    }
-    
-    .balloon-1 {
-        top: 10%;
-        left: 10%;
-        animation-delay: 0s;
-    }
-    
-    .balloon-2 {
-        top: 20%;
-        right: 15%;
-        animation-delay: 1s;
-    }
-    
-    .balloon-3 {
-        bottom: 20%;
-        left: 5%;
-        animation-delay: 2s;
-    }
-    
-    .balloon-4 {
-        bottom: 15%;
-        right: 10%;
-        animation-delay: 3s;
-    }
-    
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0) rotate(-5deg);
+
+    @media (max-width: 480px) {
+        .click-button {
+            padding: 10px 25px;
+            font-size: 14px;
         }
-        50% {
-            transform: translateY(-20px) rotate(5deg);
+        
+        .cake-image {
+            max-height: 50vh;
+            border-radius: 15px;
         }
+    }
+
+    /* Placeholder for when no image is provided */
+    .cake-placeholder {
+        width: 300px;
+        height: 200px;
+        background: linear-gradient(45deg, #ffd89b, #19547b);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
 </style>
 ```
 
 </head>
 <body>
-    <div class="animated-bg"></div>
-    <div class="confetti" id="confetti"></div>
+    <div class="cake-container">
+        <!-- Placeholder for the cake image - replace src with your image -->
+        <div class="cake-placeholder">
+            🎂 Your Birthday Cake Image Here 🎂
+        </div>
+        <!-- Uncomment and use this when you have your image:
+        <img src="your-cake-image.jpg" alt="Birthday Cake" class="cake-image">
+        -->
 
 ```
-<div class="content-wrapper">
-    <div class="balloons balloon-1">🎈</div>
-    <div class="balloons balloon-2">🎈</div>
-    <div class="balloons balloon-3">🎈</div>
-    <div class="balloons balloon-4">🎈</div>
-    
-    <div class="birthday-container">
-        <div class="cake">🎂</div>
-        <div class="birthday-text">Holly is 58!</div>
-        <button class="continue-button" onclick="continueToBirthday()">
-            Click to Continue
-        </button>
-    </div>
+    <a href="holbdy.html" class="click-button">Click Here</a>
 </div>
-
-<div class="dissolve-transition" id="dissolveTransition"></div>
-
-<script>
-    // Create confetti particles
-    function createConfetti() {
-        const confettiContainer = document.getElementById('confetti');
-        const colors = ['#ff6b9d', '#c44569', '#f8b500', '#feca57', '#fff', '#ff4757'];
-        
-        for (let i = 0; i < 50; i++) {
-            const confettiPiece = document.createElement('div');
-            confettiPiece.className = 'confetti-piece';
-            confettiPiece.style.left = Math.random() * 100 + '%';
-            confettiPiece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            confettiPiece.style.animationDelay = Math.random() * 3 + 's';
-            confettiPiece.style.animationDuration = (Math.random() * 2 + 2) + 's';
-            confettiContainer.appendChild(confettiPiece);
-        }
-    }
-    
-    function continueToBirthday() {
-        const dissolve = document.getElementById('dissolveTransition');
-        dissolve.style.pointerEvents = 'auto';
-        dissolve.classList.add('dissolve');
-        
-        // Wait for the dissolve animation to reach its peak before redirecting
-        setTimeout(() => {
-            window.location.href = 'holbdy.html';
-        }, 750);
-    }
-    
-    // Initialize confetti when page loads
-    window.addEventListener('load', createConfetti);
-    
-    // Add some extra sparkle with periodic confetti bursts
-    setInterval(createConfetti, 5000);
-</script>
 ```
 
 </body>
