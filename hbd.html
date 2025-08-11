@@ -15,21 +15,64 @@
 ```
     body {
         min-height: 100vh;
+        height: 100vh;
+        background: #ff6b9d;
+        background: -webkit-linear-gradient(45deg, #ff6b9d, #c44569, #f8b500, #feca57);
+        background: -moz-linear-gradient(45deg, #ff6b9d, #c44569, #f8b500, #feca57);
         background: linear-gradient(45deg, #ff6b9d, #c44569, #f8b500, #feca57);
-        background-size: 400% 400%;
-        animation: gradientShift 8s ease infinite;
+        position: relative;
+        font-family: 'Arial', sans-serif;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .content-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        font-family: 'Arial', sans-serif;
-        overflow: hidden;
     }
     
-    @keyframes gradientShift {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
+    /* Simple color animation that works on all devices */
+    .animated-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        z-index: 1;
+    }
+    
+    .animated-bg::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 30% 80%, #ff4757, transparent 50%),
+                    radial-gradient(circle at 80% 20%, #feca57, transparent 50%),
+                    radial-gradient(circle at 40% 40%, #ff6b9d, transparent 50%);
+        animation: colorShift 6s ease-in-out infinite alternate;
+    }
+    
+    @keyframes colorShift {
+        0% {
+            opacity: 0.3;
+            filter: hue-rotate(0deg);
+        }
+        100% {
+            opacity: 0.6;
+            filter: hue-rotate(60deg);
+        }
     }
     
     .confetti {
@@ -62,11 +105,22 @@
         text-align: center;
         z-index: 10;
         animation: bounceIn 2s ease-out;
-        padding: 0 15px;
+        padding: 20px;
         max-width: 90vw;
+        position: relative;
     }
     
+    /* iPad and mobile fixes */
     @media (max-width: 768px) {
+        .content-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: none;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
         .confetti-piece {
             width: 6px;
             height: 6px;
@@ -278,20 +332,23 @@
 
 </head>
 <body>
+    <div class="animated-bg"></div>
     <div class="confetti" id="confetti"></div>
 
 ```
-<div class="balloons balloon-1">🎈</div>
-<div class="balloons balloon-2">🎈</div>
-<div class="balloons balloon-3">🎈</div>
-<div class="balloons balloon-4">🎈</div>
-
-<div class="birthday-container">
-    <div class="cake">🎂</div>
-    <div class="birthday-text">Holly is 58!</div>
-    <button class="continue-button" onclick="continueToBirthday()">
-        Click to Continue
-    </button>
+<div class="content-wrapper">
+    <div class="balloons balloon-1">🎈</div>
+    <div class="balloons balloon-2">🎈</div>
+    <div class="balloons balloon-3">🎈</div>
+    <div class="balloons balloon-4">🎈</div>
+    
+    <div class="birthday-container">
+        <div class="cake">🎂</div>
+        <div class="birthday-text">Holly is 58!</div>
+        <button class="continue-button" onclick="continueToBirthday()">
+            Click to Continue
+        </button>
+    </div>
 </div>
 
 <div class="dissolve-transition" id="dissolveTransition"></div>
