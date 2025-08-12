@@ -76,6 +76,24 @@
         box-shadow: 0 6px 15px rgba(255, 107, 157, 0.3);
     }
 
+    /* Smooth fade transition */
+    .fade-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #d8b4fe;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease-out;
+        z-index: 1000;
+    }
+
+    .fade-overlay.active {
+        opacity: 1;
+    }
+
     /* Responsive adjustments */
     @media (max-width: 768px) {
         .click-button {
@@ -133,7 +151,28 @@
 <body>
     <div class="cake-container">
         <img src="images/cake.jpeg" alt="Birthday Cake" class="cake-image">
-        <a href="holbdy.html" class="click-button">Click Here</a>
+        <a href="holbdy.html" class="click-button" id="transitionButton">Click Here</a>
     </div>
+
+```
+<!-- Fade overlay for smooth transition -->
+<div class="fade-overlay" id="fadeOverlay"></div>
+
+<script>
+    document.getElementById('transitionButton').addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Start fade out animation
+        const overlay = document.getElementById('fadeOverlay');
+        overlay.classList.add('active');
+        
+        // Navigate after animation completes
+        setTimeout(() => {
+            window.location.href = 'holbdy.html';
+        }, 500);
+    });
+</script>
+```
+
 </body>
 </html>
