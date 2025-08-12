@@ -19,19 +19,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: linear-gradient(135deg, #ffeef8, #e8d5ff, #f0e6ff, #ffe0f0);
-        background-size: 400% 400%;
-        animation: gradientShift 8s ease-in-out infinite;
+        background: #d8b4fe;
         font-family: 'Arial', sans-serif;
         margin: 0;
         padding: 0;
         overflow: auto;
-    }
-
-    @keyframes gradientShift {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
     }
 
     .cake-container {
@@ -44,9 +36,8 @@
     }
 
     .cake-image {
-        max-width: 75vw;
+        width: min(90vw, 80vh);
         height: auto;
-        max-height: 70vh;
         border-radius: 20px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         margin-bottom: 30px;
@@ -93,7 +84,7 @@
         }
         
         .cake-image {
-            max-height: 60vh;
+            width: min(95vw, 70vh);
         }
     }
 
@@ -104,8 +95,20 @@
         }
         
         .cake-image {
-            max-height: 50vh;
+            width: min(95vw, 60vh);
             border-radius: 15px;
+        }
+    }
+
+    /* iPad Pro landscape optimization */
+    @media (min-width: 1024px) and (orientation: landscape) {
+        .cake-image {
+            width: min(85vw, 75vh);
+        }
+        
+        .cake-container {
+            max-height: 100vh;
+            justify-content: space-around;
         }
     }
 
@@ -129,16 +132,8 @@
 </head>
 <body>
     <div class="cake-container">
-        <!-- Placeholder for the cake image - replace src with your image -->
-        
-    
         <img src="images/cake.jpeg" alt="Birthday Cake" class="cake-image">
-       
-
-```
-    <a href="holbdy.html" class="click-button">Click Here</a>
-</div>
-```
-
+        <a href="holbdy.html" class="click-button">Click Here</a>
+    </div>
 </body>
 </html>
