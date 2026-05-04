@@ -1,0 +1,83 @@
+<!-- @format -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keycap Grid Array</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main-board">
+      <!-- Section 1: Title -->
+      <div class="grid-title">HIDDEN GLYPHS</div>
+
+      <!-- Section 2: The actual grid (JS will fill this) -->
+      <div class="key-grid" id="keyGrid"></div>
+
+      <!-- Section 3: The footer -->
+      <div class="board-footer">
+        <!-- Clock section -->
+        <div class="clock-section">
+          <span class="control-text">ELAPSED</span>
+          <div class="clock-display">
+            <span id="clockDisplay">0:00</span>
+            <span id="bestDisplay" class="best-time"></span>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="footer-divider"></div>
+
+        <!-- Controls and info -->
+        <div class="footer-bottom">
+          <div class="controls-column">
+            <div class="control-row">
+              <label class="switch" for="soundToggle">
+                <input type="checkbox" id="soundToggle" aria-label="Toggle Sound Effects" />
+                <span class="slider"></span>
+              </label>
+              <span class="control-text">SOUND</span>
+            </div>
+            <div class="control-row">
+              <label class="switch" for="advancedToggle">
+                <input type="checkbox" id="advancedToggle" aria-label="Toggle Advanced Mode" />
+                <span class="slider"></span>
+              </label>
+              <span class="control-text">STROOP MODE</span>
+            </div>
+            <div class="control-row">
+              <div
+                id="restartButton"
+                class="restart-toggle"
+                role="button"
+                aria-label="Restart Game"
+              ></div>
+              <span class="control-text">RESTART</span>
+            </div>
+          </div>
+          <div id="infoDisplay" class="info-text info-box"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Define a linear gradient for the glyphs. -->
+    <svg class="glyph-shading-svg" aria-hidden="true">
+      <defs>
+        <!-- Horizontal gradient for the key glyph -->
+        <linearGradient id="key-glyph-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#b89100" />
+          <stop offset="100%" stop-color="#f1c40f" />
+        </linearGradient>
+        <!-- Horizontal gradient for matched glyphs -->
+        <linearGradient id="key-glyph-matched" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#aba6a6" />
+          <stop offset="100%" stop-color="#e6e6e5" />
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <script src="script.js"></script>
+  </body>
+</html>
