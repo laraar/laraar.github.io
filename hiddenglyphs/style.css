@@ -151,6 +151,8 @@ body {
   padding: 8px 10px;
   box-sizing: border-box;
   display: none;
+  height: 70px;
+  overflow: hidden; 
 }
 
 .info-box.visible {
@@ -423,15 +425,16 @@ input:checked + .slider:before {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .kudos-text {
   font-family: "Segoe UI", sans-serif;
   font-weight: 800;
-  font-size: 37px;
+  font-size: 36px;
   color: #37474f;
   text-align: center;
+  line-height: 1;
 }
 
 .play-again-link {
