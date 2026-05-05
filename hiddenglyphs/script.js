@@ -39,6 +39,9 @@ const COLOR_PAIRS = [
   { from: "#9933ff", to: "#cc88ff" }, // purple
 ];
 
+// ─── Kudos List ─────────────────────────────────────────────────────────────
+let kudosList = [];
+
 // ─── Cookie Helpers ───────────────────────────────────────────────────────────
 // Cookies persist user settings and best times across browser sessions.
 
@@ -125,6 +128,7 @@ function handleGameComplete() {
   clockDisplay.classList.add("finished"); // Turns the clock display bright green
   clockDisplay.textContent = formatTime(clockSeconds) + " ✓";
   checkAndSaveBestTime(clockSeconds);
+  showCompletionKudos();
 
   // Wait briefly for the last match animation to settle, then pulse all matched keys
   setTimeout(() => {
@@ -307,14 +311,19 @@ async function initGame() {
   pendingNoMatch = null;
   matchedCount = 0;
   grid.innerHTML = ""; // Clear all key elements from the DOM
+  grid.classList.remove("ready"); // Hide the grid until new keys are created
   infoDisplay.innerHTML = "";
-  infoDisplay.classList.remove("visible"); // Hide the info box until first click
+  infoDisplay.classList.remove("visible", "completion"); // Hide the info box until first click
   resetClock();
   loadBestTime();
 
   try {
-    const response = await fetch("json/glyphs.json");
-    const data = await response.json();
+    const [glyphResponse, kudosResponse] = await Promise.all([
+      fetch("json/glyphs.json"),
+      fetch("json/kudos.json"),
+    ]);
+    const data = await glyphResponse.json();
+    kudosList = await kudosResponse.json();
 
     // Build a flat pool of all glyphs across all fonts in the JSON,
     // tagging each with its font name and a unique composite ID
@@ -338,6 +347,7 @@ async function initGame() {
     gameSet.forEach((glyphData, i) => {
       createKey(glyphData, colorAssignments ? colorAssignments[i] : null, i);
     });
+    grid.classList.add("ready"); // Makes the grid visible now that all keys are created
   } catch (error) {
     console.error("Error loading glyphs:", error);
   }
@@ -376,12 +386,25 @@ function createKey(glyphData, gradientColors = null, cardIndex = 0) {
   container.appendChild(mask);
   grid.appendChild(container);
 
-  // Play the click sound on mousedown (earlier than click, feels more responsive)
+  // Handle press animations on mouse and touch events.
   container.addEventListener("mousedown", () => {
     if (soundToggle?.checked) {
-      keySound.currentTime = 0; // Rewind so rapid clicks always play from the start
+      keySound.currentTime = 0;
       keySound.play();
     }
+    container.classList.add("pressed");
+  });
+
+  container.addEventListener("mouseup", () => {
+    setTimeout(() => container.classList.remove("pressed"), 120);
+  });
+
+  container.addEventListener("touchstart", { passive: true }, () => {
+    container.classList.add("pressed");
+  });
+
+  container.addEventListener("touchend", () => {
+    setTimeout(() => container.classList.remove("pressed"), 120);
   });
 
   // ─── Click Handler (State Machine) ──────────────────────────────────────────
@@ -596,7 +619,41 @@ bestDisplay.addEventListener("click", () => {
   }
 });
 
+// ─── Completion Kudos ───────────────────────────────────────────────────────
+// When the game is completed, show a random congratulatory message in the info box.
+function showCompletionKudos() {
+  const text = kudosList[Math.floor(Math.random() * kudosList.length)];
+
+  infoDisplay.innerHTML = "";
+  infoDisplay.classList.add("visible", "completion");
+
+  const msg = document.createElement("div");
+  msg.className = "kudos-text";
+  msg.textContent = text;
+  infoDisplay.appendChild(msg);
+
+  const playAgain = document.createElement("a");
+  playAgain.className = "play-again-link";
+  playAgain.textContent = "PLAY AGAIN";
+  playAgain.href = "#";
+  playAgain.addEventListener("click", (e) => {
+    e.preventDefault();
+    initGame();
+  });
+  infoDisplay.appendChild(playAgain);
+}
+
 // ─── Startup ──────────────────────────────────────────────────────────────────
+
+// If on a narrow screen, show a message instead of the game — it's not designed for mobile
+if (window.innerWidth < 768) {
+  document.body.innerHTML = `
+    <div style="font-family: 'Segoe UI', sans-serif; font-size: 20px; 
+    font-weight: 600; color: #37474f; text-align: center; padding: 40px;">
+      Mobile version under construction.<br><br>
+      Please visit on a desktop browser.
+    </div>`;
+}
 
 // Restore saved settings from cookies, then initialize the first game
 loadSettings();
