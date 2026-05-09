@@ -6,15 +6,66 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hidden Glyphs</title>
-    <link rel="stylesheet" href="style.css?version=1.1" />
+    <link rel="stylesheet" href="style.css?version=1.4" />
   </head>
   <body>
     <div class="main-board">
       <!-- Section 1: Title -->
       <div class="grid-title">HIDDEN GLYPHS</div>
 
-      <!-- Section 2: The actual grid (JS will fill this) -->
-      <div class="key-grid" id="keyGrid"></div>
+      <!-- Section 2: The actual grid — 16 skeleton keys pre-rendered so the
+           layout is immediately stable. JS will populate each .key-image with
+           its glyph SVG and set data attributes; no keys are created from scratch. -->
+      <div class="key-grid ready" id="keyGrid">
+        <div class="key-container" id="key-0">
+          <div class="mask-wrapper"><div class="key-image"></div></div>
+        </div>
+        <div class="key-container" id="key-1">
+          <div class="mask-wrapper"><div class="key-image"></div></div>
+        </div>
+        <div class="key-container" id="key-2">
+          <div class="mask-wrapper"><div class="key-image"></div></div>
+        </div>
+        <div class="key-container" id="key-3">
+          <div class="mask-wrapper"><div class="key-image"></div></div>
+        </div>
+        <div class="key-container" id="key-4">
+          <div class="mask-wrapper"><div class="key-image"></div></div>
+        </div>
+        <div class="key-container" id="key-5">
+          <div class="mask-wrapper"><div class="key-image"></div></div>
+        </div>
+        <div class="key-container" id="key-6">
+          <div class="mask-wrapper"><div class="key-image"></div></div>
+        </div>
+        <div class="key-container" id="key-7">
+          <div class="mask-wrapper"><div class="key-image"></div></div>
+        </div>
+        <div class="key-container" id="key-8">
+          <div class="mask-wrapper"><div class="key-image"></div></div>
+        </div>
+        <div class="key-container" id="key-9">
+          <div class="mask-wrapper"><div class="key-image"></div></div>
+        </div>
+        <div class="key-container" id="key-10">
+          <div class="mask-wrapper"><div class="key-image"></div></div>
+        </div>
+        <div class="key-container" id="key-11">
+          <div class="mask-wrapper"><div class="key-image"></div></div>
+        </div>
+        <div class="key-container" id="key-12">
+          <div class="mask-wrapper"><div class="key-image"></div></div>
+        </div>
+        <div class="key-container" id="key-13">
+          <div class="mask-wrapper"><div class="key-image"></div></div>
+        </div>
+        <div class="key-container" id="key-14">
+          <div class="mask-wrapper"><div class="key-image"></div></div>
+        </div>
+        <div class="key-container" id="key-15">
+          <div class="mask-wrapper"><div class="key-image"></div></div>
+        </div>
+      </div>
 
       <!-- Section 3: The footer -->
       <div class="board-footer">
@@ -23,6 +74,9 @@
           <span class="control-text">ELAPSED</span>
           <div class="clock-display">
             <span id="clockDisplay">0:00</span>
+            <button id="pauseButton" class="pause-btn" aria-label="Pause Game">
+              &#10074;&#10074;
+            </button>
             <span id="bestDisplay" class="best-time"></span>
           </div>
         </div>

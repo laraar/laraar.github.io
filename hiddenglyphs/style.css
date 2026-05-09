@@ -14,6 +14,16 @@ body {
   background-color: #b1b3b7;
   -webkit-user-select: none;
   user-select: none;
+  /* Suppress the default iOS Safari blue/green tap flash on the whole page */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Belt-and-suspenders: Safari applies the tap highlight to whichever element
+   is the deepest hit-tested target, regardless of what its ancestors say.
+   Setting this universally ensures no descendant can produce the highlight,
+   no matter which element Safari decides to target on a given press. */
+*, *::before, *::after {
+  -webkit-tap-highlight-color: transparent;
 }
 
 .main-board {
@@ -48,11 +58,7 @@ body {
   grid-template-columns: repeat(4, 120px);
   grid-template-rows: repeat(4, 120px);
   gap: 15px;
-  visibility: hidden;
-}
-
-.key-grid.ready {
-  visibility: visible;
+  /* No longer hidden — skeleton keys are in the HTML from the start */
 }
 
 /* Footer */
@@ -89,6 +95,44 @@ body {
 
 #clockDisplay.finished {
   color: #00c853;
+}
+
+/* ── Pause Button ─────────────────────────────────────────────────────────── */
+.pause-btn {
+  font-family: "Segoe UI", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 1px;
+  color: #37474f;
+  background: none;
+  border: 1.5px solid #37474f;
+  border-radius: 5px;
+  padding: 2px 6px;
+  cursor: pointer;
+  opacity: 0;                  /* Hidden until the clock starts */
+  pointer-events: none;
+  transition: opacity 0.2s, background 0.15s, color 0.15s;
+  /* Align with the text baseline */
+  vertical-align: baseline;
+  position: relative;
+  top: -1px;
+}
+
+.pause-btn.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.pause-btn:hover {
+  background: #37474f;
+  color: #7d8c79;
+}
+
+.pause-btn.paused {
+  /* Show a filled-in look while paused to signal "click to resume" */
+  background: #37474f;
+  color: #7d8c79;
 }
 
 .best-time {
@@ -184,7 +228,12 @@ body {
   height: 120px;
   position: relative;
   cursor: pointer;
-  filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.3));
+  /* NO filter here. Safari forces any element with filter: into its own
+     compositing layer and renders the tap highlight outside that layer —
+     so -webkit-tap-highlight-color is ignored and you get the green rectangle.
+     It also clips drop-shadow at the compositing layer boundary, causing the
+     shadow to be partially cut off when adjacent keys overlap the layer edge.
+     Keeping this element filter-free fixes both problems. */
   transition: transform 0.08s ease;
   -webkit-tap-highlight-color: transparent;
 }
@@ -200,6 +249,11 @@ body {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
+  /* Shadow lives here instead, as box-shadow. box-shadow respects border-radius,
+     stays in normal paint order (no compositing layer), and is never clipped by
+     a neighbor's stacking context. It also scales correctly with the parent's
+     transform: scale() so the shadow shrinks naturally on key press. */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.45), 0 2px 3px rgba(0, 0, 0, 0.3);
 }
 
 .key-image {
@@ -214,10 +268,14 @@ body {
 }
 
 .glyph-shading-svg {
+  /* Classic accessible-hide: avoids the zero-size defs rendering bug in some
+     Firefox/Safari builds where a truly 0×0 SVG can cause <defs> to be skipped. */
   position: absolute;
-  width: 0;
-  height: 0;
+  width: 1px;
+  height: 1px;
   overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
 }
 
 .glyph-svg {
@@ -227,6 +285,10 @@ body {
   transition: opacity 0.1s ease;
   padding-bottom: 10px;
   fill: url(#key-glyph-gradient);
+  /* Prevent the SVG from being the touch/click target — events should land on
+     .key-container so that -webkit-tap-highlight-color suppression works and
+     event delegation always gets a consistent target. */
+  pointer-events: none;
 }
 
 .key-container.guess-color .glyph-svg {
@@ -244,28 +306,33 @@ body {
   transition: opacity 0.5s ease;
 }
 
+/* ── Match animation — Safari-safe ───────────────────────────────────────────
+   Safari cannot animate between SVG paint-server fill values (url(#grad-X) →
+   url(#key-glyph-matched)) — it drops the fill entirely for one frame, causing
+   a visible flash.  The fix: animate only filter + opacity (properties Safari
+   handles reliably), never the fill attribute itself.  The fill stays as-is
+   throughout the glow; at animationend JS immediately adds .matched which
+   overrides fill via the rule above.  No fill jump, no flash, works everywhere. */
+
 .key-container.matched-flash .glyph-svg {
   opacity: 1;
-  animation: match-glow 1s ease-in-out forwards;
+  -webkit-animation: match-glow 1s ease-in-out forwards;
+          animation: match-glow 1s ease-in-out forwards;
+  /* Do NOT animate fill here — keep whatever color the card already has */
+}
+
+@-webkit-keyframes match-glow {
+  0%   { -webkit-filter: none;                                        filter: none; }
+  40%  { -webkit-filter: drop-shadow(0 0 18px rgba(241, 196, 15, 1)); filter: drop-shadow(0 0 18px rgba(241, 196, 15, 1)); }
+  70%  { -webkit-filter: drop-shadow(0 0 18px rgba(241, 196, 15, 1)); filter: drop-shadow(0 0 18px rgba(241, 196, 15, 1)); }
+  100% { -webkit-filter: none;                                        filter: none; }
 }
 
 @keyframes match-glow {
-  0% {
-    filter: drop-shadow(0 0 4px rgba(241, 196, 15, 0.6));
-    fill: var(--match-start-fill, url(#key-glyph-gradient));
-  }
-  40% {
-    filter: drop-shadow(0 0 18px rgba(241, 196, 15, 1));
-    fill: var(--match-start-fill, url(#key-glyph-gradient));
-  }
-  70% {
-    filter: drop-shadow(0 0 18px rgba(241, 196, 15, 1));
-    fill: var(--match-start-fill, url(#key-glyph-gradient));
-  }
-  100% {
-    filter: none;
-    fill: url(#key-glyph-matched);
-  }
+  0%   { filter: none; }
+  40%  { filter: drop-shadow(0 0 18px rgba(241, 196, 15, 1)); }
+  70%  { filter: drop-shadow(0 0 18px rgba(241, 196, 15, 1)); }
+  100% { filter: none; }
 }
 
 /* Switch Styles */
@@ -331,24 +398,26 @@ input:checked + .slider:before {
 }
 
 .key-container.success-pulse .glyph-svg {
-  animation: success-pulse 1.5s ease-in-out;
+  -webkit-animation: success-pulse 1.5s ease-in-out;
+          animation: success-pulse 1.5s ease-in-out;
+}
+
+@-webkit-keyframes success-pulse {
+  0%   { -webkit-filter: none; filter: none; }
+  40%  { -webkit-filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 20px rgba(200, 230, 200, 0.7));
+                  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 20px rgba(200, 230, 200, 0.7)); }
+  70%  { -webkit-filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 20px rgba(200, 230, 200, 0.7));
+                  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 20px rgba(200, 230, 200, 0.7)); }
+  100% { -webkit-filter: none; filter: none; }
 }
 
 @keyframes success-pulse {
-  0% {
-    filter: none;
-  }
-  40% {
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9))
-      drop-shadow(0 0 20px rgba(200, 230, 200, 0.7));
-  }
-  70% {
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9))
-      drop-shadow(0 0 20px rgba(200, 230, 200, 0.7));
-  }
-  100% {
-    filter: none;
-  }
+  0%   { filter: none; }
+  40%  { filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9))
+                drop-shadow(0 0 20px rgba(200, 230, 200, 0.7)); }
+  70%  { filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9))
+                drop-shadow(0 0 20px rgba(200, 230, 200, 0.7)); }
+  100% { filter: none; }
 }
 
 .modal-overlay {
