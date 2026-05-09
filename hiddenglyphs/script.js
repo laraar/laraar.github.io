@@ -12,60 +12,55 @@ const restartButton = document.getElementById("restartButton"); // Restart pseud
 const pauseButton = document.getElementById("pauseButton"); // Pause/resume button
 
 // ─── Web Audio API Setup ───────────────────────────────────────────────────────
-// Two distinct concerns that must be kept separate:
+// Two distinct concerns kept strictly separate:
 //
-//  1. Fetching + decoding the audio buffer — does NOT require a user gesture.
-//     We do this immediately at page load so the buffer is ready before the
-//     first keypress. (Browsers allow fetch and decodeAudioData without a gesture;
-//     only *playing* requires one.)
+//  1. Decoding the audio buffer — does NOT require a user gesture in any browser.
+//     We create a throw-away AudioContext solely for decoding (allowed at page
+//     load), fetch the MP3, decode it into a PCM AudioBuffer, then close the
+//     throw-away context. The buffer survives and is reused for every play call.
+//     NOTE: OfflineAudioContext is NOT used here. Its required `length` parameter
+//     (number of output samples) must be ≥ the decoded audio length, which we
+//     don't know in advance; an undersized value causes silent decode failures in
+//     Safari. A regular AudioContext used only for decoding has no such issue.
 //
-//  2. Creating + resuming the AudioContext — DOES require a user gesture in Safari.
-//     Safari suspends any AudioContext not created inside a gesture handler, so we
-//     create it lazily on the first mousedown/touchstart.
-//
-// Result: by the time the user presses the first key, the buffer is already decoded.
-// The gesture on that first press creates/resumes the context, and playKeySound()
-// fires immediately — no first-press silence.
+//  2. Creating the playback AudioContext — DOES require a user gesture in Safari.
+//     We create it lazily on the first mousedown/touchstart and mark it ready
+//     synchronously so playKeySound() works on that very same first press.
 
-let audioCtx = null;         // Created on first user gesture
+let audioCtx = null;         // Playback context — created on first user gesture
 let keyBuffer = null;        // Decoded PCM buffer — populated at page load
-let audioCtxReady = false;   // True once context exists and is running
+let audioCtxReady = false;   // True once playback context is created and usable
 
-// Called at page load (no gesture needed): fetch and decode the MP3 into a
-// raw PCM AudioBuffer. We use a temporary offline context for the decode step
-// because AudioContext itself needs a gesture on Safari — OfflineAudioContext
-// and decodeAudioData on a temporary context work fine without one.
+// Decode the MP3 at page load using a short-lived throw-away AudioContext.
+// This is permitted without a gesture because we never call start() on it.
 (async function preloadAudioBuffer() {
+  let decodeCtx = null;
   try {
     const response = await fetch("audio/keyclick.mp3");
     const arrayBuffer = await response.arrayBuffer();
-    // OfflineAudioContext can be created without a gesture and is only used here
-    // for decoding; it is discarded immediately after.
-    const offlineCtx = new (window.OfflineAudioContext || window.webkitOfflineAudioContext)(1, 1, 44100);
-    keyBuffer = await offlineCtx.decodeAudioData(arrayBuffer);
+    // A regular AudioContext used only for decodeAudioData is allowed pre-gesture.
+    decodeCtx = new (window.AudioContext || window.webkitAudioContext)();
+    keyBuffer = await decodeCtx.decodeAudioData(arrayBuffer);
   } catch (err) {
     console.warn("Audio preload failed:", err);
+  } finally {
+    // Close immediately — we only needed it for decoding.
+    if (decodeCtx) decodeCtx.close().catch(() => {});
   }
 })();
 
 // Called synchronously inside the first mousedown/touchstart gesture handler.
-// Creates the real AudioContext (synchronous) and marks it ready immediately —
-// a freshly-constructed AudioContext inside a gesture handler is usable right away
-// even before resume() resolves. We then fire-and-forget resume() to satisfy
-// Safari's policy, but audioCtxReady is already true so playKeySound() works on
-// this very first press. Subsequent calls are no-ops (guarded by audioCtx check).
+// Creates the playback AudioContext and marks it ready before returning, so
+// playKeySound() — called right after — finds audioCtxReady === true.
+// resume() is fire-and-forgotten; a freshly-constructed context inside a gesture
+// is immediately usable even if its .state still reads "suspended".
 function unlockAudioContext() {
   if (audioCtx) return;
   try {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    // Mark ready immediately — the context is usable now even if state is
-    // technically "suspended" before resume() resolves its promise.
-    audioCtxReady = true;
-    // Fire-and-forget: resume() is required for Safari's autoplay policy but
-    // we don't need to await it before playing — the first source.start(0)
-    // will queue correctly once the context ticks.
+    audioCtxReady = true; // Set synchronously — before any await
     if (audioCtx.state === "suspended") {
-      audioCtx.resume().catch((err) => console.warn("AudioContext resume failed:", err));
+      audioCtx.resume().catch((err) => console.warn("AudioContext resume:", err));
     }
   } catch (err) {
     console.warn("AudioContext unlock failed:", err);
@@ -73,7 +68,7 @@ function unlockAudioContext() {
 }
 
 // Play one instance of the key-click sound with near-zero latency.
-// Each call creates a fresh BufferSourceNode (they are single-use by design).
+// BufferSourceNodes are single-use by spec; a new one is created per play call.
 function playKeySound() {
   if (!soundToggle?.checked || !audioCtxReady || !keyBuffer) return;
   try {
@@ -152,7 +147,7 @@ function startClock() {
   clockPaused = false;
   pauseButton.classList.add("visible");
   pauseButton.classList.remove("paused");
-  pauseButton.innerHTML = "&#10074;&#10074;"; // ❚❚ pause icon
+  pauseButton.textContent = "⏸"; // Use textContent + literal Unicode, not innerHTML + entities
   clockInterval = setInterval(() => {
     clockSeconds++;
     clockDisplay.textContent = formatTime(clockSeconds);
@@ -209,7 +204,7 @@ function pauseClock() {
   stopClock();
   clockPaused = true;
   pauseButton.classList.add("paused");
-  pauseButton.innerHTML = "&#9654;"; // ▶ play icon
+  pauseButton.textContent = "▶"; // Use textContent + literal Unicode, not innerHTML + entities
 }
 
 // Resume the clock from a paused state.
